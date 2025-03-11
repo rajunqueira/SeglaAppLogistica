@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-Future<void> coletorToSql(List<ColetorStruct> coletores) async {
+Future<void> coletorToSql(List<RecipienteStruct> recipientes) async {
   for (var item in coletores) {}
 }
 // Set your action name, define your arguments and return parameter,
