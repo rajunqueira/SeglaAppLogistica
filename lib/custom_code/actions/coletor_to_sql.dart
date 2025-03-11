@@ -12,7 +12,7 @@ import 'package:flutter/material.dart';
 Future<void> coletorToSql(List<RecipienteStruct> recipientes) async {
   for (var itens in recipientes) {
     final db = await database;
-    final res = await db.insert('Recipiente', itens.toJson());
+    final res = await db.insert('Coletor', itens.toJson());
   }
 }
 // Set your action name, define your arguments and return parameter,
