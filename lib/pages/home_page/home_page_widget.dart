@@ -1,5 +1,6 @@
 import '/auth/custom_auth/auth_util.dart';
 import '/backend/schema/structs/index.dart';
+import '/backend/sqlite/sqlite_manager.dart';
 import '/components/carrega_todos_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -368,6 +369,45 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       ),
                     ],
                   ),
+                ),
+                FutureBuilder<List<SelectAllProdutosRow>>(
+                  future: SQLiteManager.instance.selectAllProdutos(),
+                  builder: (context, snapshot) {
+                    // Customize what your widget looks like when it's loading.
+                    if (!snapshot.hasData) {
+                      return Center(
+                        child: SizedBox(
+                          width: 50.0,
+                          height: 50.0,
+                          child: CircularProgressIndicator(
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                              FlutterFlowTheme.of(context).primary,
+                            ),
+                          ),
+                        ),
+                      );
+                    }
+                    final listViewSelectAllProdutosRowList = snapshot.data!;
+
+                    return ListView.builder(
+                      padding: EdgeInsets.zero,
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                      itemCount: listViewSelectAllProdutosRowList.length,
+                      itemBuilder: (context, listViewIndex) {
+                        final listViewSelectAllProdutosRow =
+                            listViewSelectAllProdutosRowList[listViewIndex];
+                        return Text(
+                          listViewSelectAllProdutosRow.descricao,
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Inter',
+                                    letterSpacing: 0.0,
+                                  ),
+                        );
+                      },
+                    );
+                  },
                 ),
               ],
             ),
