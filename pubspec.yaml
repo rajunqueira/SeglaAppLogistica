@@ -51,6 +51,7 @@ dependencies:
   json_path: 0.7.2
   mime_type: 1.0.0
   page_transition: 2.1.0
+  path: ^1.8.0
   path_provider: 2.1.4
   path_provider_android: 2.2.10
   path_provider_foundation: 2.4.0
