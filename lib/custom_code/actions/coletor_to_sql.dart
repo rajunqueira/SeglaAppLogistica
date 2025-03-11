@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
 Future<void> coletorToSql(List<RecipienteStruct> recipientes) async {
-  for (var item in coletores) {}
+  for (var itens in recipientes) {}
 }
 // Set your action name, define your arguments and return parameter,
 // and then add the boilerplate code using the green button on the right!
