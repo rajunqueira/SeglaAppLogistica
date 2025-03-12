@@ -416,10 +416,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 FFButtonWidget(
                   onPressed: () async {
                     await actions.coletorToSql(
-                      FFAppState()
-                          .RecipientesResponseAppState
-                          .recipienteList
-                          .toList(),
+                      'uyuyuy',
                     );
                     await showDialog(
                       context: context,
