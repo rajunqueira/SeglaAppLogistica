@@ -42,6 +42,11 @@ class SQLiteManager {
         _database,
       );
 
+  Future<List<SelectAllRecipientesRow>> selectAllRecipientes() =>
+      performSelectAllRecipientes(
+        _database,
+      );
+
   /// END READ QUERY CALLS
 
   /// START UPDATE QUERY CALLS

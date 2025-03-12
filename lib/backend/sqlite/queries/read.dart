@@ -65,3 +65,22 @@ class SelectMyTableRow extends SqliteRow {
 }
 
 /// END SELECTMYTABLE
+
+/// BEGIN SELECTALLRECIPIENTES
+Future<List<SelectAllRecipientesRow>> performSelectAllRecipientes(
+  Database database,
+) {
+  final query = '''
+select * from recipiente
+''';
+  return _readQuery(database, query, (d) => SelectAllRecipientesRow(d));
+}
+
+class SelectAllRecipientesRow extends SqliteRow {
+  SelectAllRecipientesRow(Map<String, dynamic> data) : super(data);
+
+  int? get id => data['id'] as int?;
+  String? get descricao => data['descricao'] as String?;
+}
+
+/// END SELECTALLRECIPIENTES

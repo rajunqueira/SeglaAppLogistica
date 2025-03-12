@@ -31,7 +31,7 @@ Future<Database> openDatabaseConnection() async {
 
 Future<void> CriaTabelas() async {
   Database db = await openDatabaseConnection();
-  await db.execute('''drop table recipiente''');
+  //await db.execute('''drop table recipiente''');
   await db.execute('''
         CREATE TABLE recipiente(
                     [id] [int] NOT NULL,
@@ -51,7 +51,12 @@ Future<void> CriaTabelas() async {
 Future<void> coletorToSql(List<RecipienteStruct> coletores) async {
   CriaTabelas();
   Database db = await openDatabaseConnection();
-  await db.insert('recipiente', coletores as Map<String, Object?>);
+  Batch batch = db.batch();
+  coletores.forEach((val) {
+    batch.insert("recipiente", val.toMap());
+  });
+
+  batch.commit();
 }
 
 Future<List<Map<String, dynamic>>> fetchData() async {

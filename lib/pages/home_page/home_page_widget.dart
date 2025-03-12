@@ -370,8 +370,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     ],
                   ),
                 ),
-                FutureBuilder<List<SelectColetoresRow>>(
-                  future: SQLiteManager.instance.selectColetores(),
+                FutureBuilder<List<SelectAllRecipientesRow>>(
+                  future: SQLiteManager.instance.selectAllRecipientes(),
                   builder: (context, snapshot) {
                     // Customize what your widget looks like when it's loading.
                     if (!snapshot.hasData) {
@@ -387,18 +387,21 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         ),
                       );
                     }
-                    final listViewSelectColetoresRowList = snapshot.data!;
+                    final listViewSelectAllRecipientesRowList = snapshot.data!;
 
                     return ListView.builder(
                       padding: EdgeInsets.zero,
                       shrinkWrap: true,
                       scrollDirection: Axis.vertical,
-                      itemCount: listViewSelectColetoresRowList.length,
+                      itemCount: listViewSelectAllRecipientesRowList.length,
                       itemBuilder: (context, listViewIndex) {
-                        final listViewSelectColetoresRow =
-                            listViewSelectColetoresRowList[listViewIndex];
+                        final listViewSelectAllRecipientesRow =
+                            listViewSelectAllRecipientesRowList[listViewIndex];
                         return Text(
-                          listViewSelectColetoresRow.descricao,
+                          valueOrDefault<String>(
+                            listViewSelectAllRecipientesRow.descricao,
+                            '--',
+                          ),
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Inter',
