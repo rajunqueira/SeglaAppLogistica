@@ -227,6 +227,8 @@ dynamic deserializeParam<T>(
             return SelectAllProdutosRow(data);
           case SelectColetoresRow:
             return SelectColetoresRow(data);
+          case SelectMyTableRow:
+            return SelectMyTableRow(data);
           default:
             return null;
         }

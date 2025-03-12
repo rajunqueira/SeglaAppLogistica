@@ -46,3 +46,22 @@ class SelectColetoresRow extends SqliteRow {
 }
 
 /// END SELECTCOLETORES
+
+/// BEGIN SELECTMYTABLE
+Future<List<SelectMyTableRow>> performSelectMyTable(
+  Database database,
+) {
+  final query = '''
+select * from my_table
+''';
+  return _readQuery(database, query, (d) => SelectMyTableRow(d));
+}
+
+class SelectMyTableRow extends SqliteRow {
+  SelectMyTableRow(Map<String, dynamic> data) : super(data);
+
+  int get id => data['id'] as int;
+  String get name => data['name'] as String;
+}
+
+/// END SELECTMYTABLE

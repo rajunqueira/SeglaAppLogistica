@@ -38,6 +38,10 @@ class SQLiteManager {
         _database,
       );
 
+  Future<List<SelectMyTableRow>> selectMyTable() => performSelectMyTable(
+        _database,
+      );
+
   /// END READ QUERY CALLS
 
   /// START UPDATE QUERY CALLS
