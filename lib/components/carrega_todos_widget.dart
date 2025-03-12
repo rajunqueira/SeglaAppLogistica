@@ -106,7 +106,10 @@ class _CarregaTodosWidgetState extends State<CarregaTodosWidget> {
                     (_model.recipientes?.jsonBody ?? ''))!;
             safeSetState(() {});
             await actions.coletorToSql(
-              (_model.recipientes?.jsonBody ?? ''),
+              RecipientesResponseStruct.maybeFromMap(
+                      (_model.recipientes?.jsonBody ?? ''))!
+                  .recipienteList
+                  .toList(),
             );
           } else {
             await showDialog(

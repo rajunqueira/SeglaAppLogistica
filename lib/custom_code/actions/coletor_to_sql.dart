@@ -48,7 +48,7 @@ Future<void> CriaTabelas() async {
       ''');
 }
 
-Future<void> coletorToSql(List<dynamic> coletores) async {
+Future<void> coletorToSql(List<RecipienteStruct> coletores) async {
   CriaTabelas();
   Database db = await openDatabaseConnection();
   await db.insert('recipiente', coletores as Map<String, Object?>);
