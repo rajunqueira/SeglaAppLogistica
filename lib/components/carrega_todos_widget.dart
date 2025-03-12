@@ -5,6 +5,7 @@ import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:convert';
+import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -104,6 +105,9 @@ class _CarregaTodosWidgetState extends State<CarregaTodosWidget> {
                 RecipientesResponseStruct.maybeFromMap(
                     (_model.recipientes?.jsonBody ?? ''))!;
             safeSetState(() {});
+            await actions.coletorToSql(
+              (_model.recipientes?.jsonBody ?? ''),
+            );
           } else {
             await showDialog(
               context: context,

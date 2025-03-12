@@ -16,31 +16,42 @@ import 'package:path/path.dart';
 
 Future<Database> openDatabaseConnection() async {
   String dbPath = await getDatabasesPath();
-  String path = join(dbPath, 'AppLogistica.db');
+  String path = join(dbPath, 'app_logistica.db');
 
   Database database = await openDatabase(
     path,
     version: 1,
     onCreate: (Database db, int version) async {
-      await db.execute('''
-        CREATE TABLE my_table (
-          id INTEGER PRIMARY KEY,
-          name TEXT
-        )
-      ''');
+      CriaTabelas();
     },
   );
 
   return database;
 }
 
-Future<void> coletorToSql(String name) async {
+Future<void> CriaTabelas() async {
   Database db = await openDatabaseConnection();
-  await db.rawQuery(
-      "insert into coletor (id,descricao, deletado) values (32,'Rodrigo',0)");
+  await db.execute('''drop table recipiente''');
+  await db.execute('''
+        CREATE TABLE recipiente(
+                    [id] [int] NOT NULL,
+                    [apelido] [nvarchar](200) NULL,
+                    [descricao] [nvarchar](200) NULL,
+                    [createdUser] [varchar](200) NULL,
+                    [createdDate] [datetime] NULL,
+                    [updatedUser] [varchar](200) NULL,
+                    [updatedDate] [datetime] NULL,
+                    [deletado] [bit] NOT NULL,
+                    [IdCliente] [varchar](450) NULL,
+                    [IdDominio] [varchar](450) NULL,
+                    [IdEstabelecimento] [varchar](450) NULL)
+      ''');
+}
 
-  await db
-      .insert('coletor', {'descricao': 'teste tese', 'id': 99, 'deletado': 0});
+Future<void> coletorToSql(List<dynamic> coletores) async {
+  CriaTabelas();
+  Database db = await openDatabaseConnection();
+  await db.insert('recipiente', coletores as Map<String, Object?>);
 }
 
 Future<List<Map<String, dynamic>>> fetchData() async {
