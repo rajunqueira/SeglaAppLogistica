@@ -36,7 +36,11 @@ Future<Database> openDatabaseConnection() async {
 
 Future<void> coletorToSql(String name) async {
   Database db = await openDatabaseConnection();
-  await db.insert('my_table', {'name': name});
+  await db.rawQuery(
+      "insert into coletor (id,descricao, deletado) values (32,'Rodrigo',0)");
+
+  await db
+      .insert('coletor', {'descricao': 'teste tese', 'id': 99, 'deletado': 0});
 }
 
 Future<List<Map<String, dynamic>>> fetchData() async {

@@ -371,8 +371,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     ],
                   ),
                 ),
-                FutureBuilder<List<SelectAllProdutosRow>>(
-                  future: SQLiteManager.instance.selectAllProdutos(),
+                FutureBuilder<List<SelectColetoresRow>>(
+                  future: SQLiteManager.instance.selectColetores(),
                   builder: (context, snapshot) {
                     // Customize what your widget looks like when it's loading.
                     if (!snapshot.hasData) {
@@ -388,18 +388,18 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         ),
                       );
                     }
-                    final listViewSelectAllProdutosRowList = snapshot.data!;
+                    final listViewSelectColetoresRowList = snapshot.data!;
 
                     return ListView.builder(
                       padding: EdgeInsets.zero,
                       shrinkWrap: true,
                       scrollDirection: Axis.vertical,
-                      itemCount: listViewSelectAllProdutosRowList.length,
+                      itemCount: listViewSelectColetoresRowList.length,
                       itemBuilder: (context, listViewIndex) {
-                        final listViewSelectAllProdutosRow =
-                            listViewSelectAllProdutosRowList[listViewIndex];
+                        final listViewSelectColetoresRow =
+                            listViewSelectColetoresRowList[listViewIndex];
                         return Text(
-                          listViewSelectAllProdutosRow.descricao,
+                          listViewSelectColetoresRow.descricao,
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Inter',
