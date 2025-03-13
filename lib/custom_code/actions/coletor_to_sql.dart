@@ -43,16 +43,32 @@ Future<void> CriaTabelas() async {
                     "statusContratoRotaDesc"	TEXT,
                     "statusViagemDesc"	TEXT,
                     "pesoColetado"	REAL,
-                    "volumeColetado"	REAL
+                    "volumeColetado"	INTEGER
                   );
       ''');
 }
 
 Future<void> coletorToSql(List<PesagemListStruct> pesagens) async {
   //CriaTabelas();
+  String query = "";
   Database db = await openDatabaseConnection();
   Batch batch = db.batch();
-  coletores.forEach((val) {
+  pesagens.forEach((val) {
+    query = '''INSERT INTO pesagem
+                           id,
+                           idContratoRota,
+                           idViagem,
+                           tipoResiduoDesc,
+                           recipienteDesc,
+                           statusPesagemDesc,
+                           statusContratoRotaDesc,
+                           statusViagemDesc,
+                           pesoColetado,
+                           volumeColetado)''';
+    query += ''' VALUES (''' + val.id.toString() + ',';
+    query += val.viagemRota.id.toString() + ',';
+    query += val.viagemRota.idViagem.toString() + ',';
+
     batch.insert("pesagens", val.toMap());
   });
 

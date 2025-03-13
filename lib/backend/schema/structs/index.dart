@@ -22,6 +22,7 @@ export 'viagem_rota_response_struct.dart';
 export 'viagem_rota_status_struct.dart';
 export 'viagem_status_struct.dart';
 export 'viagen_struct.dart';
+export 'viagens_struct.dart';
 export 'pesagem_list_struct.dart';
 export 'pesagemstatus_list_struct.dart';
 export 'tiporesiduo_list_struct.dart';
