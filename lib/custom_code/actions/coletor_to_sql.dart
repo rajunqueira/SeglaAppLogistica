@@ -31,20 +31,20 @@ Future<Database> openDatabaseConnection() async {
 
 Future<void> CriaTabelas() async {
   Database db = await openDatabaseConnection();
-  //await db.execute('''drop table recipiente''');
+  await db.execute('''drop table pesagem''');
   await db.execute('''
-        CREATE TABLE recipiente(
-                    [id] [int] NOT NULL,
-                    [apelido] [nvarchar](200) NULL,
-                    [descricao] [nvarchar](200) NULL,
-                    [createdUser] [varchar](200) NULL,
-                    [createdDate] [datetime] NULL,
-                    [updatedUser] [varchar](200) NULL,
-                    [updatedDate] [datetime] NULL,
-                    [deletado] [bit] NOT NULL,
-                    [IdCliente] [varchar](450) NULL,
-                    [IdDominio] [varchar](450) NULL,
-                    [IdEstabelecimento] [varchar](450) NULL)
+       CREATE TABLE "pesagem" (
+	"id"	INTEGER,
+	"idContratoRota"	INTEGER,
+	"idViagem"	INTEGER,
+	"tipoResiduoDesc"	TEXT,
+	"recipienteDesc"	TEXT,
+	"statusPesagemDesc"	TEXT,
+	"statusContratoRotaDesc"	TEXT,
+	"statusViagemDesc"	TEXT,
+	"pesoColetado"	REAL,
+	"volumeColetado"	REAL
+);
       ''');
 }
 
