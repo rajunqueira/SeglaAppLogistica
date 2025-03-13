@@ -112,3 +112,27 @@ class PesagensListaRow extends SqliteRow {
 }
 
 /// END PESAGENSLISTA
+
+/// BEGIN PESAGENSTIPORESIDUO
+Future<List<PesagensTipoResiduoRow>> performPesagensTipoResiduo(
+  Database database,
+) {
+  final query = '''
+SELECT SUM(pesoColetado) AS PESO,
+		SUM(volumeColetado) AS VOLUMES,
+		tipoResiduoDesc
+FROM PESAGEM
+GROUP BY tipoResiduoDesc
+''';
+  return _readQuery(database, query, (d) => PesagensTipoResiduoRow(d));
+}
+
+class PesagensTipoResiduoRow extends SqliteRow {
+  PesagensTipoResiduoRow(Map<String, dynamic> data) : super(data);
+
+  double? get peso => data['peso'] as double?;
+  int? get volumes => data['volumes'] as int?;
+  String? get tipoResiduoDesc => data['tipoResiduoDesc'] as String?;
+}
+
+/// END PESAGENSTIPORESIDUO

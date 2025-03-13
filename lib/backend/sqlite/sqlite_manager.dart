@@ -51,6 +51,11 @@ class SQLiteManager {
         _database,
       );
 
+  Future<List<PesagensTipoResiduoRow>> pesagensTipoResiduo() =>
+      performPesagensTipoResiduo(
+        _database,
+      );
+
   /// END READ QUERY CALLS
 
   /// START UPDATE QUERY CALLS

@@ -31,7 +31,7 @@ Future<Database> openDatabaseConnection() async {
 
 Future<void> CriaTabelas() async {
   Database db = await openDatabaseConnection();
-  await db.execute('''drop table pesagem''');
+  //await db.execute('''drop table pesagem''');
   await db.execute('''
        CREATE TABLE "pesagem" (
                     "id"	INTEGER,
@@ -50,8 +50,9 @@ Future<void> CriaTabelas() async {
 
 Future<void> coletorToSql(List<PesagemListStruct> pesagens) async {
   //CriaTabelas();
-  String query = "";
   Database db = await openDatabaseConnection();
+  await db.execute('''DELETE FROM pesagem''');
+
   Batch batch = db.batch();
   pesagens.forEach((val) {
     PesagensStruct pesagem = new PesagensStruct();
@@ -66,7 +67,7 @@ Future<void> coletorToSql(List<PesagemListStruct> pesagens) async {
     pesagem.statusViagemDesc = "";
     pesagem.pesoColetado = val.pesoColetado;
     pesagem.volumeColetado = val.qntdColetada;
-    batch.insert("pesagens", pesagem.toMap());
+    batch.insert("pesagem", pesagem.toMap());
   });
 
   batch.commit();

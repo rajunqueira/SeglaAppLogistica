@@ -370,8 +370,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     ],
                   ),
                 ),
-                FutureBuilder<List<PesagensListaRow>>(
-                  future: SQLiteManager.instance.pesagensLista(),
+                FutureBuilder<List<PesagensTipoResiduoRow>>(
+                  future: SQLiteManager.instance.pesagensTipoResiduo(),
                   builder: (context, snapshot) {
                     // Customize what your widget looks like when it's loading.
                     if (!snapshot.hasData) {
@@ -387,26 +387,44 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         ),
                       );
                     }
-                    final listViewPesagensListaRowList = snapshot.data!;
+                    final listViewPesagensTipoResiduoRowList = snapshot.data!;
 
                     return ListView.builder(
                       padding: EdgeInsets.zero,
                       shrinkWrap: true,
                       scrollDirection: Axis.vertical,
-                      itemCount: listViewPesagensListaRowList.length,
+                      itemCount: listViewPesagensTipoResiduoRowList.length,
                       itemBuilder: (context, listViewIndex) {
-                        final listViewPesagensListaRow =
-                            listViewPesagensListaRowList[listViewIndex];
-                        return Text(
-                          valueOrDefault<String>(
-                            listViewPesagensListaRow.tipoResiduoDesc,
-                            '--',
-                          ),
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
+                        final listViewPesagensTipoResiduoRow =
+                            listViewPesagensTipoResiduoRowList[listViewIndex];
+                        return Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Text(
+                              valueOrDefault<String>(
+                                listViewPesagensTipoResiduoRow.peso?.toString(),
+                                '0,000',
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
                                     fontFamily: 'Inter',
                                     letterSpacing: 0.0,
                                   ),
+                            ),
+                            Text(
+                              valueOrDefault<String>(
+                                listViewPesagensTipoResiduoRow.tipoResiduoDesc,
+                                '--',
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Inter',
+                                    letterSpacing: 0.0,
+                                  ),
+                            ),
+                          ],
                         );
                       },
                     );
