@@ -5,8 +5,8 @@ import '/backend/schema/util/schema_util.dart';
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
-class ViagensStruct extends BaseStruct {
-  ViagensStruct({
+class PesagensStruct extends BaseStruct {
+  PesagensStruct({
     int? id,
     int? idContratoRota,
     int? idViagem,
@@ -111,7 +111,7 @@ class ViagensStruct extends BaseStruct {
 
   bool hasVolumeColetado() => _volumeColetado != null;
 
-  static ViagensStruct fromMap(Map<String, dynamic> data) => ViagensStruct(
+  static PesagensStruct fromMap(Map<String, dynamic> data) => PesagensStruct(
         id: castToType<int>(data['id']),
         idContratoRota: castToType<int>(data['idContratoRota']),
         idViagem: castToType<int>(data['idViagem']),
@@ -124,8 +124,8 @@ class ViagensStruct extends BaseStruct {
         volumeColetado: castToType<int>(data['volumeColetado']),
       );
 
-  static ViagensStruct? maybeFromMap(dynamic data) =>
-      data is Map ? ViagensStruct.fromMap(data.cast<String, dynamic>()) : null;
+  static PesagensStruct? maybeFromMap(dynamic data) =>
+      data is Map ? PesagensStruct.fromMap(data.cast<String, dynamic>()) : null;
 
   Map<String, dynamic> toMap() => {
         'id': _id,
@@ -184,8 +184,8 @@ class ViagensStruct extends BaseStruct {
         ),
       }.withoutNulls;
 
-  static ViagensStruct fromSerializableMap(Map<String, dynamic> data) =>
-      ViagensStruct(
+  static PesagensStruct fromSerializableMap(Map<String, dynamic> data) =>
+      PesagensStruct(
         id: deserializeParam(
           data['id'],
           ParamType.int,
@@ -239,11 +239,11 @@ class ViagensStruct extends BaseStruct {
       );
 
   @override
-  String toString() => 'ViagensStruct(${toMap()})';
+  String toString() => 'PesagensStruct(${toMap()})';
 
   @override
   bool operator ==(Object other) {
-    return other is ViagensStruct &&
+    return other is PesagensStruct &&
         id == other.id &&
         idContratoRota == other.idContratoRota &&
         idViagem == other.idViagem &&
@@ -271,7 +271,7 @@ class ViagensStruct extends BaseStruct {
       ]);
 }
 
-ViagensStruct createViagensStruct({
+PesagensStruct createPesagensStruct({
   int? id,
   int? idContratoRota,
   int? idViagem,
@@ -283,7 +283,7 @@ ViagensStruct createViagensStruct({
   double? pesoColetado,
   int? volumeColetado,
 }) =>
-    ViagensStruct(
+    PesagensStruct(
       id: id,
       idContratoRota: idContratoRota,
       idViagem: idViagem,

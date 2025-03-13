@@ -54,7 +54,7 @@ Future<void> coletorToSql(List<PesagemListStruct> pesagens) async {
   Database db = await openDatabaseConnection();
   Batch batch = db.batch();
   pesagens.forEach((val) {
-    PesagensStruct = pesagem = new PesagensStruct();
+    PesagensStruct pesagem = new PesagensStruct();
     query = '''INSERT INTO pesagem
                            id,
                            idContratoRota,
