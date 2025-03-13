@@ -402,8 +402,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           children: [
                             Text(
                               valueOrDefault<String>(
-                                listViewPesagensTipoResiduoRow.peso?.toString(),
-                                '0,000',
+                                formatNumber(
+                                  listViewPesagensTipoResiduoRow.peso,
+                                  formatType: FormatType.custom,
+                                  format: '#,##0.000',
+                                  locale: 'pt-BR',
+                                ),
+                                '--',
                               ),
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
