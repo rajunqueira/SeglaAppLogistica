@@ -84,3 +84,31 @@ class SelectAllRecipientesRow extends SqliteRow {
 }
 
 /// END SELECTALLRECIPIENTES
+
+/// BEGIN PESAGENSLISTA
+Future<List<PesagensListaRow>> performPesagensLista(
+  Database database,
+) {
+  final query = '''
+SELECT * FROM PESAGENS 
+''';
+  return _readQuery(database, query, (d) => PesagensListaRow(d));
+}
+
+class PesagensListaRow extends SqliteRow {
+  PesagensListaRow(Map<String, dynamic> data) : super(data);
+
+  int? get id => data['id'] as int?;
+  int? get idContratoRota => data['idContratoRota'] as int?;
+  int? get idViagem => data['idViagem'] as int?;
+  String? get tipoResiduoDesc => data['tipoResiduoDesc'] as String?;
+  String? get recipienteDesc => data['recipienteDesc'] as String?;
+  String? get statusPesagemDesc => data['statusPesagemDesc'] as String?;
+  String? get statusContratoRotaDesc =>
+      data['statusContratoRotaDesc'] as String?;
+  String? get statusViagemDesc => data['statusViagemDesc'] as String?;
+  double? get pesoColetado => data['pesoColetado'] as double?;
+  int? get volumeColetado => data['volumeColetado'] as int?;
+}
+
+/// END PESAGENSLISTA

@@ -370,8 +370,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     ],
                   ),
                 ),
-                FutureBuilder<List<SelectAllRecipientesRow>>(
-                  future: SQLiteManager.instance.selectAllRecipientes(),
+                FutureBuilder<List<PesagensListaRow>>(
+                  future: SQLiteManager.instance.pesagensLista(),
                   builder: (context, snapshot) {
                     // Customize what your widget looks like when it's loading.
                     if (!snapshot.hasData) {
@@ -387,19 +387,19 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         ),
                       );
                     }
-                    final listViewSelectAllRecipientesRowList = snapshot.data!;
+                    final listViewPesagensListaRowList = snapshot.data!;
 
                     return ListView.builder(
                       padding: EdgeInsets.zero,
                       shrinkWrap: true,
                       scrollDirection: Axis.vertical,
-                      itemCount: listViewSelectAllRecipientesRowList.length,
+                      itemCount: listViewPesagensListaRowList.length,
                       itemBuilder: (context, listViewIndex) {
-                        final listViewSelectAllRecipientesRow =
-                            listViewSelectAllRecipientesRowList[listViewIndex];
+                        final listViewPesagensListaRow =
+                            listViewPesagensListaRowList[listViewIndex];
                         return Text(
                           valueOrDefault<String>(
-                            listViewSelectAllRecipientesRow.descricao,
+                            listViewPesagensListaRow.tipoResiduoDesc,
                             '--',
                           ),
                           style:

@@ -55,22 +55,18 @@ Future<void> coletorToSql(List<PesagemListStruct> pesagens) async {
   Batch batch = db.batch();
   pesagens.forEach((val) {
     PesagensStruct pesagem = new PesagensStruct();
-    query = '''INSERT INTO pesagem
-                           id,
-                           idContratoRota,
-                           idViagem,
-                           tipoResiduoDesc,
-                           recipienteDesc,
-                           statusPesagemDesc,
-                           statusContratoRotaDesc,
-                           statusViagemDesc,
-                           pesoColetado,
-                           volumeColetado)''';
-    query += ''' VALUES (''' + val.id.toString() + ',';
-    query += val.viagemRota.id.toString() + ',';
-    query += val.viagemRota.idViagem.toString() + ',';
 
-    batch.insert("pesagens", val.toMap());
+    pesagem.id = val.id;
+    pesagem.idContratoRota = val.viagemRota.idContratoRota;
+    pesagem.idViagem = val.viagemRota.idViagem;
+    pesagem.tipoResiduoDesc = val.tipoResiduo.descricao;
+    pesagem.recipienteDesc = val.recipiente.descricao;
+    pesagem.statusPesagemDesc = val.pesagemStatus.descricao;
+    pesagem.statusContratoRotaDesc = val.viagemRota.viagemRotaStatus;
+    pesagem.statusViagemDesc = "";
+    pesagem.pesoColetado = val.pesoColetado;
+    pesagem.volumeColetado = val.qntdColetada;
+    batch.insert("pesagens", pesagem.toMap());
   });
 
   batch.commit();

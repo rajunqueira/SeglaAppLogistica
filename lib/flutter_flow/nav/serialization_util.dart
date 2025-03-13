@@ -231,6 +231,8 @@ dynamic deserializeParam<T>(
             return SelectMyTableRow(data);
           case SelectAllRecipientesRow:
             return SelectAllRecipientesRow(data);
+          case PesagensListaRow:
+            return PesagensListaRow(data);
           default:
             return null;
         }
