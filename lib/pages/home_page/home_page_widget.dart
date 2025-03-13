@@ -1,5 +1,6 @@
 import '/auth/custom_auth/auth_util.dart';
 import '/backend/schema/structs/index.dart';
+import '/backend/sqlite/sqlite_manager.dart';
 import '/components/carrega_todos_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -369,19 +370,47 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     ],
                   ),
                 ),
-                ListView(
-                  padding: EdgeInsets.zero,
-                  shrinkWrap: true,
-                  scrollDirection: Axis.vertical,
-                  children: [
-                    Text(
-                      '',
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Inter',
-                            letterSpacing: 0.0,
+                FutureBuilder<List<PesagensListaRow>>(
+                  future: SQLiteManager.instance.pesagensLista(),
+                  builder: (context, snapshot) {
+                    // Customize what your widget looks like when it's loading.
+                    if (!snapshot.hasData) {
+                      return Center(
+                        child: SizedBox(
+                          width: 50.0,
+                          height: 50.0,
+                          child: CircularProgressIndicator(
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                              FlutterFlowTheme.of(context).primary,
+                            ),
                           ),
-                    ),
-                  ],
+                        ),
+                      );
+                    }
+                    final listViewPesagensListaRowList = snapshot.data!;
+
+                    return ListView.builder(
+                      padding: EdgeInsets.zero,
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                      itemCount: listViewPesagensListaRowList.length,
+                      itemBuilder: (context, listViewIndex) {
+                        final listViewPesagensListaRow =
+                            listViewPesagensListaRowList[listViewIndex];
+                        return Text(
+                          valueOrDefault<String>(
+                            listViewPesagensListaRow.tipoResiduoDesc,
+                            '--',
+                          ),
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Inter',
+                                    letterSpacing: 0.0,
+                                  ),
+                        );
+                      },
+                    );
+                  },
                 ),
                 FFButtonWidget(
                   onPressed: () {
