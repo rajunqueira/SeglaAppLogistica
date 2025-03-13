@@ -34,34 +34,29 @@ Future<void> CriaTabelas() async {
   await db.execute('''drop table pesagem''');
   await db.execute('''
        CREATE TABLE "pesagem" (
-	"id"	INTEGER,
-	"idContratoRota"	INTEGER,
-	"idViagem"	INTEGER,
-	"tipoResiduoDesc"	TEXT,
-	"recipienteDesc"	TEXT,
-	"statusPesagemDesc"	TEXT,
-	"statusContratoRotaDesc"	TEXT,
-	"statusViagemDesc"	TEXT,
-	"pesoColetado"	REAL,
-	"volumeColetado"	REAL
-);
+                    "id"	INTEGER,
+                    "idContratoRota"	INTEGER,
+                    "idViagem"	INTEGER,
+                    "tipoResiduoDesc"	TEXT,
+                    "recipienteDesc"	TEXT,
+                    "statusPesagemDesc"	TEXT,
+                    "statusContratoRotaDesc"	TEXT,
+                    "statusViagemDesc"	TEXT,
+                    "pesoColetado"	REAL,
+                    "volumeColetado"	REAL
+                  );
       ''');
 }
 
-Future<void> coletorToSql(List<RecipienteStruct> coletores) async {
-  CriaTabelas();
+Future<void> coletorToSql(List<PesagemListStruct> pesagens) async {
+  //CriaTabelas();
   Database db = await openDatabaseConnection();
   Batch batch = db.batch();
   coletores.forEach((val) {
-    batch.insert("recipiente", val.toMap());
+    batch.insert("pesagens", val.toMap());
   });
 
   batch.commit();
-}
-
-Future<List<Map<String, dynamic>>> fetchData() async {
-  Database db = await openDatabaseConnection();
-  return await db.query('my_table');
 }
 
 // Set your action name, define your arguments and return parameter,
