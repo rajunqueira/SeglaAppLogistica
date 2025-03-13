@@ -90,7 +90,7 @@ Future<List<PesagensListaRow>> performPesagensLista(
   Database database,
 ) {
   final query = '''
-SELECT * FROM PESAGENS 
+SELECT * FROM PESAGEM 
 ''';
   return _readQuery(database, query, (d) => PesagensListaRow(d));
 }
