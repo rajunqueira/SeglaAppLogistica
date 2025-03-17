@@ -23,6 +23,10 @@ class ViagemrotaListStruct extends BaseStruct {
     String? updatedUser,
     String? updatedDate,
     bool? deletado,
+    String? dataHoraInicio,
+    String? dataHoraFim,
+    int? odometroInicio,
+    int? odometroFinal,
     ViagenStruct? viagen,
     ViagemRotaStatusStruct? viagemRotaStatus,
     ContratoRotaStruct? contratoRota,
@@ -43,6 +47,10 @@ class ViagemrotaListStruct extends BaseStruct {
         _updatedUser = updatedUser,
         _updatedDate = updatedDate,
         _deletado = deletado,
+        _dataHoraInicio = dataHoraInicio,
+        _dataHoraFim = dataHoraFim,
+        _odometroInicio = odometroInicio,
+        _odometroFinal = odometroFinal,
         _viagen = viagen,
         _viagemRotaStatus = viagemRotaStatus,
         _contratoRota = contratoRota,
@@ -173,6 +181,40 @@ class ViagemrotaListStruct extends BaseStruct {
 
   bool hasDeletado() => _deletado != null;
 
+  // "DataHoraInicio" field.
+  String? _dataHoraInicio;
+  String get dataHoraInicio => _dataHoraInicio ?? '';
+  set dataHoraInicio(String? val) => _dataHoraInicio = val;
+
+  bool hasDataHoraInicio() => _dataHoraInicio != null;
+
+  // "DataHoraFim" field.
+  String? _dataHoraFim;
+  String get dataHoraFim => _dataHoraFim ?? '';
+  set dataHoraFim(String? val) => _dataHoraFim = val;
+
+  bool hasDataHoraFim() => _dataHoraFim != null;
+
+  // "OdometroInicio" field.
+  int? _odometroInicio;
+  int get odometroInicio => _odometroInicio ?? 0;
+  set odometroInicio(int? val) => _odometroInicio = val;
+
+  void incrementOdometroInicio(int amount) =>
+      odometroInicio = odometroInicio + amount;
+
+  bool hasOdometroInicio() => _odometroInicio != null;
+
+  // "OdometroFinal" field.
+  int? _odometroFinal;
+  int get odometroFinal => _odometroFinal ?? 0;
+  set odometroFinal(int? val) => _odometroFinal = val;
+
+  void incrementOdometroFinal(int amount) =>
+      odometroFinal = odometroFinal + amount;
+
+  bool hasOdometroFinal() => _odometroFinal != null;
+
   // "Viagen" field.
   ViagenStruct? _viagen;
   ViagenStruct get viagen => _viagen ?? ViagenStruct();
@@ -233,6 +275,10 @@ class ViagemrotaListStruct extends BaseStruct {
         updatedUser: data['updatedUser'] as String?,
         updatedDate: data['updatedDate'] as String?,
         deletado: data['deletado'] as bool?,
+        dataHoraInicio: data['DataHoraInicio'] as String?,
+        dataHoraFim: data['DataHoraFim'] as String?,
+        odometroInicio: castToType<int>(data['OdometroInicio']),
+        odometroFinal: castToType<int>(data['OdometroFinal']),
         viagen: data['Viagen'] is ViagenStruct
             ? data['Viagen']
             : ViagenStruct.maybeFromMap(data['Viagen']),
@@ -266,6 +312,10 @@ class ViagemrotaListStruct extends BaseStruct {
         'updatedUser': _updatedUser,
         'updatedDate': _updatedDate,
         'deletado': _deletado,
+        'DataHoraInicio': _dataHoraInicio,
+        'DataHoraFim': _dataHoraFim,
+        'OdometroInicio': _odometroInicio,
+        'OdometroFinal': _odometroFinal,
         'Viagen': _viagen?.toMap(),
         'ViagemRotaStatus': _viagemRotaStatus?.toMap(),
         'ContratoRota': _contratoRota?.toMap(),
@@ -337,6 +387,22 @@ class ViagemrotaListStruct extends BaseStruct {
         'deletado': serializeParam(
           _deletado,
           ParamType.bool,
+        ),
+        'DataHoraInicio': serializeParam(
+          _dataHoraInicio,
+          ParamType.String,
+        ),
+        'DataHoraFim': serializeParam(
+          _dataHoraFim,
+          ParamType.String,
+        ),
+        'OdometroInicio': serializeParam(
+          _odometroInicio,
+          ParamType.int,
+        ),
+        'OdometroFinal': serializeParam(
+          _odometroFinal,
+          ParamType.int,
         ),
         'Viagen': serializeParam(
           _viagen,
@@ -438,6 +504,26 @@ class ViagemrotaListStruct extends BaseStruct {
           ParamType.bool,
           false,
         ),
+        dataHoraInicio: deserializeParam(
+          data['DataHoraInicio'],
+          ParamType.String,
+          false,
+        ),
+        dataHoraFim: deserializeParam(
+          data['DataHoraFim'],
+          ParamType.String,
+          false,
+        ),
+        odometroInicio: deserializeParam(
+          data['OdometroInicio'],
+          ParamType.int,
+          false,
+        ),
+        odometroFinal: deserializeParam(
+          data['OdometroFinal'],
+          ParamType.int,
+          false,
+        ),
         viagen: deserializeStructParam(
           data['Viagen'],
           ParamType.DataStruct,
@@ -485,6 +571,10 @@ class ViagemrotaListStruct extends BaseStruct {
         updatedUser == other.updatedUser &&
         updatedDate == other.updatedDate &&
         deletado == other.deletado &&
+        dataHoraInicio == other.dataHoraInicio &&
+        dataHoraFim == other.dataHoraFim &&
+        odometroInicio == other.odometroInicio &&
+        odometroFinal == other.odometroFinal &&
         viagen == other.viagen &&
         viagemRotaStatus == other.viagemRotaStatus &&
         contratoRota == other.contratoRota &&
@@ -509,6 +599,10 @@ class ViagemrotaListStruct extends BaseStruct {
         updatedUser,
         updatedDate,
         deletado,
+        dataHoraInicio,
+        dataHoraFim,
+        odometroInicio,
+        odometroFinal,
         viagen,
         viagemRotaStatus,
         contratoRota,
@@ -533,6 +627,10 @@ ViagemrotaListStruct createViagemrotaListStruct({
   String? updatedUser,
   String? updatedDate,
   bool? deletado,
+  String? dataHoraInicio,
+  String? dataHoraFim,
+  int? odometroInicio,
+  int? odometroFinal,
   ViagenStruct? viagen,
   ViagemRotaStatusStruct? viagemRotaStatus,
   ContratoRotaStruct? contratoRota,
@@ -555,6 +653,10 @@ ViagemrotaListStruct createViagemrotaListStruct({
       updatedUser: updatedUser,
       updatedDate: updatedDate,
       deletado: deletado,
+      dataHoraInicio: dataHoraInicio,
+      dataHoraFim: dataHoraFim,
+      odometroInicio: odometroInicio,
+      odometroFinal: odometroFinal,
       viagen: viagen ?? ViagenStruct(),
       viagemRotaStatus: viagemRotaStatus ?? ViagemRotaStatusStruct(),
       contratoRota: contratoRota ?? ContratoRotaStruct(),
