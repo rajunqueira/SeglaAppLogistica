@@ -271,7 +271,7 @@ class _ViagemDetalheWidgetState extends State<ViagemDetalheWidget> {
                                         0.0, 0.0, 0.0, 12.0),
                                     child: Container(
                                       width: MediaQuery.sizeOf(context).width *
-                                          0.48,
+                                          0.46,
                                       height: 130.0,
                                       child: FlutterFlowPieChart(
                                         data: FFPieChartData(
