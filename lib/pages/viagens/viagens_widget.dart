@@ -38,18 +38,18 @@ class _ViagensWidgetState extends State<ViagensWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.pesagensList = await SQLiteManager.instance.pesagensTipoResiduo();
-      _model.nomes = _model.pesagensList!
-          .map((e) => e.tipoResiduoDesc)
-          .withoutNulls
-          .toList()
-          .toList()
-          .cast<String>();
       _model.dados = _model.pesagensList!
           .map((e) => e.volumes)
           .withoutNulls
           .toList()
           .toList()
           .cast<int>();
+      _model.nomes = _model.pesagensList!
+          .map((e) => e.tipoResiduoDesc)
+          .withoutNulls
+          .toList()
+          .toList()
+          .cast<String>();
       safeSetState(() {});
     });
   }
