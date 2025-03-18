@@ -2,6 +2,7 @@ import '/backend/schema/structs/index.dart';
 import '/components/pesagens_lista_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
@@ -93,7 +94,7 @@ class _PontoColetaListaWidgetState extends State<PontoColetaListaWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Expanded(
-                                      flex: 10,
+                                      flex: 6,
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         crossAxisAlignment:
@@ -134,7 +135,7 @@ class _PontoColetaListaWidgetState extends State<PontoColetaListaWidget> {
                                       ),
                                     ),
                                     Expanded(
-                                      flex: 2,
+                                      flex: 6,
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
@@ -149,38 +150,128 @@ class _PontoColetaListaWidgetState extends State<PontoColetaListaWidget> {
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
                                               children: [
-                                                InkWell(
-                                                  splashColor:
-                                                      Colors.transparent,
-                                                  focusColor:
-                                                      Colors.transparent,
-                                                  hoverColor:
-                                                      Colors.transparent,
-                                                  highlightColor:
-                                                      Colors.transparent,
-                                                  onTap: () async {
-                                                    context.pushNamed(
-                                                      PesagemIncluirWidget
-                                                          .routeName,
-                                                      queryParameters: {
-                                                        'viagemRotaId':
-                                                            serializeParam(
-                                                          pontosColetaItem.id,
-                                                          ParamType.int,
-                                                        ),
-                                                      }.withoutNulls,
-                                                    );
-                                                  },
-                                                  child: FaIcon(
-                                                    FontAwesomeIcons.whmcs,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondary,
-                                                    size: 24.0,
+                                                if (pontosColetaItem
+                                                    .viagemRotaStatus.iniciado)
+                                                  InkWell(
+                                                    splashColor:
+                                                        Colors.transparent,
+                                                    focusColor:
+                                                        Colors.transparent,
+                                                    hoverColor:
+                                                        Colors.transparent,
+                                                    highlightColor:
+                                                        Colors.transparent,
+                                                    onTap: () async {
+                                                      context.pushNamed(
+                                                        PesagemIncluirWidget
+                                                            .routeName,
+                                                        queryParameters: {
+                                                          'viagemRotaId':
+                                                              serializeParam(
+                                                            pontosColetaItem.id,
+                                                            ParamType.int,
+                                                          ),
+                                                        }.withoutNulls,
+                                                      );
+                                                    },
+                                                    child: Icon(
+                                                      Icons.add,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondary,
+                                                      size: 24.0,
+                                                    ),
                                                   ),
-                                                ),
                                               ],
                                             ),
+                                          ),
+                                          Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              if (pontosColetaItem
+                                                  .viagemRotaStatus.iniciado)
+                                                FFButtonWidget(
+                                                  onPressed: () {
+                                                    print('Button pressed ...');
+                                                  },
+                                                  text: 'Concluir',
+                                                  icon: Icon(
+                                                    Icons.stop_circle_outlined,
+                                                    size: 15.0,
+                                                  ),
+                                                  options: FFButtonOptions(
+                                                    height: 30.0,
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(16.0, 0.0,
+                                                                16.0, 0.0),
+                                                    iconPadding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 0.0),
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primary,
+                                                    textStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          color: Colors.white,
+                                                          fontSize: 14.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
+                                                    elevation: 0.0,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                ),
+                                              if (pontosColetaItem
+                                                  .viagemRotaStatus.preparado)
+                                                FFButtonWidget(
+                                                  onPressed: () {
+                                                    print('Button pressed ...');
+                                                  },
+                                                  text: 'Iniciar',
+                                                  icon: Icon(
+                                                    Icons.start_rounded,
+                                                    size: 15.0,
+                                                  ),
+                                                  options: FFButtonOptions(
+                                                    height: 30.0,
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(16.0, 0.0,
+                                                                16.0, 0.0),
+                                                    iconPadding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 0.0),
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primary,
+                                                    textStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          color: Colors.white,
+                                                          fontSize: 14.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
+                                                    elevation: 0.0,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                ),
+                                            ],
                                           ),
                                         ],
                                       ),
