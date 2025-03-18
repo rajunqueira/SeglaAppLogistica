@@ -130,7 +130,7 @@ GROUP BY tipoResiduoDesc
 class PesagensTipoResiduoRow extends SqliteRow {
   PesagensTipoResiduoRow(Map<String, dynamic> data) : super(data);
 
-  double? get peso => data['peso'] as double?;
+  double? get peso => data['PESO'] as double?;
   int? get volumes => data['volumes'] as int?;
   String? get tipoResiduoDesc => data['tipoResiduoDesc'] as String?;
 }
