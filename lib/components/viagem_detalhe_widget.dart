@@ -70,6 +70,12 @@ class _ViagemDetalheWidgetState extends State<ViagemDetalheWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final chartPieChartColorsList = [
+      FlutterFlowTheme.of(context).accent1,
+      FlutterFlowTheme.of(context).accent2,
+      FlutterFlowTheme.of(context).accent3,
+      FlutterFlowTheme.of(context).accent4
+    ];
     return Padding(
       padding: EdgeInsets.all(4.0),
       child: InkWell(
@@ -264,36 +270,32 @@ class _ViagemDetalheWidgetState extends State<ViagemDetalheWidget> {
                                   child: Container(
                                     width: 183.9,
                                     height: 100.0,
-                                    child: FlutterFlowBarChart(
-                                      barData: [
-                                        FFBarChartData(
-                                          yData: _model.dados,
-                                          color: FlutterFlowTheme.of(context)
-                                              .tertiary,
-                                        )
-                                      ],
-                                      xLabels: _model.descricao,
-                                      barWidth: 16.0,
-                                      barBorderRadius:
-                                          BorderRadius.circular(8.0),
-                                      groupSpace: 8.0,
-                                      alignment: BarChartAlignment.spaceAround,
-                                      chartStylingInfo: ChartStylingInfo(
-                                        enableTooltip: true,
-                                        tooltipBackgroundColor:
-                                            FlutterFlowTheme.of(context)
-                                                .accent2,
-                                        backgroundColor:
-                                            FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                        showBorder: false,
+                                    child: FlutterFlowPieChart(
+                                      data: FFPieChartData(
+                                        values: _model.dados,
+                                        colors: chartPieChartColorsList,
+                                        radius: [50.0],
                                       ),
-                                      axisBounds: AxisBounds(),
-                                      xAxisLabelInfo: AxisLabelInfo(
-                                        reservedSize: 28.0,
-                                      ),
-                                      yAxisLabelInfo: AxisLabelInfo(
-                                        reservedSize: 42.0,
+                                      donutHoleRadius: 0.0,
+                                      donutHoleColor: Colors.transparent,
+                                      sectionLabelType:
+                                          PieChartSectionLabelType.value,
+                                      sectionLabelStyle:
+                                          FlutterFlowTheme.of(context)
+                                              .headlineSmall
+                                              .override(
+                                                fontFamily: 'Roboto',
+                                                fontSize: 10.0,
+                                                letterSpacing: 0.0,
+                                                fontWeight: FontWeight.normal,
+                                              ),
+                                      labelFormatter: LabelFormatter(
+                                        numberFormat: (val) => formatNumber(
+                                          val,
+                                          formatType: FormatType.custom,
+                                          format: '#,##0.000',
+                                          locale: 'pt-BR',
+                                        ),
                                       ),
                                     ),
                                   ),
