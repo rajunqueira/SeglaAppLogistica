@@ -264,38 +264,82 @@ class _ViagemDetalheWidgetState extends State<ViagemDetalheWidget> {
                             Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 12.0),
-                                  child: Container(
-                                    width: 183.9,
-                                    height: 100.0,
-                                    child: FlutterFlowPieChart(
-                                      data: FFPieChartData(
-                                        values: _model.dados,
-                                        colors: chartPieChartColorsList,
-                                        radius: [50.0],
-                                      ),
-                                      donutHoleRadius: 0.0,
-                                      donutHoleColor: Colors.transparent,
-                                      sectionLabelType:
-                                          PieChartSectionLabelType.value,
-                                      sectionLabelStyle:
-                                          FlutterFlowTheme.of(context)
-                                              .headlineSmall
-                                              .override(
-                                                fontFamily: 'Roboto',
-                                                fontSize: 10.0,
-                                                letterSpacing: 0.0,
-                                                fontWeight: FontWeight.normal,
+                                Align(
+                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 12.0),
+                                    child: Container(
+                                      width: 183.9,
+                                      height: 100.0,
+                                      child: Stack(
+                                        children: [
+                                          FlutterFlowPieChart(
+                                            data: FFPieChartData(
+                                              values: _model.dados,
+                                              colors: chartPieChartColorsList,
+                                              radius: [40.0],
+                                            ),
+                                            donutHoleRadius: 0.0,
+                                            donutHoleColor: Colors.transparent,
+                                            sectionLabelType:
+                                                PieChartSectionLabelType.value,
+                                            sectionLabelStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .headlineSmall
+                                                    .override(
+                                                      fontFamily: 'Roboto',
+                                                      fontSize: 10.0,
+                                                      letterSpacing: 0.0,
+                                                      fontWeight:
+                                                          FontWeight.normal,
+                                                    ),
+                                            labelFormatter: LabelFormatter(
+                                              numberFormat: (val) =>
+                                                  formatNumber(
+                                                val,
+                                                formatType: FormatType.custom,
+                                                format: '#,##0.000',
+                                                locale: 'pt-BR',
                                               ),
-                                      labelFormatter: LabelFormatter(
-                                        numberFormat: (val) => formatNumber(
-                                          val,
-                                          formatType: FormatType.custom,
-                                          format: '#,##0.000',
-                                          locale: 'pt-BR',
-                                        ),
+                                            ),
+                                          ),
+                                          Align(
+                                            alignment:
+                                                AlignmentDirectional(1.0, 1.0),
+                                            child: FlutterFlowChartLegendWidget(
+                                              entries: _model.descricao
+                                                  .asMap()
+                                                  .entries
+                                                  .map(
+                                                    (label) => LegendEntry(
+                                                      chartPieChartColorsList[label
+                                                              .key %
+                                                          chartPieChartColorsList
+                                                              .length],
+                                                      label.value,
+                                                    ),
+                                                  )
+                                                  .toList(),
+                                              width: 100.0,
+                                              height: 50.0,
+                                              textStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Inter',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                              textPadding: EdgeInsetsDirectional
+                                                  .fromSTEB(5.0, 0.0, 0.0, 0.0),
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(5.0, 0.0, 5.0, 0.0),
+                                              borderWidth: 1.0,
+                                              borderColor: Colors.black,
+                                              indicatorSize: 10.0,
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   ),
