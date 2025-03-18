@@ -504,7 +504,7 @@ class _ViagensWidgetState extends State<ViagensWidget> {
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight:
-                                                                            FontWeight.w200,
+                                                                            FontWeight.normal,
                                                                       ),
                                                               elevation: 0.0,
                                                               borderRadius:
@@ -561,7 +561,7 @@ class _ViagensWidgetState extends State<ViagensWidget> {
                                                                         letterSpacing:
                                                                             0.0,
                                                                         fontWeight:
-                                                                            FontWeight.w200,
+                                                                            FontWeight.normal,
                                                                       ),
                                                               elevation: 0.0,
                                                               borderRadius:
