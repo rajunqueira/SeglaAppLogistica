@@ -70,12 +70,6 @@ class _ViagemDetalheWidgetState extends State<ViagemDetalheWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final chartPieChartColorsList = [
-      Color(0xFF8F47E9),
-      Color(0xFF7029CC),
-      Color(0xFF2636A5),
-      Color(0xFF4A57C2)
-    ];
     return Padding(
       padding: EdgeInsets.all(4.0),
       child: InkWell(
@@ -264,34 +258,42 @@ class _ViagemDetalheWidgetState extends State<ViagemDetalheWidget> {
                             Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
-                                Container(
-                                  width: 183.9,
-                                  height: 100.0,
-                                  child: FlutterFlowPieChart(
-                                    data: FFPieChartData(
-                                      values: _model.dados,
-                                      colors: chartPieChartColorsList,
-                                      radius: [50.0],
-                                    ),
-                                    donutHoleRadius: 0.0,
-                                    donutHoleColor: Colors.transparent,
-                                    sectionLabelType:
-                                        PieChartSectionLabelType.value,
-                                    sectionLabelStyle:
-                                        FlutterFlowTheme.of(context)
-                                            .headlineSmall
-                                            .override(
-                                              fontFamily: 'Roboto',
-                                              fontSize: 10.0,
-                                              letterSpacing: 0.0,
-                                              fontWeight: FontWeight.normal,
-                                            ),
-                                    labelFormatter: LabelFormatter(
-                                      numberFormat: (val) => formatNumber(
-                                        val,
-                                        formatType: FormatType.custom,
-                                        format: '#,##0.000',
-                                        locale: 'pt-BR',
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 12.0),
+                                  child: Container(
+                                    width: 183.9,
+                                    height: 100.0,
+                                    child: FlutterFlowBarChart(
+                                      barData: [
+                                        FFBarChartData(
+                                          yData: _model.dados,
+                                          color: FlutterFlowTheme.of(context)
+                                              .tertiary,
+                                        )
+                                      ],
+                                      xLabels: _model.descricao,
+                                      barWidth: 16.0,
+                                      barBorderRadius:
+                                          BorderRadius.circular(8.0),
+                                      groupSpace: 8.0,
+                                      alignment: BarChartAlignment.spaceAround,
+                                      chartStylingInfo: ChartStylingInfo(
+                                        enableTooltip: true,
+                                        tooltipBackgroundColor:
+                                            FlutterFlowTheme.of(context)
+                                                .accent2,
+                                        backgroundColor:
+                                            FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                        showBorder: false,
+                                      ),
+                                      axisBounds: AxisBounds(),
+                                      xAxisLabelInfo: AxisLabelInfo(
+                                        reservedSize: 28.0,
+                                      ),
+                                      yAxisLabelInfo: AxisLabelInfo(
+                                        reservedSize: 42.0,
                                       ),
                                     ),
                                   ),
