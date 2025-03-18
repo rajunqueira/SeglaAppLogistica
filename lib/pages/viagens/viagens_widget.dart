@@ -39,11 +39,11 @@ class _ViagensWidgetState extends State<ViagensWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.pesagensList = await SQLiteManager.instance.pesagensTipoResiduo();
       _model.dados = _model.pesagensList!
-          .map((e) => e.volumes)
+          .map((e) => e.peso)
           .withoutNulls
           .toList()
           .toList()
-          .cast<int>();
+          .cast<double>();
       safeSetState(() {});
     });
   }

@@ -26,12 +26,13 @@ class ViagensModel extends FlutterFlowModel<ViagensWidget> {
   void updateNomesAtIndex(int index, Function(String) updateFn) =>
       nomes[index] = updateFn(nomes[index]);
 
-  List<int> dados = [];
-  void addToDados(int item) => dados.add(item);
-  void removeFromDados(int item) => dados.remove(item);
+  List<double> dados = [];
+  void addToDados(double item) => dados.add(item);
+  void removeFromDados(double item) => dados.remove(item);
   void removeAtIndexFromDados(int index) => dados.removeAt(index);
-  void insertAtIndexInDados(int index, int item) => dados.insert(index, item);
-  void updateDadosAtIndex(int index, Function(int) updateFn) =>
+  void insertAtIndexInDados(int index, double item) =>
+      dados.insert(index, item);
+  void updateDadosAtIndex(int index, Function(double) updateFn) =>
       dados[index] = updateFn(dados[index]);
 
   ///  State fields for stateful widgets in this page.
