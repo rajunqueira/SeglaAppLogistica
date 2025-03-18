@@ -1,3 +1,4 @@
+import '';
 import '/backend/schema/structs/index.dart';
 import '/backend/sqlite/sqlite_manager.dart';
 import '/flutter_flow/flutter_flow_charts.dart';
@@ -8,6 +9,7 @@ import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'viagens_model.dart';
@@ -32,6 +34,15 @@ class _ViagensWidgetState extends State<ViagensWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ViagensModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.pesagensList = await SQLiteManager.instance.pesagensTipoResiduo();
+      _model.chartDataList = ChartStruct(
+        chartItens: _model.chartDataList?.chartItens,
+      );
+      safeSetState(() {});
+    });
   }
 
   @override
@@ -374,70 +385,36 @@ class _ViagensWidgetState extends State<ViagensWidget> {
                                                       mainAxisSize:
                                                           MainAxisSize.max,
                                                       children: [
-                                                        FutureBuilder<
-                                                            List<
-                                                                PesagensTipoResiduoRow>>(
-                                                          future: SQLiteManager
-                                                              .instance
-                                                              .pesagensTipoResiduo(),
-                                                          builder: (context,
-                                                              snapshot) {
-                                                            // Customize what your widget looks like when it's loading.
-                                                            if (!snapshot
-                                                                .hasData) {
-                                                              return Center(
-                                                                child: SizedBox(
-                                                                  width: 50.0,
-                                                                  height: 50.0,
-                                                                  child:
-                                                                      CircularProgressIndicator(
-                                                                    valueColor:
-                                                                        AlwaysStoppedAnimation<
-                                                                            Color>(
-                                                                      FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primary,
+                                                        Container(
+                                                          width: 80.0,
+                                                          height: 100.0,
+                                                          child:
+                                                              FlutterFlowPieChart(
+                                                            data:
+                                                                FFPieChartData(
+                                                              values: _model
+                                                                  .chartDataList!
+                                                                  .chartItens,
+                                                              colors:
+                                                                  chartPieChartColorsList,
+                                                              radius: [50.0],
+                                                            ),
+                                                            donutHoleRadius:
+                                                                0.0,
+                                                            donutHoleColor:
+                                                                Colors
+                                                                    .transparent,
+                                                            sectionLabelStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .headlineSmall
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Roboto',
+                                                                      letterSpacing:
+                                                                          0.0,
                                                                     ),
-                                                                  ),
-                                                                ),
-                                                              );
-                                                            }
-                                                            final chartPesagensTipoResiduoRowList =
-                                                                snapshot.data!;
-
-                                                            return Container(
-                                                              width: 80.0,
-                                                              height: 100.0,
-                                                              child:
-                                                                  FlutterFlowPieChart(
-                                                                data:
-                                                                    FFPieChartData(
-                                                                  values:
-                                                                      chartPesagensTipoResiduoRowList,
-                                                                  colors:
-                                                                      chartPieChartColorsList,
-                                                                  radius: [
-                                                                    50.0
-                                                                  ],
-                                                                ),
-                                                                donutHoleRadius:
-                                                                    0.0,
-                                                                donutHoleColor:
-                                                                    Colors
-                                                                        .transparent,
-                                                                sectionLabelStyle:
-                                                                    FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .headlineSmall
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Roboto',
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                        ),
-                                                              ),
-                                                            );
-                                                          },
+                                                          ),
                                                         ),
                                                       ],
                                                     ),

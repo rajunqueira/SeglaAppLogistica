@@ -1,5 +1,7 @@
 export '/backend/schema/util/schema_util.dart';
 
+export 'chart_struct.dart';
+export 'chart_data_struct.dart';
 export 'coletor_struct.dart';
 export 'contrato_struct.dart';
 export 'contrato_rota_struct.dart';
