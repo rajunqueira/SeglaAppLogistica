@@ -44,7 +44,12 @@ class _ViagensWidgetState extends State<ViagensWidget> {
   @override
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
-
+    final chartPieChartColorsList = [
+      Color(0xFF8F47E9),
+      Color(0xFF7029CC),
+      Color(0xFF2636A5),
+      Color(0xFF4A57C2)
+    ];
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -369,112 +374,70 @@ class _ViagensWidgetState extends State<ViagensWidget> {
                                                       mainAxisSize:
                                                           MainAxisSize.max,
                                                       children: [
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0,
-                                                                      12.0),
-                                                          child: FutureBuilder<
-                                                              List<
-                                                                  PesagensTipoResiduoRow>>(
-                                                            future: SQLiteManager
-                                                                .instance
-                                                                .pesagensTipoResiduo(),
-                                                            builder: (context,
-                                                                snapshot) {
-                                                              // Customize what your widget looks like when it's loading.
-                                                              if (!snapshot
-                                                                  .hasData) {
-                                                                return Center(
+                                                        FutureBuilder<
+                                                            List<
+                                                                PesagensTipoResiduoRow>>(
+                                                          future: SQLiteManager
+                                                              .instance
+                                                              .pesagensTipoResiduo(),
+                                                          builder: (context,
+                                                              snapshot) {
+                                                            // Customize what your widget looks like when it's loading.
+                                                            if (!snapshot
+                                                                .hasData) {
+                                                              return Center(
+                                                                child: SizedBox(
+                                                                  width: 50.0,
+                                                                  height: 50.0,
                                                                   child:
-                                                                      SizedBox(
-                                                                    width: 50.0,
-                                                                    height:
-                                                                        50.0,
-                                                                    child:
-                                                                        CircularProgressIndicator(
-                                                                      valueColor:
-                                                                          AlwaysStoppedAnimation<
-                                                                              Color>(
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .primary,
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                );
-                                                              }
-                                                              final chartPesagensTipoResiduoRowList =
-                                                                  snapshot
-                                                                      .data!;
-
-                                                              return Container(
-                                                                width: MediaQuery.sizeOf(
-                                                                            context)
-                                                                        .width *
-                                                                    0.45,
-                                                                height: 150.0,
-                                                                child:
-                                                                    FlutterFlowBarChart(
-                                                                  barData: [
-                                                                    FFBarChartData(
-                                                                      yData:
-                                                                          chartPesagensTipoResiduoRowList,
-                                                                      color: FlutterFlowTheme.of(
+                                                                      CircularProgressIndicator(
+                                                                    valueColor:
+                                                                        AlwaysStoppedAnimation<
+                                                                            Color>(
+                                                                      FlutterFlowTheme.of(
                                                                               context)
-                                                                          .secondary,
-                                                                    )
-                                                                  ],
-                                                                  xLabels: FFAppState()
-                                                                      .PesagemResponseAppState
-                                                                      .pesagemList
-                                                                      .where((e) =>
-                                                                          e.viagemRota
-                                                                              .idViagem ==
-                                                                          viagensItem
-                                                                              .id)
-                                                                      .toList()
-                                                                      .map((e) => e
-                                                                          .tipoResiduo
-                                                                          .descricao)
-                                                                      .toList(),
-                                                                  barWidth:
-                                                                      16.0,
-                                                                  barBorderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              8.0),
-                                                                  groupSpace:
-                                                                      8.0,
-                                                                  alignment:
-                                                                      BarChartAlignment
-                                                                          .spaceAround,
-                                                                  chartStylingInfo:
-                                                                      ChartStylingInfo(
-                                                                    backgroundColor:
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .secondaryBackground,
-                                                                    showBorder:
-                                                                        false,
-                                                                  ),
-                                                                  axisBounds:
-                                                                      AxisBounds(),
-                                                                  xAxisLabelInfo:
-                                                                      AxisLabelInfo(
-                                                                    reservedSize:
-                                                                        28.0,
-                                                                  ),
-                                                                  yAxisLabelInfo:
-                                                                      AxisLabelInfo(
-                                                                    reservedSize:
-                                                                        42.0,
+                                                                          .primary,
+                                                                    ),
                                                                   ),
                                                                 ),
                                                               );
-                                                            },
-                                                          ),
+                                                            }
+                                                            final chartPesagensTipoResiduoRowList =
+                                                                snapshot.data!;
+
+                                                            return Container(
+                                                              width: 80.0,
+                                                              height: 100.0,
+                                                              child:
+                                                                  FlutterFlowPieChart(
+                                                                data:
+                                                                    FFPieChartData(
+                                                                  values:
+                                                                      chartPesagensTipoResiduoRowList,
+                                                                  colors:
+                                                                      chartPieChartColorsList,
+                                                                  radius: [
+                                                                    50.0
+                                                                  ],
+                                                                ),
+                                                                donutHoleRadius:
+                                                                    0.0,
+                                                                donutHoleColor:
+                                                                    Colors
+                                                                        .transparent,
+                                                                sectionLabelStyle:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .headlineSmall
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Roboto',
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                        ),
+                                                              ),
+                                                            );
+                                                          },
                                                         ),
                                                       ],
                                                     ),
