@@ -212,7 +212,7 @@ class _PontoColetaListaWidgetState extends State<PontoColetaListaWidget> {
                                                                 0.0, 0.0),
                                                     color: FlutterFlowTheme.of(
                                                             context)
-                                                        .primary,
+                                                        .secondary,
                                                     textStyle: FlutterFlowTheme
                                                             .of(context)
                                                         .titleSmall
@@ -253,7 +253,7 @@ class _PontoColetaListaWidgetState extends State<PontoColetaListaWidget> {
                                                                 0.0, 0.0),
                                                     color: FlutterFlowTheme.of(
                                                             context)
-                                                        .primary,
+                                                        .secondary,
                                                     textStyle: FlutterFlowTheme
                                                             .of(context)
                                                         .titleSmall
