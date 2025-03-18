@@ -126,36 +126,6 @@ class _CabecalhoPontosColetaWidgetState
                             Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
-                                if (widget!.viagem?.viagemStatus?.concluido ??
-                                    true)
-                                  Icon(
-                                    Icons.check,
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    size: 20.0,
-                                  ),
-                                if (widget!.viagem?.viagemStatus?.cancelado ??
-                                    true)
-                                  Icon(
-                                    Icons.cancel,
-                                    color:
-                                        FlutterFlowTheme.of(context).secondary,
-                                    size: 20.0,
-                                  ),
-                                if (widget!.viagem?.viagemStatus?.iniciado ??
-                                    true)
-                                  Icon(
-                                    Icons.directions_run_rounded,
-                                    color:
-                                        FlutterFlowTheme.of(context).tertiary,
-                                    size: 20.0,
-                                  ),
-                                if (widget!.viagem?.viagemStatus?.preparado ??
-                                    true)
-                                  Icon(
-                                    Icons.av_timer,
-                                    color: FlutterFlowTheme.of(context).info,
-                                    size: 20.0,
-                                  ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       5.0, 0.0, 0.0, 0.0),
