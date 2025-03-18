@@ -45,11 +45,11 @@ class _ViagensWidgetState extends State<ViagensWidget> {
           .toList()
           .cast<String>();
       _model.dados = _model.pesagensList!
-          .map((e) => e.peso)
+          .map((e) => e.volumes)
           .withoutNulls
           .toList()
           .toList()
-          .cast<double>();
+          .cast<int>();
       safeSetState(() {});
     });
   }
