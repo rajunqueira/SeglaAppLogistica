@@ -111,6 +111,12 @@ class _CarregaTodosWidgetState extends State<CarregaTodosWidget> {
                   .pesagemList
                   .toList(),
             );
+            await actions.pontoColetaToSQL(
+              ViagemRotaResponseStruct.maybeFromMap(
+                      (_model.apiResultw7q?.jsonBody ?? ''))!
+                  .viagemrotaList
+                  .toList(),
+            );
           } else {
             await showDialog(
               context: context,
