@@ -39,11 +39,19 @@ class _ViagensWidgetState extends State<ViagensWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.pesagensList = await SQLiteManager.instance.pesagensTipoResiduo();
       _model.dados = _model.pesagensList!
-          .map((e) => e.peso)
-          .withoutNulls
+          .map((e) => valueOrDefault<double>(
+                e.peso,
+                0.0,
+              ))
           .toList()
           .toList()
           .cast<double>();
+      _model.nomes = _model.pesagensList!
+          .map((e) => e.tipoResiduoDesc)
+          .withoutNulls
+          .toList()
+          .toList()
+          .cast<String>();
       safeSetState(() {});
     });
   }
