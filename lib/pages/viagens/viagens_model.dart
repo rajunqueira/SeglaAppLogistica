@@ -17,10 +17,23 @@ import 'package:provider/provider.dart';
 class ViagensModel extends FlutterFlowModel<ViagensWidget> {
   ///  Local state fields for this page.
 
-  ChartStruct? chartDataList;
-  void updateChartDataListStruct(Function(ChartStruct) updateFn) {
-    updateFn(chartDataList ??= ChartStruct());
-  }
+  List<String> nomes = [];
+  void addToNomes(String item) => nomes.add(item);
+  void removeFromNomes(String item) => nomes.remove(item);
+  void removeAtIndexFromNomes(int index) => nomes.removeAt(index);
+  void insertAtIndexInNomes(int index, String item) =>
+      nomes.insert(index, item);
+  void updateNomesAtIndex(int index, Function(String) updateFn) =>
+      nomes[index] = updateFn(nomes[index]);
+
+  List<double> dados = [];
+  void addToDados(double item) => dados.add(item);
+  void removeFromDados(double item) => dados.remove(item);
+  void removeAtIndexFromDados(int index) => dados.removeAt(index);
+  void insertAtIndexInDados(int index, double item) =>
+      dados.insert(index, item);
+  void updateDadosAtIndex(int index, Function(double) updateFn) =>
+      dados[index] = updateFn(dados[index]);
 
   ///  State fields for stateful widgets in this page.
 

@@ -38,9 +38,18 @@ class _ViagensWidgetState extends State<ViagensWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.pesagensList = await SQLiteManager.instance.pesagensTipoResiduo();
-      _model.chartDataList = ChartStruct(
-        chartItens: _model.chartDataList?.chartItens,
-      );
+      _model.nomes = _model.pesagensList!
+          .map((e) => e.tipoResiduoDesc)
+          .withoutNulls
+          .toList()
+          .toList()
+          .cast<String>();
+      _model.dados = _model.pesagensList!
+          .map((e) => e.peso)
+          .withoutNulls
+          .toList()
+          .toList()
+          .cast<double>();
       safeSetState(() {});
     });
   }
@@ -392,9 +401,8 @@ class _ViagensWidgetState extends State<ViagensWidget> {
                                                               FlutterFlowPieChart(
                                                             data:
                                                                 FFPieChartData(
-                                                              values: _model
-                                                                  .chartDataList!
-                                                                  .chartItens,
+                                                              values:
+                                                                  _model.dados,
                                                               colors:
                                                                   chartPieChartColorsList,
                                                               radius: [50.0],
