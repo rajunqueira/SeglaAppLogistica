@@ -44,12 +44,6 @@ class _ViagensWidgetState extends State<ViagensWidget> {
           .toList()
           .toList()
           .cast<int>();
-      _model.nomes = _model.pesagensList!
-          .map((e) => e.tipoResiduoDesc)
-          .withoutNulls
-          .toList()
-          .toList()
-          .cast<String>();
       safeSetState(() {});
     });
   }
