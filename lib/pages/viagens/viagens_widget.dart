@@ -397,33 +397,98 @@ class _ViagensWidgetState extends State<ViagensWidget> {
                                                           MainAxisSize.max,
                                                       children: [
                                                         Container(
-                                                          width: 80.0,
+                                                          width: 183.91,
                                                           height: 100.0,
-                                                          child:
+                                                          child: Stack(
+                                                            children: [
                                                               FlutterFlowPieChart(
-                                                            data:
-                                                                FFPieChartData(
-                                                              values:
-                                                                  _model.dados,
-                                                              colors:
-                                                                  chartPieChartColorsList,
-                                                              radius: [50.0],
-                                                            ),
-                                                            donutHoleRadius:
-                                                                0.0,
-                                                            donutHoleColor:
-                                                                Colors
-                                                                    .transparent,
-                                                            sectionLabelStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .headlineSmall
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Roboto',
-                                                                      letterSpacing:
+                                                                data:
+                                                                    FFPieChartData(
+                                                                  values: _model
+                                                                      .dados,
+                                                                  colors:
+                                                                      chartPieChartColorsList,
+                                                                  radius: [
+                                                                    50.0
+                                                                  ],
+                                                                ),
+                                                                donutHoleRadius:
+                                                                    0.0,
+                                                                donutHoleColor:
+                                                                    Colors
+                                                                        .transparent,
+                                                                sectionLabelType:
+                                                                    PieChartSectionLabelType
+                                                                        .percent,
+                                                                sectionLabelStyle:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .headlineSmall
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Roboto',
+                                                                          fontSize:
+                                                                              10.0,
+                                                                          letterSpacing:
+                                                                              0.0,
+                                                                          fontWeight:
+                                                                              FontWeight.w200,
+                                                                        ),
+                                                              ),
+                                                              Align(
+                                                                alignment:
+                                                                    AlignmentDirectional(
+                                                                        1.0,
+                                                                        1.0),
+                                                                child:
+                                                                    FlutterFlowChartLegendWidget(
+                                                                  entries: _model
+                                                                      .nomes
+                                                                      .asMap()
+                                                                      .entries
+                                                                      .map(
+                                                                        (label) =>
+                                                                            LegendEntry(
+                                                                          chartPieChartColorsList[label.key %
+                                                                              chartPieChartColorsList.length],
+                                                                          label
+                                                                              .value,
+                                                                        ),
+                                                                      )
+                                                                      .toList(),
+                                                                  width: 100.0,
+                                                                  height: 50.0,
+                                                                  textStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Inter',
+                                                                        letterSpacing:
+                                                                            0.0,
+                                                                      ),
+                                                                  textPadding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          5.0,
                                                                           0.0,
-                                                                    ),
+                                                                          0.0,
+                                                                          0.0),
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          5.0,
+                                                                          0.0,
+                                                                          5.0,
+                                                                          0.0),
+                                                                  borderWidth:
+                                                                      1.0,
+                                                                  borderColor:
+                                                                      Colors
+                                                                          .black,
+                                                                  indicatorSize:
+                                                                      10.0,
+                                                                ),
+                                                              ),
+                                                            ],
                                                           ),
                                                         ),
                                                       ],
