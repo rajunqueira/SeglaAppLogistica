@@ -1,7 +1,5 @@
 export '/backend/schema/util/schema_util.dart';
 
-export 'chart_struct.dart';
-export 'chart_data_struct.dart';
 export 'coletor_struct.dart';
 export 'contrato_struct.dart';
 export 'contrato_rota_struct.dart';
@@ -13,6 +11,7 @@ export 'pesagens_struct.dart';
 export 'ponto_coleta_struct.dart';
 export 'ponto_coleta_rota_struct.dart';
 export 'ponto_entrega_struct.dart';
+export 'pontos_coleta_struct.dart';
 export 'recipiente_struct.dart';
 export 'recipientes_response_struct.dart';
 export 'tipo_residuo_struct.dart';

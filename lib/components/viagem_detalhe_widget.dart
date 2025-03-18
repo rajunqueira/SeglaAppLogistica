@@ -71,9 +71,9 @@ class _ViagemDetalheWidgetState extends State<ViagemDetalheWidget> {
   @override
   Widget build(BuildContext context) {
     final chartPieChartColorsList = [
-      FlutterFlowTheme.of(context).accent1,
+      FlutterFlowTheme.of(context).info,
       FlutterFlowTheme.of(context).accent2,
-      FlutterFlowTheme.of(context).accent3,
+      FlutterFlowTheme.of(context).warning,
       FlutterFlowTheme.of(context).accent4
     ];
     return Padding(
@@ -327,8 +327,8 @@ class _ViagemDetalheWidgetState extends State<ViagemDetalheWidget> {
                                       iconPadding:
                                           EdgeInsetsDirectional.fromSTEB(
                                               0.0, 0.0, 0.0, 0.0),
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondary,
                                       textStyle: FlutterFlowTheme.of(context)
                                           .titleSmall
                                           .override(

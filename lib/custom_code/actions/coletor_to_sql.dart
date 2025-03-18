@@ -32,24 +32,31 @@ Future<Database> openDatabaseConnection() async {
 Future<void> CriaTabelas() async {
   Database db = await openDatabaseConnection();
   //await db.execute('''drop table pesagem''');
+  // await db.execute('''
+  //      CREATE TABLE "pesagem" (
+  //                   "id"	INTEGER,
+  //                   "idContratoRota"	INTEGER,
+  //                   "idViagem"	INTEGER,
+  //                   "tipoResiduoDesc"	TEXT,
+  //                   "recipienteDesc"	TEXT,
+  //                   "statusPesagemDesc"	TEXT,
+  //                   "statusContratoRotaDesc"	TEXT,
+  //                   "statusViagemDesc"	TEXT,
+  //                   "pesoColetado"	REAL,
+  //                   "volumeColetado"	INTEGER
+  //                 );
+  //     ''');
   await db.execute('''
-       CREATE TABLE "pesagem" (
-                    "id"	INTEGER,
-                    "idContratoRota"	INTEGER,
+       CREATE TABLE "viagemRota" (
+	                  "id"	INTEGER,
                     "idViagem"	INTEGER,
-                    "tipoResiduoDesc"	TEXT,
-                    "recipienteDesc"	TEXT,
-                    "statusPesagemDesc"	TEXT,
-                    "statusContratoRotaDesc"	TEXT,
-                    "statusViagemDesc"	TEXT,
-                    "pesoColetado"	REAL,
-                    "volumeColetado"	INTEGER
+                    "statusDesc"	TEXT
                   );
       ''');
 }
 
 Future<void> coletorToSql(List<PesagemListStruct> pesagens) async {
-  //CriaTabelas();
+  CriaTabelas();
   Database db = await openDatabaseConnection();
   await db.execute('''DELETE FROM pesagem''');
 
