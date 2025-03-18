@@ -287,7 +287,12 @@ class _ViagemDetalheWidgetState extends State<ViagemDetalheWidget> {
                                               fontWeight: FontWeight.normal,
                                             ),
                                     labelFormatter: LabelFormatter(
-                                      numberFormat: (val) => val.toString(),
+                                      numberFormat: (val) => formatNumber(
+                                        val,
+                                        formatType: FormatType.custom,
+                                        format: '#,##0.000',
+                                        locale: 'pt-BR',
+                                      ),
                                     ),
                                   ),
                                 ),
