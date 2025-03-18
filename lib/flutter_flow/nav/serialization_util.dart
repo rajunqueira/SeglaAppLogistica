@@ -237,6 +237,8 @@ dynamic deserializeParam<T>(
             return PesagensTipoResiduoRow(data);
           case PesagemTipoResiduoViagemRow:
             return PesagemTipoResiduoViagemRow(data);
+          case ViagemRotaViagemRow:
+            return ViagemRotaViagemRow(data);
           default:
             return null;
         }

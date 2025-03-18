@@ -46,17 +46,10 @@ Future<void> CriaTabelas() async {
   //                   "volumeColetado"	INTEGER
   //                 );
   //     ''');
-  await db.execute('''
-       CREATE TABLE "viagemRota" (
-	                  "id"	INTEGER,
-                    "idViagem"	INTEGER,
-                    "statusDesc"	TEXT
-                  );
-      ''');
 }
 
 Future<void> coletorToSql(List<PesagemListStruct> pesagens) async {
-  CriaTabelas();
+  //CriaTabelas();
   Database db = await openDatabaseConnection();
   await db.execute('''DELETE FROM pesagem''');
 

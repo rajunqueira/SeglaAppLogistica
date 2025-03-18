@@ -163,3 +163,27 @@ class PesagemTipoResiduoViagemRow extends SqliteRow {
 }
 
 /// END PESAGEMTIPORESIDUOVIAGEM
+
+/// BEGIN VIAGEMROTAVIAGEM
+Future<List<ViagemRotaViagemRow>> performViagemRotaViagem(
+  Database database, {
+  int? idViagem,
+}) {
+  final query = '''
+SELECT COUNT(*) AS CONTADOR,
+		statusDesc
+FROM 	viagemRota
+WHERE idViagem = ${idViagem}
+GROUP BY statusDesc
+''';
+  return _readQuery(database, query, (d) => ViagemRotaViagemRow(d));
+}
+
+class ViagemRotaViagemRow extends SqliteRow {
+  ViagemRotaViagemRow(Map<String, dynamic> data) : super(data);
+
+  int? get contador => data['CONTADOR'] as int?;
+  String? get statusDesc => data['statusDesc'] as String?;
+}
+
+/// END VIAGEMROTAVIAGEM

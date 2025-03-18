@@ -16,13 +16,12 @@ import 'package:provider/provider.dart';
 class ViagemDetalheModel extends FlutterFlowModel<ViagemDetalheWidget> {
   ///  Local state fields for this component.
 
-  List<double> dados = [];
-  void addToDados(double item) => dados.add(item);
-  void removeFromDados(double item) => dados.remove(item);
+  List<int> dados = [];
+  void addToDados(int item) => dados.add(item);
+  void removeFromDados(int item) => dados.remove(item);
   void removeAtIndexFromDados(int index) => dados.removeAt(index);
-  void insertAtIndexInDados(int index, double item) =>
-      dados.insert(index, item);
-  void updateDadosAtIndex(int index, Function(double) updateFn) =>
+  void insertAtIndexInDados(int index, int item) => dados.insert(index, item);
+  void updateDadosAtIndex(int index, Function(int) updateFn) =>
       dados[index] = updateFn(dados[index]);
 
   List<String> descricao = [];
@@ -36,8 +35,8 @@ class ViagemDetalheModel extends FlutterFlowModel<ViagemDetalheWidget> {
 
   ///  State fields for stateful widgets in this component.
 
-  // Stores action output result for [Backend Call - SQLite (PesagemTipoResiduoViagem)] action in ViagemDetalhe widget.
-  List<PesagemTipoResiduoViagemRow>? pesagens;
+  // Stores action output result for [Backend Call - SQLite (ViagemRotaViagem)] action in ViagemDetalhe widget.
+  List<ViagemRotaViagemRow>? rotas;
 
   @override
   void initState(BuildContext context) {}

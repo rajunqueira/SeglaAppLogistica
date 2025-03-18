@@ -43,9 +43,9 @@ Future<void> CriaTabelas() async {
 }
 
 Future<void> pontoColetaToSQL(List<ViagemrotaListStruct> viagemRotaList) async {
-  CriaTabelas();
+  //CriaTabelas();
   Database db = await openDatabaseConnection();
-  await db.execute('''DELETE FROM pesagem''');
+  await db.execute('''DELETE FROM viagemRota''');
 
   Batch batch = db.batch();
   viagemRotaList.forEach((val) {

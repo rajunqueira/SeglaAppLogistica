@@ -42,17 +42,17 @@ class _ViagemDetalheWidgetState extends State<ViagemDetalheWidget> {
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.pesagens = await SQLiteManager.instance.pesagemTipoResiduoViagem(
+      _model.rotas = await SQLiteManager.instance.viagemRotaViagem(
         idViagem: widget!.viagem?.id,
       );
-      _model.dados = _model.pesagens!
-          .map((e) => e.peso)
+      _model.dados = _model.rotas!
+          .map((e) => e.contador)
           .withoutNulls
           .toList()
           .toList()
-          .cast<double>();
-      _model.descricao = _model.pesagens!
-          .map((e) => e.tipoResiduoDesc)
+          .cast<int>();
+      _model.descricao = _model.rotas!
+          .map((e) => e.statusDesc)
           .withoutNulls
           .toList()
           .toList()

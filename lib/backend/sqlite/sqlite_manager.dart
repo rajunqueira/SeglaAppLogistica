@@ -64,6 +64,14 @@ class SQLiteManager {
         idViagem: idViagem,
       );
 
+  Future<List<ViagemRotaViagemRow>> viagemRotaViagem({
+    int? idViagem,
+  }) =>
+      performViagemRotaViagem(
+        _database,
+        idViagem: idViagem,
+      );
+
   /// END READ QUERY CALLS
 
   /// START UPDATE QUERY CALLS
