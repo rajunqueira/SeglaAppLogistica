@@ -368,75 +368,85 @@ class _ViagensWidgetState extends State<ViagensWidget> {
                                                       mainAxisSize:
                                                           MainAxisSize.max,
                                                       children: [
-                                                        Container(
-                                                          width:
-                                                              MediaQuery.sizeOf(
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      12.0),
+                                                          child: Container(
+                                                            width: MediaQuery
+                                                                        .sizeOf(
+                                                                            context)
+                                                                    .width *
+                                                                0.45,
+                                                            height: 150.0,
+                                                            child:
+                                                                FlutterFlowBarChart(
+                                                              barData: [
+                                                                FFBarChartData(
+                                                                  yData: FFAppState()
+                                                                      .PesagemResponseAppState
+                                                                      .pesagemList
+                                                                      .where((e) =>
+                                                                          e.viagemRota
+                                                                              .idViagem ==
+                                                                          viagensItem
+                                                                              .id)
+                                                                      .toList()
+                                                                      .map((e) =>
+                                                                          e.pesoColetado)
+                                                                      .toList(),
+                                                                  color: FlutterFlowTheme.of(
                                                                           context)
-                                                                      .width *
-                                                                  0.45,
-                                                          height: 150.0,
-                                                          child:
-                                                              FlutterFlowBarChart(
-                                                            barData: [
-                                                              FFBarChartData(
-                                                                yData: FFAppState()
-                                                                    .PesagemResponseAppState
-                                                                    .pesagemList
-                                                                    .where((e) =>
-                                                                        e.viagemRota
-                                                                            .idViagem ==
-                                                                        viagensItem
-                                                                            .id)
-                                                                    .toList()
-                                                                    .map((e) =>
-                                                                        e.pesoColetado)
-                                                                    .toList(),
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondary,
-                                                              )
-                                                            ],
-                                                            xLabels: FFAppState()
-                                                                .PesagemResponseAppState
-                                                                .pesagemList
-                                                                .where((e) =>
-                                                                    e.viagemRota
-                                                                        .idViagem ==
-                                                                    viagensItem
-                                                                        .id)
-                                                                .toList()
-                                                                .map((e) => e
-                                                                    .tipoResiduo
-                                                                    .descricao)
-                                                                .toList(),
-                                                            barWidth: 16.0,
-                                                            barBorderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        8.0),
-                                                            groupSpace: 8.0,
-                                                            alignment:
-                                                                BarChartAlignment
-                                                                    .spaceAround,
-                                                            chartStylingInfo:
-                                                                ChartStylingInfo(
-                                                              backgroundColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryBackground,
-                                                              showBorder: false,
-                                                            ),
-                                                            axisBounds:
-                                                                AxisBounds(),
-                                                            xAxisLabelInfo:
-                                                                AxisLabelInfo(
-                                                              reservedSize:
-                                                                  28.0,
-                                                            ),
-                                                            yAxisLabelInfo:
-                                                                AxisLabelInfo(
-                                                              reservedSize:
-                                                                  42.0,
+                                                                      .secondary,
+                                                                )
+                                                              ],
+                                                              xLabels: FFAppState()
+                                                                  .PesagemResponseAppState
+                                                                  .pesagemList
+                                                                  .where((e) =>
+                                                                      e.viagemRota
+                                                                          .idViagem ==
+                                                                      viagensItem
+                                                                          .id)
+                                                                  .toList()
+                                                                  .map((e) => e
+                                                                      .tipoResiduo
+                                                                      .descricao)
+                                                                  .toList(),
+                                                              barWidth: 16.0,
+                                                              barBorderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          8.0),
+                                                              groupSpace: 8.0,
+                                                              alignment:
+                                                                  BarChartAlignment
+                                                                      .spaceAround,
+                                                              chartStylingInfo:
+                                                                  ChartStylingInfo(
+                                                                backgroundColor:
+                                                                    FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryBackground,
+                                                                showBorder:
+                                                                    false,
+                                                              ),
+                                                              axisBounds:
+                                                                  AxisBounds(),
+                                                              xAxisLabelInfo:
+                                                                  AxisLabelInfo(
+                                                                reservedSize:
+                                                                    28.0,
+                                                              ),
+                                                              yAxisLabelInfo:
+                                                                  AxisLabelInfo(
+                                                                reservedSize:
+                                                                    42.0,
+                                                              ),
                                                             ),
                                                           ),
                                                         ),
