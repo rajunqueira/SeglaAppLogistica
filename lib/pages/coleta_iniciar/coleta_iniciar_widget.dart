@@ -253,6 +253,12 @@ class _ColetaIniciarWidgetState extends State<ColetaIniciarWidget> {
                         odometroInicio:
                             int.tryParse(_model.odometroTextController.text),
                         idViagem: widget!.viagemRota?.idViagem,
+                        idPontoColeta:
+                            widget!.viagemRota?.contratoRota?.idPontoColeta,
+                        idPontoEntrega:
+                            widget!.viagemRota?.contratoRota?.idPontoEntrega,
+                        idViagemRotaStatus: 13,
+                        id: widget!.viagemRota?.id,
                       );
 
                       if ((_model.apiResultatf?.succeeded ?? true)) {
