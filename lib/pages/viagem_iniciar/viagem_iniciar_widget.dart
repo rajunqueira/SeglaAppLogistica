@@ -256,6 +256,7 @@ class _ViagemIniciarWidgetState extends State<ViagemIniciarWidget> {
                         dhInicio:
                             functions.todayToDateTime(getCurrentTimestamp),
                         idViagem: widget!.viagem?.id,
+                        dtProgramacao: widget!.viagem?.dtProgramacao,
                       );
 
                       if ((_model.viagemResult?.succeeded ?? true)) {
