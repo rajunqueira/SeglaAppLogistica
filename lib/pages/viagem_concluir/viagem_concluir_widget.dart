@@ -280,6 +280,9 @@ class _ViagemConcluirWidgetState extends State<ViagemConcluirWidget> {
                             );
                           },
                         ).then((value) => safeSetState(() {}));
+
+                        FFAppState().VaigemAtual = ViagemListStruct();
+                        safeSetState(() {});
                       } else {
                         await showDialog(
                           context: context,
