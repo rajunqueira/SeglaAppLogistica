@@ -1,10 +1,17 @@
 import '';
+import '/auth/custom_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
+import '/backend/api_requests/api_streaming.dart';
 import '/backend/schema/structs/index.dart';
+import '/components/carrega_todos_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:convert';
 import 'dart:ui';
+import '/flutter_flow/custom_functions.dart' as functions;
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -53,6 +60,8 @@ class _ColetaConcluirWidgetState extends State<ColetaConcluirWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -232,8 +241,69 @@ class _ColetaConcluirWidgetState extends State<ColetaConcluirWidget> {
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
                   child: FFButtonWidget(
-                    onPressed: () {
-                      print('Button pressed ...');
+                    onPressed: () async {
+                      _model.apiResultatf = await ViagemRotaAtualizarCall.call(
+                        jWTToken: currentAuthenticationToken,
+                        idCliente: FFAppState().clienteId,
+                        idDominio: FFAppState().dominioId,
+                        idEstabelecimento: FFAppState().estabelecimentoId,
+                        idContratoRota: widget!.viagemRota?.idContratoRota,
+                        dataHoraInicio: widget!.viagemRota?.dataHoraInicio,
+                        odometroInicio: widget!.viagemRota?.odometroInicio,
+                        idViagem: widget!.viagemRota?.idViagem,
+                        idPontoColeta:
+                            widget!.viagemRota?.contratoRota?.idPontoColeta,
+                        idPontoEntrega:
+                            widget!.viagemRota?.contratoRota?.idPontoEntrega,
+                        idViagemRotaStatus: 13,
+                        id: widget!.viagemRota?.id,
+                        odometroFinal:
+                            int.tryParse(_model.odometroTextController.text),
+                        dataHoraFim:
+                            functions.todayToDateTime(getCurrentTimestamp),
+                      );
+
+                      if ((_model.apiResultatf?.succeeded ?? true)) {
+                        await showModalBottomSheet(
+                          isScrollControlled: true,
+                          backgroundColor: Colors.transparent,
+                          enableDrag: false,
+                          context: context,
+                          builder: (context) {
+                            return GestureDetector(
+                              onTap: () {
+                                FocusScope.of(context).unfocus();
+                                FocusManager.instance.primaryFocus?.unfocus();
+                              },
+                              child: Padding(
+                                padding: MediaQuery.viewInsetsOf(context),
+                                child: CarregaTodosWidget(),
+                              ),
+                            );
+                          },
+                        ).then((value) => safeSetState(() {}));
+                      } else {
+                        await showDialog(
+                          context: context,
+                          builder: (alertDialogContext) {
+                            return AlertDialog(
+                              title: Text('Ponto de coleta atualizar'),
+                              content: Text('Erro ao consumir a API.'),
+                              actions: [
+                                TextButton(
+                                  onPressed: () =>
+                                      Navigator.pop(alertDialogContext),
+                                  child: Text('Ok'),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      }
+
+                      context.pushNamed(ViagensWidget.routeName);
+
+                      safeSetState(() {});
                     },
                     text: 'Gravar',
                     icon: Icon(
