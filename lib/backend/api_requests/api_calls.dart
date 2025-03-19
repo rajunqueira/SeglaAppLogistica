@@ -3548,6 +3548,58 @@ class PesagemIncluirCall {
   }
 }
 
+class ViagemAtualizarCall {
+  static Future<ApiCallResponse> call({
+    String? jWTToken = '',
+    String? idCliente = '',
+    String? idDominio = '',
+    String? idEstabelecimento = '',
+    String? observacoes = '',
+    int? odometroInicio,
+    int? odometroConclusao,
+    int? idMotorista,
+    int? idColetor,
+    int? idViagemStatus,
+    int? idPontoColetaRota,
+    String? dhInicio = '',
+    String? dtProgramacao = '',
+    String? dhConclusao = '',
+    int? idViagem,
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "observacoes": "${escapeStringForJson(observacoes)}",
+  "odometroInicio": ${odometroInicio},
+  "odometroConclusao": ${odometroConclusao},
+  "idMotorista": ${idMotorista},
+  "idColetor": ${idColetor},
+  "idViagemStatus": ${idViagemStatus},
+  "idPontoColetaRota": ${idPontoColetaRota},
+  "dhInicio": "${escapeStringForJson(dhInicio)}",
+  "dtProgramacao": "${escapeStringForJson(dtProgramacao)}",
+  "dhConclusao": "${escapeStringForJson(dhConclusao)}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'ViagemAtualizar',
+      apiUrl:
+          'http://webapi-segla-minimal.us-east-1.elasticbeanstalk.com/v1/viagem/${idViagem}/${idCliente}/${idDominio}/${idEstabelecimento}',
+      callType: ApiCallType.PUT,
+      headers: {
+        'Authorization': 'Bearer ${jWTToken}',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;
