@@ -35,7 +35,8 @@ class _ViagensWidgetState extends State<ViagensWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      if (FFAppState().VaigemAtual != null) {
+      if ((FFAppState().VaigemAtual != null) &&
+          (FFAppState().VaigemAtual.id > 0)) {
         context.pushNamed(
           ViagemRotaWidget.routeName,
           queryParameters: {
