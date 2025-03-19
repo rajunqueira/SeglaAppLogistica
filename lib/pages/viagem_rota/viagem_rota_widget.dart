@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -54,67 +55,70 @@ class _ViagemRotaWidgetState extends State<ViagemRotaWidget> {
         FocusScope.of(context).unfocus();
         FocusManager.instance.primaryFocus?.unfocus();
       },
-      child: Scaffold(
-        key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          leading: FlutterFlowIconButton(
-            borderColor: Colors.transparent,
-            borderRadius: 30.0,
-            borderWidth: 1.0,
-            buttonSize: 60.0,
-            icon: Icon(
-              Icons.arrow_back_rounded,
-              color: FlutterFlowTheme.of(context).primaryText,
-              size: 24.0,
+      child: WillPopScope(
+        onWillPop: () async => false,
+        child: Scaffold(
+          key: scaffoldKey,
+          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+          appBar: AppBar(
+            automaticallyImplyLeading: false,
+            leading: FlutterFlowIconButton(
+              borderColor: Colors.transparent,
+              borderRadius: 30.0,
+              borderWidth: 1.0,
+              buttonSize: 60.0,
+              icon: Icon(
+                Icons.arrow_back_rounded,
+                color: FlutterFlowTheme.of(context).primaryText,
+                size: 24.0,
+              ),
+              onPressed: () async {
+                context.pushNamed(HomePageWidget.routeName);
+              },
             ),
-            onPressed: () async {
-              context.pop();
-            },
+            title: Text(
+              'Rotas da viagem',
+              style: FlutterFlowTheme.of(context).headlineMedium.override(
+                    fontFamily: 'Roboto',
+                    color: FlutterFlowTheme.of(context).primaryText,
+                    fontSize: 18.0,
+                    letterSpacing: 0.0,
+                    fontWeight: FontWeight.normal,
+                  ),
+            ),
+            actions: [],
+            centerTitle: true,
+            elevation: 0.0,
           ),
-          title: Text(
-            'Rotas da viagem',
-            style: FlutterFlowTheme.of(context).headlineMedium.override(
-                  fontFamily: 'Roboto',
-                  color: FlutterFlowTheme.of(context).primaryText,
-                  fontSize: 18.0,
-                  letterSpacing: 0.0,
-                  fontWeight: FontWeight.normal,
-                ),
-          ),
-          actions: [],
-          centerTitle: true,
-          elevation: 0.0,
-        ),
-        body: SafeArea(
-          top: true,
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Expanded(
-                      child: wrapWithModel(
-                        model: _model.cabecalhoPontosColetaModel,
-                        updateCallback: () => safeSetState(() {}),
-                        child: CabecalhoPontosColetaWidget(
-                          viagem: widget!.viagemStatus!,
+          body: SafeArea(
+            top: true,
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Expanded(
+                        child: wrapWithModel(
+                          model: _model.cabecalhoPontosColetaModel,
+                          updateCallback: () => safeSetState(() {}),
+                          child: CabecalhoPontosColetaWidget(
+                            viagem: widget!.viagemStatus!,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-                wrapWithModel(
-                  model: _model.pontoColetaListaModel,
-                  updateCallback: () => safeSetState(() {}),
-                  child: PontoColetaListaWidget(
-                    viagemId: widget!.viagemId!,
+                    ],
                   ),
-                ),
-              ],
+                  wrapWithModel(
+                    model: _model.pontoColetaListaModel,
+                    updateCallback: () => safeSetState(() {}),
+                    child: PontoColetaListaWidget(
+                      viagemId: widget!.viagemId!,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
