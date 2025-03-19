@@ -149,8 +149,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: ViagemIniciarWidget.routeName,
           path: ViagemIniciarWidget.routePath,
           builder: (context, params) => ViagemIniciarWidget(
-            viagem: params.getParam(
-              'viagem',
+            viagemRota: params.getParam(
+              'viagemRota',
               ParamType.DataStruct,
               isList: false,
               structBuilder: ViagemListStruct.fromSerializableMap,
@@ -166,9 +166,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: ColetaIniciarWidget.routeName,
           path: ColetaIniciarWidget.routePath,
           builder: (context, params) => ColetaIniciarWidget(
-            viagemRotaId: params.getParam(
-              'viagemRotaId',
-              ParamType.int,
+            viagemRota: params.getParam(
+              'viagemRota',
+              ParamType.DataStruct,
+              isList: false,
+              structBuilder: ViagemrotaListStruct.fromSerializableMap,
             ),
           ),
         ),

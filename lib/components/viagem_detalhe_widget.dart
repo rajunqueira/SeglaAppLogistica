@@ -294,7 +294,7 @@ class _ViagemDetalheWidgetState extends State<ViagemDetalheWidget> {
                                     context.pushNamed(
                                       ViagemIniciarWidget.routeName,
                                       queryParameters: {
-                                        'viagem': serializeParam(
+                                        'viagemRota': serializeParam(
                                           widget!.viagem,
                                           ParamType.DataStruct,
                                         ),

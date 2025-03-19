@@ -21,10 +21,10 @@ export 'viagem_iniciar_model.dart';
 class ViagemIniciarWidget extends StatefulWidget {
   const ViagemIniciarWidget({
     super.key,
-    required this.viagem,
+    required this.viagemRota,
   });
 
-  final ViagemListStruct? viagem;
+  final ViagemListStruct? viagemRota;
 
   static String routeName = 'ViagemIniciar';
   static String routePath = '/viagemIniciar';
@@ -250,14 +250,15 @@ class _ViagemIniciarWidgetState extends State<ViagemIniciarWidget> {
                         odometroInicio:
                             int.tryParse(_model.odometroTextController.text),
                         odometroConclusao: 0,
-                        idMotorista: widget!.viagem?.idMotorista,
-                        idColetor: widget!.viagem?.idColetor,
+                        idMotorista: widget!.viagemRota?.idMotorista,
+                        idColetor: widget!.viagemRota?.idColetor,
                         idViagemStatus: 12,
-                        idPontoColetaRota: widget!.viagem?.idPontoColetaRota,
+                        idPontoColetaRota:
+                            widget!.viagemRota?.idPontoColetaRota,
                         dhInicio:
                             functions.todayToDateTime(getCurrentTimestamp),
-                        idViagem: widget!.viagem?.id,
-                        dtProgramacao: widget!.viagem?.dtProgramacao,
+                        idViagem: widget!.viagemRota?.id,
+                        dtProgramacao: widget!.viagemRota?.dtProgramacao,
                       );
 
                       if ((_model.viagemResult?.succeeded ?? true)) {
@@ -288,7 +289,7 @@ class _ViagemIniciarWidgetState extends State<ViagemIniciarWidget> {
                                     .ViagemResponseAppState
                                     .viagemList
                                     .toList(),
-                                widget!.viagem?.id)!)!;
+                                widget!.viagemRota?.id)!)!;
                         safeSetState(() {});
                       } else {
                         await showDialog(

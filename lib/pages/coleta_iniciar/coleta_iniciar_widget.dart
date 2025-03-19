@@ -14,10 +14,10 @@ export 'coleta_iniciar_model.dart';
 class ColetaIniciarWidget extends StatefulWidget {
   const ColetaIniciarWidget({
     super.key,
-    required this.viagemRotaId,
+    required this.viagemRota,
   });
 
-  final int? viagemRotaId;
+  final ViagemrotaListStruct? viagemRota;
 
   static String routeName = 'ColetaIniciar';
   static String routePath = '/coletaIniciar';
