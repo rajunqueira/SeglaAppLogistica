@@ -3600,6 +3600,64 @@ class ViagemAtualizarCall {
   }
 }
 
+class ViagemRotaAtualizarCall {
+  static Future<ApiCallResponse> call({
+    String? jWTToken = '',
+    int? idContratoRota,
+    String? assinaturaCliente = '',
+    String? assinaturaColetor = '',
+    String? documentoCliente = '',
+    String? documentoClienteIdentificacao = '',
+    String? dataHoraInicio = '',
+    String? dataHoraFim = '',
+    int? odometroInicio,
+    int? odometroFinal,
+    int? idViagem,
+    int? idPontoColeta,
+    int? idPontoEntrega,
+    int? idViagemRotaStatus,
+    int? id,
+    String? idCliente = '',
+    String? idDominio = '',
+    String? idEstabelecimento = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "idContratoRota": ${idContratoRota},
+  "assinaturaCliente": "",
+  "assinaturaColetor": "",
+  "documentoCliente": "",
+  "documentoClienteIdentificacao": "",
+  "dataHoraInicio": "${escapeStringForJson(dataHoraInicio)}",
+  "dataHoraFim": "${escapeStringForJson(dataHoraFim)}",
+  "odometroInicio": ${odometroInicio},
+  "odometroFinal": ${odometroFinal},
+  "idViagem": ${idViagem},
+  "idPontoColeta": ${idPontoColeta},
+  "idPontoEntrega": ${idPontoEntrega},
+  "idViagemRotaStatus": ${idViagemRotaStatus}
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'ViagemRotaAtualizar',
+      apiUrl:
+          'http://webapi-segla-minimal.us-east-1.elasticbeanstalk.com/v1/viagemrota/${id}/${idCliente}/${idDominio}/${idEstabelecimento}',
+      callType: ApiCallType.PUT,
+      headers: {
+        'Authorization': 'Bearer ${jWTToken}',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;
