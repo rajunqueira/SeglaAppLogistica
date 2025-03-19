@@ -137,6 +137,17 @@ class FFAppState extends ChangeNotifier {
         }
       }
     });
+    _safeInit(() {
+      if (prefs.containsKey('ff_VaigemAtual')) {
+        try {
+          final serializedData = prefs.getString('ff_VaigemAtual') ?? '{}';
+          _VaigemAtual =
+              ViagemListStruct.fromSerializableMap(jsonDecode(serializedData));
+        } catch (e) {
+          print("Can't decode persisted data type. Error: $e.");
+        }
+      }
+    });
   }
 
   void update(VoidCallback callback) {
@@ -333,6 +344,18 @@ class FFAppState extends ChangeNotifier {
     updateFn(_PesagemStatusResponseAppState);
     prefs.setString('ff_PesagemStatusResponseAppState',
         _PesagemStatusResponseAppState.serialize());
+  }
+
+  ViagemListStruct _VaigemAtual = ViagemListStruct();
+  ViagemListStruct get VaigemAtual => _VaigemAtual;
+  set VaigemAtual(ViagemListStruct value) {
+    _VaigemAtual = value;
+    prefs.setString('ff_VaigemAtual', value.serialize());
+  }
+
+  void updateVaigemAtualStruct(Function(ViagemListStruct) updateFn) {
+    updateFn(_VaigemAtual);
+    prefs.setString('ff_VaigemAtual', _VaigemAtual.serialize());
   }
 }
 

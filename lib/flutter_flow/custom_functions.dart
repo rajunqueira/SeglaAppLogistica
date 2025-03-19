@@ -135,3 +135,15 @@ String? todayToDateTime(DateTime? agora) {
 
   return '$date' + 'T' + '$time';
 }
+
+int? viagemIndexById(
+  List<ViagemListStruct> lista,
+  int? id,
+) {
+  for (int i = 0; i < lista.length; i++) {
+    if (lista[i].id == id) {
+      return i;
+    }
+  }
+  return null;
+}

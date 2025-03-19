@@ -278,6 +278,17 @@ class _ViagemIniciarWidgetState extends State<ViagemIniciarWidget> {
                             );
                           },
                         ).then((value) => safeSetState(() {}));
+
+                        FFAppState().VaigemAtual = FFAppState()
+                            .ViagemResponseAppState
+                            .viagemList
+                            .elementAtOrNull(functions.viagemIndexById(
+                                FFAppState()
+                                    .ViagemResponseAppState
+                                    .viagemList
+                                    .toList(),
+                                widget!.viagem?.id)!)!;
+                        safeSetState(() {});
                       } else {
                         await showDialog(
                           context: context,
