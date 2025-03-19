@@ -144,6 +144,48 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.int,
             ),
           ),
+        ),
+        FFRoute(
+          name: ViagemIniciarWidget.routeName,
+          path: ViagemIniciarWidget.routePath,
+          builder: (context, params) => ViagemIniciarWidget(
+            viagem: params.getParam(
+              'viagem',
+              ParamType.DataStruct,
+              isList: false,
+              structBuilder: ViagemListStruct.fromSerializableMap,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: ViagemConcluirWidget.routeName,
+          path: ViagemConcluirWidget.routePath,
+          builder: (context, params) => ViagemConcluirWidget(
+            viagemRotaId: params.getParam(
+              'viagemRotaId',
+              ParamType.int,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: ColetaIniciarWidget.routeName,
+          path: ColetaIniciarWidget.routePath,
+          builder: (context, params) => ColetaIniciarWidget(
+            viagemRotaId: params.getParam(
+              'viagemRotaId',
+              ParamType.int,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: ColetaConcluirWidget.routeName,
+          path: ColetaConcluirWidget.routePath,
+          builder: (context, params) => ColetaConcluirWidget(
+            viagemRotaId: params.getParam(
+              'viagemRotaId',
+              ParamType.int,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
