@@ -243,7 +243,8 @@ class _ViagemConcluirWidgetState extends State<ViagemConcluirWidget> {
                         idDominio: FFAppState().dominioId,
                         idEstabelecimento: FFAppState().estabelecimentoId,
                         odometroInicio: FFAppState().VaigemAtual.odometroInicio,
-                        odometroConclusao: 0,
+                        odometroConclusao:
+                            int.tryParse(_model.odometroTextController.text),
                         idMotorista: FFAppState().VaigemAtual.idMotorista,
                         idColetor: FFAppState().VaigemAtual.idColetor,
                         idViagemStatus: 13,
