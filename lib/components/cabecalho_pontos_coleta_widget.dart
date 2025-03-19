@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -154,8 +155,9 @@ class _CabecalhoPontosColetaWidgetState
                                 if (widget!.viagem?.viagemStatus?.iniciado ??
                                     true)
                                   FFButtonWidget(
-                                    onPressed: () {
-                                      print('Button pressed ...');
+                                    onPressed: () async {
+                                      context.pushNamed(
+                                          ViagemConcluirWidget.routeName);
                                     },
                                     text: 'Concluir',
                                     icon: Icon(

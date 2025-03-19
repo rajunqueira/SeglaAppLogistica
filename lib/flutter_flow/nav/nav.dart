@@ -160,12 +160,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: ViagemConcluirWidget.routeName,
           path: ViagemConcluirWidget.routePath,
-          builder: (context, params) => ViagemConcluirWidget(
-            viagemRotaId: params.getParam(
-              'viagemRotaId',
-              ParamType.int,
-            ),
-          ),
+          builder: (context, params) => ViagemConcluirWidget(),
         ),
         FFRoute(
           name: ColetaIniciarWidget.routeName,

@@ -19,12 +19,7 @@ import 'viagem_concluir_model.dart';
 export 'viagem_concluir_model.dart';
 
 class ViagemConcluirWidget extends StatefulWidget {
-  const ViagemConcluirWidget({
-    super.key,
-    required this.viagemRotaId,
-  });
-
-  final int? viagemRotaId;
+  const ViagemConcluirWidget({super.key});
 
   static String routeName = 'ViagemConcluir';
   static String routePath = '/viagemConcluir';
