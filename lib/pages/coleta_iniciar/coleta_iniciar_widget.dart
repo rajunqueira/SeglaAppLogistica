@@ -257,7 +257,7 @@ class _ColetaIniciarWidgetState extends State<ColetaIniciarWidget> {
                             widget!.viagemRota?.contratoRota?.idPontoColeta,
                         idPontoEntrega:
                             widget!.viagemRota?.contratoRota?.idPontoEntrega,
-                        idViagemRotaStatus: 13,
+                        idViagemRotaStatus: 12,
                         id: widget!.viagemRota?.id,
                       );
 
