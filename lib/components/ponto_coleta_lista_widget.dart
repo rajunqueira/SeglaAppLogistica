@@ -192,8 +192,18 @@ class _PontoColetaListaWidgetState extends State<PontoColetaListaWidget> {
                                               if (pontosColetaItem
                                                   .viagemRotaStatus.iniciado)
                                                 FFButtonWidget(
-                                                  onPressed: () {
-                                                    print('Button pressed ...');
+                                                  onPressed: () async {
+                                                    context.pushNamed(
+                                                      ColetaConcluirWidget
+                                                          .routeName,
+                                                      queryParameters: {
+                                                        'viagemRota':
+                                                            serializeParam(
+                                                          pontosColetaItem,
+                                                          ParamType.DataStruct,
+                                                        ),
+                                                      }.withoutNulls,
+                                                    );
                                                   },
                                                   text: 'Concluir',
                                                   icon: Icon(

@@ -14,10 +14,10 @@ export 'coleta_concluir_model.dart';
 class ColetaConcluirWidget extends StatefulWidget {
   const ColetaConcluirWidget({
     super.key,
-    required this.viagemRotaId,
+    required this.viagemRota,
   });
 
-  final int? viagemRotaId;
+  final ViagemrotaListStruct? viagemRota;
 
   static String routeName = 'ColetaConcluir';
   static String routePath = '/coletaConcluir';

@@ -178,9 +178,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: ColetaConcluirWidget.routeName,
           path: ColetaConcluirWidget.routePath,
           builder: (context, params) => ColetaConcluirWidget(
-            viagemRotaId: params.getParam(
-              'viagemRotaId',
-              ParamType.int,
+            viagemRota: params.getParam(
+              'viagemRota',
+              ParamType.DataStruct,
+              isList: false,
+              structBuilder: ViagemrotaListStruct.fromSerializableMap,
             ),
           ),
         )
