@@ -22,7 +22,7 @@ Future<Database> openDatabaseConnection() async {
     path,
     version: 1,
     onCreate: (Database db, int version) async {
-      CriaTabelas();
+      //CriaTabelas();
     },
   );
 
@@ -31,19 +31,18 @@ Future<Database> openDatabaseConnection() async {
 
 Future<void> CriaTabelas() async {
   Database db = await openDatabaseConnection();
-  //await db.execute('''drop table viagemRota''');
 
   await db.execute('''
-       CREATE TABLE "viagemRota" (
-	                  "id"	INTEGER,
-                    "idViagem"	INTEGER,
-                    "statusDesc"	TEXT
-                  );
-      ''');
+     CREATE TABLE if not exists "viagemRota" (
+                  "id"	INTEGER,
+                  "idViagem"	INTEGER,
+                  "statusDesc"	TEXT
+                );
+    ''');
 }
 
 Future<void> pontoColetaToSQL(List<ViagemrotaListStruct> viagemRotaList) async {
-  //CriaTabelas();
+  CriaTabelas();
   Database db = await openDatabaseConnection();
   await db.execute('''DELETE FROM viagemRota''');
 
