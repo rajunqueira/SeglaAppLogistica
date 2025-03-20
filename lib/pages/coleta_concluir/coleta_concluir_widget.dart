@@ -96,7 +96,25 @@ class _ColetaConcluirWidgetState extends State<ColetaConcluirWidget> {
                   fontWeight: FontWeight.normal,
                 ),
           ),
-          actions: [],
+          actions: [
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
+              child: InkWell(
+                splashColor: Colors.transparent,
+                focusColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onTap: () async {
+                  context.pushNamed(FotoAdicionarWidget.routeName);
+                },
+                child: Icon(
+                  Icons.camera_alt_outlined,
+                  color: FlutterFlowTheme.of(context).primaryText,
+                  size: 24.0,
+                ),
+              ),
+            ),
+          ],
           centerTitle: true,
           elevation: 0.0,
         ),

@@ -185,6 +185,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               structBuilder: ViagemrotaListStruct.fromSerializableMap,
             ),
           ),
+        ),
+        FFRoute(
+          name: FotoAdicionarWidget.routeName,
+          path: FotoAdicionarWidget.routePath,
+          builder: (context, params) => FotoAdicionarWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
