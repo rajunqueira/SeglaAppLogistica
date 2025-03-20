@@ -8,6 +8,7 @@ import 'package:flutter_web_plugins/url_strategy.dart';
 import 'auth/custom_auth/auth_util.dart';
 import 'auth/custom_auth/custom_auth_user_provider.dart';
 
+import '/backend/supabase/supabase.dart';
 import '/backend/sqlite/sqlite_manager.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
@@ -21,8 +22,7 @@ void main() async {
   GoRouter.optionURLReflectsImperativeAPIs = true;
   usePathUrlStrategy();
 
-  final environmentValues = FFDevEnvironmentValues();
-  await environmentValues.initialize();
+  await SupaFlow.initialize();
 
   await SQLiteManager.initialize();
   await FlutterFlowTheme.initialize();

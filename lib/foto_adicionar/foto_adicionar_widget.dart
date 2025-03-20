@@ -1,3 +1,4 @@
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -103,8 +104,11 @@ class _FotoAdicionarWidgetState extends State<FotoAdicionarWidget> {
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
-                            final selectedMedia = await selectMedia(
-                              multiImage: false,
+                            final selectedMedia =
+                                await selectMediaWithSourceBottomSheet(
+                              context: context,
+                              storageFolderPath: '',
+                              allowPhoto: true,
                             );
                             if (selectedMedia != null &&
                                 selectedMedia.every((m) => validateFileFormat(
@@ -112,6 +116,7 @@ class _FotoAdicionarWidgetState extends State<FotoAdicionarWidget> {
                               safeSetState(() => _model.isDataUploading = true);
                               var selectedUploadedFiles = <FFUploadedFile>[];
 
+                              var downloadUrls = <String>[];
                               try {
                                 selectedUploadedFiles = selectedMedia
                                     .map((m) => FFUploadedFile(
@@ -122,14 +127,21 @@ class _FotoAdicionarWidgetState extends State<FotoAdicionarWidget> {
                                           blurHash: m.blurHash,
                                         ))
                                     .toList();
+
+                                downloadUrls = await uploadSupabaseStorageFiles(
+                                  bucketName: 'photos',
+                                  selectedFiles: selectedMedia,
+                                );
                               } finally {
                                 _model.isDataUploading = false;
                               }
                               if (selectedUploadedFiles.length ==
-                                  selectedMedia.length) {
+                                      selectedMedia.length &&
+                                  downloadUrls.length == selectedMedia.length) {
                                 safeSetState(() {
                                   _model.uploadedLocalFile =
                                       selectedUploadedFiles.first;
+                                  _model.uploadedFileUrl = downloadUrls.first;
                                 });
                               } else {
                                 safeSetState(() {});
@@ -141,16 +153,6 @@ class _FotoAdicionarWidgetState extends State<FotoAdicionarWidget> {
                             Icons.camera_alt_outlined,
                             color: FlutterFlowTheme.of(context).accent1,
                             size: 40.0,
-                          ),
-                        ),
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(8.0),
-                          child: Image.memory(
-                            _model.uploadedLocalFile.bytes ??
-                                Uint8List.fromList([]),
-                            width: 200.0,
-                            height: 200.0,
-                            fit: BoxFit.cover,
                           ),
                         ),
                       ],
