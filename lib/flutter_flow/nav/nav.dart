@@ -190,6 +190,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: FotoAdicionarWidget.routeName,
           path: FotoAdicionarWidget.routePath,
           builder: (context, params) => FotoAdicionarWidget(),
+        ),
+        FFRoute(
+          name: ProfileWidget.routeName,
+          path: ProfileWidget.routePath,
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'profile')
+              : ProfileWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

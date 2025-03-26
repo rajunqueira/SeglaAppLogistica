@@ -14,3 +14,4 @@ export '/pages/coleta_iniciar/coleta_iniciar_widget.dart'
 export '/pages/coleta_concluir/coleta_concluir_widget.dart'
     show ColetaConcluirWidget;
 export '/foto_adicionar/foto_adicionar_widget.dart' show FotoAdicionarWidget;
+export '/profile/profile_widget.dart' show ProfileWidget;
