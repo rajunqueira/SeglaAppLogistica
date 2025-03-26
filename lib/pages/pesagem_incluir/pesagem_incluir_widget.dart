@@ -52,10 +52,6 @@ class _PesagemIncluirWidgetState extends State<PesagemIncluirWidget> {
     _model.textController2 ??= TextEditingController();
     _model.textFieldFocusNode2 ??= FocusNode();
     _model.textFieldFocusNode2!.addListener(() => safeSetState(() {}));
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {
-          _model.textController1?.text = '1';
-          _model.textController2?.text = '0,000';
-        }));
   }
 
   @override
@@ -699,7 +695,7 @@ class _PesagemIncluirWidgetState extends State<PesagemIncluirWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 4.0),
                                       child: Text(
-                                        'Peso',
+                                        'Peso KG',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(

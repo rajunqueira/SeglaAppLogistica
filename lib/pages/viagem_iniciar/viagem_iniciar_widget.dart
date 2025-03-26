@@ -44,10 +44,6 @@ class _ViagemIniciarWidgetState extends State<ViagemIniciarWidget> {
 
     _model.odometroTextController ??= TextEditingController();
     _model.odometroFocusNode ??= FocusNode();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {
-          _model.odometroTextController?.text = '1';
-        }));
   }
 
   @override
@@ -161,7 +157,7 @@ class _ViagemIniciarWidgetState extends State<ViagemIniciarWidget> {
                                           obscureText: false,
                                           decoration: InputDecoration(
                                             isDense: true,
-                                            hintText: 'Inclua os volumes',
+                                            hintText: 'Inclua o Km atual',
                                             enabledBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
                                                 color: Color(0x00000000),
