@@ -685,7 +685,18 @@ class _PontoColetaListaWidgetState extends State<PontoColetaListaWidget> {
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               Text(
-                                                '0',
+                                                formatNumber(
+                                                  functions
+                                                      .calculaVolumesPontoColeta(
+                                                          FFAppState()
+                                                              .PesagemResponseAppState
+                                                              .pesagemList
+                                                              .toList(),
+                                                          widget!.viagemId!),
+                                                  formatType: FormatType.custom,
+                                                  format: '#,##0',
+                                                  locale: 'pt-BR',
+                                                ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
