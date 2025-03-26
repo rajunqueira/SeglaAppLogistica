@@ -113,10 +113,18 @@ class _ViagensRecentesWidgetState extends State<ViagensRecentesWidget> {
                       itemCount: viagens.length,
                       itemBuilder: (context, viagensIndex) {
                         final viagensItem = viagens[viagensIndex];
-                        return ViagemDetalheSimplesWidget(
-                          key: Key(
-                              'Key93z_${viagensIndex}_of_${viagens.length}'),
-                          viagem: viagensItem,
+                        return SingleChildScrollView(
+                          primary: false,
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              ViagemDetalheSimplesWidget(
+                                key: Key(
+                                    'Keyik1_${viagensIndex}_of_${viagens.length}'),
+                                viagem: viagensItem,
+                              ),
+                            ],
+                          ),
                         );
                       },
                     );
