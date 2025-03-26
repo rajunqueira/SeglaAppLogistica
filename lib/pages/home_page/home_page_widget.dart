@@ -149,8 +149,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       FFButtonWidget(
                         onPressed: (FFAppState().VaigemAtual.id > 0)
                             ? null
-                            : () {
-                                print('Button pressed ...');
+                            : () async {
+                                context.pushNamed(ViagensWidget.routeName);
                               },
                         text: 'Iniciar viagem',
                         icon: Icon(
