@@ -180,21 +180,23 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         ),
                       ),
                       FFButtonWidget(
-                        onPressed: () async {
-                          context.pushNamed(
-                            ViagemRotaWidget.routeName,
-                            queryParameters: {
-                              'viagemStatus': serializeParam(
-                                FFAppState().VaigemAtual,
-                                ParamType.DataStruct,
-                              ),
-                              'viagemId': serializeParam(
-                                FFAppState().VaigemAtual.id,
-                                ParamType.int,
-                              ),
-                            }.withoutNulls,
-                          );
-                        },
+                        onPressed: (FFAppState().VaigemAtual.id == 0)
+                            ? null
+                            : () async {
+                                context.pushNamed(
+                                  ViagemRotaWidget.routeName,
+                                  queryParameters: {
+                                    'viagemStatus': serializeParam(
+                                      FFAppState().VaigemAtual,
+                                      ParamType.DataStruct,
+                                    ),
+                                    'viagemId': serializeParam(
+                                      FFAppState().VaigemAtual.id,
+                                      ParamType.int,
+                                    ),
+                                  }.withoutNulls,
+                                );
+                              },
                         text: 'Listar rotas',
                         icon: Icon(
                           Icons.pin_drop,
@@ -216,12 +218,18 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   ),
                           elevation: 0.0,
                           borderRadius: BorderRadius.circular(8.0),
+                          disabledColor:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          disabledTextColor:
+                              FlutterFlowTheme.of(context).accent1,
                         ),
                       ),
                       FFButtonWidget(
-                        onPressed: () {
-                          print('Button pressed ...');
-                        },
+                        onPressed: (FFAppState().VaigemAtual.id == 0)
+                            ? null
+                            : () {
+                                print('Button pressed ...');
+                              },
                         text: 'Concluir viagem',
                         icon: Icon(
                           Icons.login,
@@ -243,6 +251,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   ),
                           elevation: 0.0,
                           borderRadius: BorderRadius.circular(8.0),
+                          disabledColor:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          disabledTextColor:
+                              FlutterFlowTheme.of(context).accent1,
                         ),
                       ),
                     ],
