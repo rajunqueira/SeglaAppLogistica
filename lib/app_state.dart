@@ -148,6 +148,9 @@ class FFAppState extends ChangeNotifier {
         }
       }
     });
+    _safeInit(() {
+      _UserName = prefs.getString('ff_UserName') ?? _UserName;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -356,6 +359,13 @@ class FFAppState extends ChangeNotifier {
   void updateVaigemAtualStruct(Function(ViagemListStruct) updateFn) {
     updateFn(_VaigemAtual);
     prefs.setString('ff_VaigemAtual', _VaigemAtual.serialize());
+  }
+
+  String _UserName = '';
+  String get UserName => _UserName;
+  set UserName(String value) {
+    _UserName = value;
+    prefs.setString('ff_UserName', value);
   }
 }
 
