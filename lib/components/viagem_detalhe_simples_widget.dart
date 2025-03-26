@@ -244,39 +244,34 @@ class _ViagemDetalheSimplesWidgetState
                             children: [
                               Align(
                                 alignment: AlignmentDirectional(-1.0, 0.0),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 12.0),
-                                  child: Container(
-                                    width:
-                                        MediaQuery.sizeOf(context).width * 0.46,
-                                    height: 120.0,
-                                    child: FlutterFlowPieChart(
-                                      data: FFPieChartData(
-                                        values: _model.dados,
-                                        colors: chartPieChartColorsList,
-                                        radius: [30.0],
-                                      ),
-                                      donutHoleRadius: 20.0,
-                                      donutHoleColor: Colors.transparent,
-                                      sectionLabelType:
-                                          PieChartSectionLabelType.value,
-                                      sectionLabelStyle:
-                                          FlutterFlowTheme.of(context)
-                                              .headlineSmall
-                                              .override(
-                                                fontFamily: 'Roboto',
-                                                fontSize: 12.0,
-                                                letterSpacing: 0.0,
-                                                fontWeight: FontWeight.normal,
-                                              ),
-                                      labelFormatter: LabelFormatter(
-                                        numberFormat: (val) => formatNumber(
-                                          val,
-                                          formatType: FormatType.custom,
-                                          format: '0',
-                                          locale: 'pt-BR',
-                                        ),
+                                child: Container(
+                                  width: MediaQuery.sizeOf(context).width * 0.4,
+                                  height: 162.63,
+                                  child: FlutterFlowPieChart(
+                                    data: FFPieChartData(
+                                      values: _model.dados,
+                                      colors: chartPieChartColorsList,
+                                      radius: [30.0],
+                                    ),
+                                    donutHoleRadius: 20.0,
+                                    donutHoleColor: Colors.transparent,
+                                    sectionLabelType:
+                                        PieChartSectionLabelType.value,
+                                    sectionLabelStyle:
+                                        FlutterFlowTheme.of(context)
+                                            .headlineSmall
+                                            .override(
+                                              fontFamily: 'Roboto',
+                                              fontSize: 12.0,
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.normal,
+                                            ),
+                                    labelFormatter: LabelFormatter(
+                                      numberFormat: (val) => formatNumber(
+                                        val,
+                                        formatType: FormatType.custom,
+                                        format: '0',
+                                        locale: 'pt-BR',
                                       ),
                                     ),
                                   ),
