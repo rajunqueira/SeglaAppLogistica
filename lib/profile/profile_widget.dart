@@ -349,6 +349,8 @@ class _ProfileWidgetState extends State<ProfileWidget>
                         onChanged: (newValue) async {
                           safeSetState(() => _model.switchValue = newValue!);
                           if (newValue!) {
+                            setDarkModeSetting(context, ThemeMode.dark);
+                          } else {
                             setDarkModeSetting(context, ThemeMode.light);
                           }
                         },
@@ -361,7 +363,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                             FlutterFlowTheme.of(context).primaryBackground,
                       ),
                       Text(
-                        'Tema escuro',
+                        'Tema escuro/claro',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Inter',
                               color: FlutterFlowTheme.of(context).primaryText,
