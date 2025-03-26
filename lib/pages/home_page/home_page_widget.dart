@@ -152,7 +152,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         },
                         text: 'Iniciar viagem',
                         icon: Icon(
-                          Icons.fire_truck_outlined,
+                          Icons.logout,
                           size: 30.0,
                         ),
                         options: FFButtonOptions(
@@ -218,7 +218,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         },
                         text: 'Concluir viagem',
                         icon: Icon(
-                          Icons.start,
+                          Icons.login,
                           size: 30.0,
                         ),
                         options: FFButtonOptions(
