@@ -150,10 +150,9 @@ int? viagemIndexById(
 }
 
 int calculaVolumesViagem(
-  List<PesagemListStruct>? pesagens,
-  int? id,
+  List<PesagemListStruct> pesagens,
+  int id,
 ) {
-  // resolve this errors
   int volumeTotal = 0;
   for (var pesagem in pesagens) {
     if (pesagem.idViagemRota == id) {

@@ -551,7 +551,7 @@ class _ViagemDetalheWidgetState extends State<ViagemDetalheWidget> {
                                       .PesagemResponseAppState
                                       .pesagemList
                                       .toList(),
-                                  widget!.viagem?.id),
+                                  widget!.viagem!.id),
                               formatType: FormatType.custom,
                               format: '#,##0',
                               locale: 'pt-BR',
