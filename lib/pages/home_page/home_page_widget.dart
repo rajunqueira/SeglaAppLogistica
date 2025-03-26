@@ -167,9 +167,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   }.withoutNulls,
                                 );
                               },
-                        text: 'Listar rotas',
+                        text: 'Registrar coleta',
                         icon: Icon(
-                          Icons.pin_drop,
+                          Icons.add_box,
                           size: 30.0,
                         ),
                         options: FFButtonOptions(
