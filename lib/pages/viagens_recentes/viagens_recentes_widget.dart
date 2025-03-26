@@ -114,7 +114,6 @@ class _ViagensRecentesWidgetState extends State<ViagensRecentesWidget> {
                       itemBuilder: (context, viagensIndex) {
                         final viagensItem = viagens[viagensIndex];
                         return SingleChildScrollView(
-                          primary: false,
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
