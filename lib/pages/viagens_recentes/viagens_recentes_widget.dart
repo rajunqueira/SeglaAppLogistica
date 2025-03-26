@@ -84,7 +84,6 @@ class _ViagensRecentesWidgetState extends State<ViagensRecentesWidget> {
         body: SafeArea(
           top: true,
           child: SingleChildScrollView(
-            primary: false,
             child: Column(
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.start,
