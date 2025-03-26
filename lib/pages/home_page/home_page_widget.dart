@@ -173,6 +173,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   ),
                           elevation: 0.0,
                           borderRadius: BorderRadius.circular(8.0),
+                          disabledColor:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          disabledTextColor:
+                              FlutterFlowTheme.of(context).accent1,
                         ),
                       ),
                       FFButtonWidget(
