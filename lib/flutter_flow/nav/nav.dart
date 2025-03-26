@@ -128,12 +128,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: ViagensWidget.routeName,
           path: ViagensWidget.routePath,
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'Viagens')
-              : NavBarPage(
-                  initialPage: 'Viagens',
-                  page: ViagensWidget(),
-                ),
+          builder: (context, params) => ViagensWidget(),
         ),
         FFRoute(
           name: PesagemIncluirWidget.routeName,
@@ -194,9 +189,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: ProfileWidget.routeName,
           path: ProfileWidget.routePath,
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'profile')
-              : ProfileWidget(),
+          builder: (context, params) => ProfileWidget(),
         ),
         FFRoute(
           name: ViagensRecentesWidget.routeName,
@@ -204,6 +197,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'ViagensRecentes')
               : ViagensRecentesWidget(),
+        ),
+        FFRoute(
+          name: ViagemWidget.routeName,
+          path: ViagemWidget.routePath,
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'Viagem')
+              : ViagemWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

@@ -153,9 +153,8 @@ class _NavBarPageState extends State<NavBarPage> {
   Widget build(BuildContext context) {
     final tabs = {
       'HomePage': HomePageWidget(),
-      'Viagens': ViagensWidget(),
       'ViagensRecentes': ViagensRecentesWidget(),
-      'profile': ProfileWidget(),
+      'Viagem': ViagemWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -184,14 +183,6 @@ class _NavBarPageState extends State<NavBarPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.fire_truck_outlined,
-              size: 24.0,
-            ),
-            label: 'Viagens',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
               Icons.calendar_month,
               size: 24.0,
             ),
@@ -200,10 +191,10 @@ class _NavBarPageState extends State<NavBarPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.person,
+              Icons.fire_truck_outlined,
               size: 24.0,
             ),
-            label: 'Perfil',
+            label: 'Viagem',
             tooltip: '',
           )
         ],
