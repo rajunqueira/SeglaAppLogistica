@@ -80,6 +80,7 @@ class _ViagemDetalheSimplesWidgetState
     return Padding(
       padding: EdgeInsets.all(6.0),
       child: SingleChildScrollView(
+        primary: false,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
