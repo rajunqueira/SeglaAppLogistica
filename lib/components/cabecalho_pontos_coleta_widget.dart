@@ -424,7 +424,17 @@ class _CabecalhoPontosColetaWidgetState
                               ],
                             ),
                             Text(
-                              '0',
+                              formatNumber(
+                                functions.calculaVolumesViagem(
+                                    FFAppState()
+                                        .PesagemResponseAppState
+                                        .pesagemList
+                                        .toList(),
+                                    widget!.viagem!.id),
+                                formatType: FormatType.custom,
+                                format: '#,##0',
+                                locale: 'pt-BR',
+                              ),
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
@@ -473,28 +483,50 @@ class _CabecalhoPontosColetaWidgetState
                                 ),
                               ],
                             ),
-                            Text(
-                              formatNumber(
-                                functions.calculaPesoViagem(
-                                    FFAppState()
-                                        .PesagemResponseAppState
-                                        .pesagemList
-                                        .toList(),
-                                    widget!.viagem!.id),
-                                formatType: FormatType.custom,
-                                format: '#,##0.000',
-                                locale: 'pt-BR',
-                              ),
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Inter',
-                                    color:
-                                        FlutterFlowTheme.of(context).tertiary,
-                                    fontSize: 14.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w500,
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Text(
+                                  formatNumber(
+                                    functions.calculaPesoViagem(
+                                        FFAppState()
+                                            .PesagemResponseAppState
+                                            .pesagemList
+                                            .toList(),
+                                        widget!.viagem!.id),
+                                    formatType: FormatType.custom,
+                                    format: '#,##0.000',
+                                    locale: 'pt-BR',
                                   ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Inter',
+                                        color: FlutterFlowTheme.of(context)
+                                            .tertiary,
+                                        fontSize: 14.0,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      8.0, 0.0, 0.0, 0.0),
+                                  child: Text(
+                                    'KG',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Inter',
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondary,
+                                          fontSize: 14.0,
+                                          letterSpacing: 0.0,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ],
                         ),
