@@ -142,7 +142,7 @@ class _PontoColetaListaWidgetState extends State<PontoColetaListaWidget> {
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 15.0, 4.0),
+                                                    0.0, 0.0, 15.0, 12.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
