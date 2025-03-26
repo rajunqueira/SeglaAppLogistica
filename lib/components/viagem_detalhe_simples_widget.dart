@@ -78,10 +78,11 @@ class _ViagemDetalheSimplesWidgetState
       FlutterFlowTheme.of(context).accent4
     ];
     return Padding(
-      padding: EdgeInsets.all(4.0),
+      padding: EdgeInsets.all(10.0),
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
+          color: FlutterFlowTheme.of(context).secondaryBackground,
           borderRadius: BorderRadius.circular(8.0),
         ),
         child: Padding(

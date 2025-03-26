@@ -68,17 +68,14 @@ class _ViagensRecentesWidgetState extends State<ViagensRecentesWidget> {
               context.pop();
             },
           ),
-          title: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 0.0, 0.0),
-            child: Text(
-              'Viagens recentes',
-              style: FlutterFlowTheme.of(context).headlineMedium.override(
-                    fontFamily: 'Roboto',
-                    fontSize: 18.0,
-                    letterSpacing: 0.0,
-                    fontWeight: FontWeight.w300,
-                  ),
-            ),
+          title: Text(
+            'Viagens recentes',
+            style: FlutterFlowTheme.of(context).headlineMedium.override(
+                  fontFamily: 'Roboto',
+                  fontSize: 18.0,
+                  letterSpacing: 0.0,
+                  fontWeight: FontWeight.w300,
+                ),
           ),
           actions: [],
           centerTitle: true,
@@ -115,22 +112,10 @@ class _ViagensRecentesWidgetState extends State<ViagensRecentesWidget> {
                       itemCount: viagens.length,
                       itemBuilder: (context, viagensIndex) {
                         final viagensItem = viagens[viagensIndex];
-                        return Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              10.0, 0.0, 10.0, 10.0),
-                          child: Container(
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              borderRadius: BorderRadius.circular(10.0),
-                            ),
-                            child: ViagemDetalheSimplesWidget(
-                              key: Key(
-                                  'Key6py_${viagensIndex}_of_${viagens.length}'),
-                              viagem: viagensItem,
-                            ),
-                          ),
+                        return ViagemDetalheSimplesWidget(
+                          key: Key(
+                              'Key6py_${viagensIndex}_of_${viagens.length}'),
+                          viagem: viagensItem,
                         );
                       },
                     );
