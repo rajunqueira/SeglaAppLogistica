@@ -90,33 +90,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     scrollDirection: Axis.vertical,
                     children: [
                       FFButtonWidget(
-                        onPressed: () async {
-                          context.pushNamed(ViagensRecentesWidget.routeName);
-                        },
-                        text: 'Viagens recentes',
-                        icon: Icon(
-                          Icons.calendar_month,
-                          size: 30.0,
-                        ),
-                        options: FFButtonOptions(
-                          height: 40.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              16.0, 0.0, 16.0, 0.0),
-                          iconAlignment: IconAlignment.start,
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).warning,
-                          textStyle:
-                              FlutterFlowTheme.of(context).titleSmall.override(
-                                    fontFamily: 'Inter',
-                                    color: Colors.white,
-                                    letterSpacing: 0.0,
-                                  ),
-                          elevation: 0.0,
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                      ),
-                      FFButtonWidget(
                         onPressed: (FFAppState().VaigemAtual.id > 0)
                             ? null
                             : () async {
@@ -268,6 +241,33 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     fontSize: 14.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.normal,
+                                  ),
+                          elevation: 0.0,
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                      ),
+                      FFButtonWidget(
+                        onPressed: () async {
+                          context.pushNamed(ViagensRecentesWidget.routeName);
+                        },
+                        text: 'Viagens recentes',
+                        icon: Icon(
+                          Icons.calendar_month,
+                          size: 30.0,
+                        ),
+                        options: FFButtonOptions(
+                          height: 40.0,
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              16.0, 0.0, 16.0, 0.0),
+                          iconAlignment: IconAlignment.start,
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          color: FlutterFlowTheme.of(context).warning,
+                          textStyle:
+                              FlutterFlowTheme.of(context).titleSmall.override(
+                                    fontFamily: 'Inter',
+                                    color: Colors.white,
+                                    letterSpacing: 0.0,
                                   ),
                           elevation: 0.0,
                           borderRadius: BorderRadius.circular(8.0),

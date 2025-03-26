@@ -201,7 +201,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: ViagensRecentesWidget.routeName,
           path: ViagensRecentesWidget.routePath,
-          builder: (context, params) => ViagensRecentesWidget(),
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'ViagensRecentes')
+              : ViagensRecentesWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
