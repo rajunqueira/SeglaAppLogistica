@@ -58,7 +58,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         appBar: AppBar(
           automaticallyImplyLeading: false,
           title: Text(
-            'Segla Hub Logística',
+            'Segla Hub Resíduos',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Roboto',
                   color: FlutterFlowTheme.of(context).primaryText,
