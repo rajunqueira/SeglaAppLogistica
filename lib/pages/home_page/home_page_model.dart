@@ -1,3 +1,4 @@
+import '/components/cabecalho_pontos_coleta_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -10,9 +11,19 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class HomePageModel extends FlutterFlowModel<HomePageWidget> {
-  @override
-  void initState(BuildContext context) {}
+  ///  State fields for stateful widgets in this page.
+
+  // Model for CabecalhoPontosColeta component.
+  late CabecalhoPontosColetaModel cabecalhoPontosColetaModel;
 
   @override
-  void dispose() {}
+  void initState(BuildContext context) {
+    cabecalhoPontosColetaModel =
+        createModel(context, () => CabecalhoPontosColetaModel());
+  }
+
+  @override
+  void dispose() {
+    cabecalhoPontosColetaModel.dispose();
+  }
 }

@@ -1,3 +1,4 @@
+import '/components/cabecalho_pontos_coleta_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -72,43 +73,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     topLeft: Radius.circular(0.0),
                     topRight: Radius.circular(0.0),
                   ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.all(10.0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Text(
-                          'Total de viagens registradas :',
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Inter',
-                                    letterSpacing: 0.0,
-                                  ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Text(
-                          FFAppState()
-                              .ViagemResponseAppState
-                              .totalCount
-                              .toString(),
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Inter',
-                                    letterSpacing: 0.0,
-                                  ),
-                        ),
-                      ],
-                    ),
-                  ],
                 ),
               ),
               Expanded(
@@ -263,6 +227,26 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         ),
                       ),
                     ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(10.0),
+                child: Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                    borderRadius: BorderRadius.circular(6.0),
+                  ),
+                  child: Visibility(
+                    visible: FFAppState().VaigemAtual.id > 0,
+                    child: wrapWithModel(
+                      model: _model.cabecalhoPontosColetaModel,
+                      updateCallback: () => safeSetState(() {}),
+                      child: CabecalhoPontosColetaWidget(
+                        viagem: FFAppState().VaigemAtual,
+                      ),
+                    ),
                   ),
                 ),
               ),
