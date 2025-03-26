@@ -99,13 +99,13 @@ class _ProfileWidgetState extends State<ProfileWidget>
                 children: [
                   Container(
                     width: double.infinity,
-                    height: 140.0,
+                    height: 154.36,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       image: DecorationImage(
                         fit: BoxFit.cover,
                         image: CachedNetworkImageProvider(
-                          'https://images.unsplash.com/photo-1434394354979-a235cd36269d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fG1vdW50YWluc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=900&q=60',
+                          'https://www.safecorp.com.br/images/CaminhaoColeta.jpg',
                         ),
                       ),
                     ),
@@ -134,7 +134,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                               fadeInDuration: Duration(milliseconds: 500),
                               fadeOutDuration: Duration(milliseconds: 500),
                               imageUrl:
-                                  'https://images.unsplash.com/photo-1489980557514-251d61e3eeb6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OTZ8fHByb2ZpbGV8ZW58MHx8MHx8&auto=format&fit=crop&w=900&q=60',
+                                  'https://www.safecorp.com.br/images/Avatar.jpg',
                               width: 100.0,
                               height: 100.0,
                               fit: BoxFit.cover,
@@ -349,12 +349,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                         onChanged: (newValue) async {
                           safeSetState(() => _model.switchValue = newValue!);
                           if (newValue!) {
-                            setDarkModeSetting(
-                              context,
-                              (Theme.of(context).brightness == Brightness.dark)
-                                  ? ThemeMode.dark
-                                  : ThemeMode.light,
-                            );
+                            setDarkModeSetting(context, ThemeMode.light);
                           }
                         },
                         activeColor: FlutterFlowTheme.of(context).secondary,
