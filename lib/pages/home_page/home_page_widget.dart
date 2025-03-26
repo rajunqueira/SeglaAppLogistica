@@ -95,7 +95,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         },
                         text: 'Viagens recentes',
                         icon: Icon(
-                          Icons.fire_truck_outlined,
+                          Icons.calendar_month,
                           size: 30.0,
                         ),
                         options: FFButtonOptions(
