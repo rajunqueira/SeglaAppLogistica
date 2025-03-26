@@ -86,62 +86,58 @@ class _ViagensRecentesWidgetState extends State<ViagensRecentesWidget> {
         ),
         body: SafeArea(
           top: true,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(24.0, 10.0, 0.0, 10.0),
-                child: Text(
-                  'Esta é iuma lista das viagens recentes',
-                  textAlign: TextAlign.start,
-                  style: FlutterFlowTheme.of(context).labelMedium.override(
-                        fontFamily: 'Inter',
-                        letterSpacing: 0.0,
-                      ),
-                ),
-              ),
-              Builder(
-                builder: (context) {
-                  final viagens =
-                      FFAppState().ViagemResponseAppState.viagemList.toList();
-
-                  return ListView.builder(
-                    padding: EdgeInsets.zero,
-                    shrinkWrap: true,
-                    scrollDirection: Axis.vertical,
-                    itemCount: viagens.length,
-                    itemBuilder: (context, viagensIndex) {
-                      final viagensItem = viagens[viagensIndex];
-                      return SingleChildScrollView(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  10.0, 0.0, 10.0, 10.0),
-                              child: Container(
-                                width: double.infinity,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                  borderRadius: BorderRadius.circular(10.0),
-                                ),
-                                child: ViagemDetalheSimplesWidget(
-                                  key: Key(
-                                      'Key6py_${viagensIndex}_of_${viagens.length}'),
-                                  viagem: viagensItem,
-                                ),
-                              ),
-                            ),
-                          ],
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding:
+                      EdgeInsetsDirectional.fromSTEB(24.0, 10.0, 0.0, 10.0),
+                  child: Text(
+                    'Esta é iuma lista das viagens recentes',
+                    textAlign: TextAlign.start,
+                    style: FlutterFlowTheme.of(context).labelMedium.override(
+                          fontFamily: 'Inter',
+                          letterSpacing: 0.0,
                         ),
-                      );
-                    },
-                  );
-                },
-              ),
-            ],
+                  ),
+                ),
+                Builder(
+                  builder: (context) {
+                    final viagens =
+                        FFAppState().ViagemResponseAppState.viagemList.toList();
+
+                    return ListView.builder(
+                      padding: EdgeInsets.zero,
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                      itemCount: viagens.length,
+                      itemBuilder: (context, viagensIndex) {
+                        final viagensItem = viagens[viagensIndex];
+                        return Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              10.0, 0.0, 10.0, 10.0),
+                          child: Container(
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                            child: ViagemDetalheSimplesWidget(
+                              key: Key(
+                                  'Key6py_${viagensIndex}_of_${viagens.length}'),
+                              viagem: viagensItem,
+                            ),
+                          ),
+                        );
+                      },
+                    );
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),
