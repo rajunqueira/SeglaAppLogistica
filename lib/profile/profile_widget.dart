@@ -105,7 +105,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                       image: DecorationImage(
                         fit: BoxFit.cover,
                         image: CachedNetworkImageProvider(
-                          'https://www.safecorp.com.br/images/CaminhaoColeta.jpg',
+                          'https://www.safecorp.com.br/images/waste-management-2.jpg',
                         ),
                       ),
                     ),
