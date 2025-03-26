@@ -155,7 +155,7 @@ int calculaVolumesViagem(
 ) {
   int volumeTotal = 0;
   for (var pesagem in pesagens) {
-    if (pesagem.idViagemRota == id) {
+    if (pesagem.viagemRota.idViagem == id) {
       volumeTotal += pesagem.qntdColetada;
       ;
     }

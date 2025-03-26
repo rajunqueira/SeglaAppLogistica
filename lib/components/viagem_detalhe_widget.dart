@@ -545,17 +545,14 @@ class _ViagemDetalheWidgetState extends State<ViagemDetalheWidget> {
                             ),
                           ),
                           Text(
-                            formatNumber(
-                              functions.calculaVolumesViagem(
-                                  FFAppState()
-                                      .PesagemResponseAppState
-                                      .pesagemList
-                                      .toList(),
-                                  widget!.viagem!.id),
-                              formatType: FormatType.custom,
-                              format: '#,##0',
-                              locale: 'pt-BR',
-                            ),
+                            functions
+                                .calculaVolumesViagem(
+                                    FFAppState()
+                                        .PesagemResponseAppState
+                                        .pesagemList
+                                        .toList(),
+                                    widget!.viagem!.id)
+                                .toString(),
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
