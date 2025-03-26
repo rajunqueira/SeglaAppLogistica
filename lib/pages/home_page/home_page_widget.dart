@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -39,6 +40,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -117,10 +120,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     scrollDirection: Axis.vertical,
                     children: [
                       FFButtonWidget(
-                        onPressed: () {
-                          print('Button pressed ...');
+                        onPressed: () async {
+                          context
+                              .pushNamed(ListaViagensSimplesWidget.routeName);
                         },
-                        text: 'Lista das viagens',
+                        text: 'Viagens recentes',
                         icon: Icon(
                           Icons.fire_truck_outlined,
                           size: 30.0,
@@ -171,8 +175,20 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         ),
                       ),
                       FFButtonWidget(
-                        onPressed: () {
-                          print('Button pressed ...');
+                        onPressed: () async {
+                          context.pushNamed(
+                            ViagemRotaWidget.routeName,
+                            queryParameters: {
+                              'viagemStatus': serializeParam(
+                                FFAppState().VaigemAtual,
+                                ParamType.DataStruct,
+                              ),
+                              'viagemId': serializeParam(
+                                FFAppState().VaigemAtual.id,
+                                ParamType.int,
+                              ),
+                            }.withoutNulls,
+                          );
                         },
                         text: 'Listar rotas',
                         icon: Icon(
