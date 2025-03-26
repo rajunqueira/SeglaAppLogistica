@@ -50,7 +50,7 @@ class _ViagensRecentesWidgetState extends State<ViagensRecentesWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
           automaticallyImplyLeading: false,
@@ -120,10 +120,22 @@ class _ViagensRecentesWidgetState extends State<ViagensRecentesWidget> {
                               itemCount: viagens.length,
                               itemBuilder: (context, viagensIndex) {
                                 final viagensItem = viagens[viagensIndex];
-                                return ViagemDetalheSimplesWidget(
-                                  key: Key(
-                                      'Key9ra_${viagensIndex}_of_${viagens.length}'),
-                                  viagem: viagensItem,
+                                return Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      10.0, 0.0, 10.0, 10.0),
+                                  child: Container(
+                                    width: double.infinity,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      borderRadius: BorderRadius.circular(10.0),
+                                    ),
+                                    child: ViagemDetalheSimplesWidget(
+                                      key: Key(
+                                          'Keylmo_${viagensIndex}_of_${viagens.length}'),
+                                      viagem: viagensItem,
+                                    ),
+                                  ),
                                 );
                               },
                             );
