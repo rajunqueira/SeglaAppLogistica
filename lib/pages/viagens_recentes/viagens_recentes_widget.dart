@@ -88,31 +88,39 @@ class _ViagensRecentesWidgetState extends State<ViagensRecentesWidget> {
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
-                  child: Builder(
-                    builder: (context) {
-                      final viagens = FFAppState()
-                          .ViagemResponseAppState
-                          .viagemList
-                          .toList();
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Expanded(
+                      child: Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
+                        child: Builder(
+                          builder: (context) {
+                            final viagens = FFAppState()
+                                .ViagemResponseAppState
+                                .viagemList
+                                .toList();
 
-                      return ListView.builder(
-                        padding: EdgeInsets.zero,
-                        shrinkWrap: true,
-                        scrollDirection: Axis.vertical,
-                        itemCount: viagens.length,
-                        itemBuilder: (context, viagensIndex) {
-                          final viagensItem = viagens[viagensIndex];
-                          return ViagemDetalheSimplesWidget(
-                            key: Key(
-                                'Keyik1_${viagensIndex}_of_${viagens.length}'),
-                            viagem: viagensItem,
-                          );
-                        },
-                      );
-                    },
-                  ),
+                            return ListView.builder(
+                              padding: EdgeInsets.zero,
+                              shrinkWrap: true,
+                              scrollDirection: Axis.vertical,
+                              itemCount: viagens.length,
+                              itemBuilder: (context, viagensIndex) {
+                                final viagensItem = viagens[viagensIndex];
+                                return ViagemDetalheSimplesWidget(
+                                  key: Key(
+                                      'Keyik1_${viagensIndex}_of_${viagens.length}'),
+                                  viagem: viagensItem,
+                                );
+                              },
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
