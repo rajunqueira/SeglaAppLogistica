@@ -692,7 +692,7 @@ class _PontoColetaListaWidgetState extends State<PontoColetaListaWidget> {
                                                               .PesagemResponseAppState
                                                               .pesagemList
                                                               .toList(),
-                                                          widget!.viagemId!),
+                                                          pontosColetaItem.id),
                                                   formatType: FormatType.custom,
                                                   format: '#,##0',
                                                   locale: 'pt-BR',
