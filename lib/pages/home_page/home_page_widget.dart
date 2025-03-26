@@ -176,9 +176,22 @@ class _HomePageWidgetState extends State<HomePageWidget>
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 0.0, 12.0),
                 child: Text(
                   'Sua conta',
+                  style: FlutterFlowTheme.of(context).labelMedium.override(
+                        fontFamily: 'Plus Jakarta Sans',
+                        color: FlutterFlowTheme.of(context).secondary,
+                        fontSize: 16.0,
+                        letterSpacing: 0.0,
+                        fontWeight: FontWeight.w500,
+                      ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 0.0, 0.0),
+                child: Text(
+                  'Cliente Segla :',
                   style: FlutterFlowTheme.of(context).labelMedium.override(
                         fontFamily: 'Plus Jakarta Sans',
                         color: FlutterFlowTheme.of(context).primaryText,
@@ -189,125 +202,42 @@ class _HomePageWidgetState extends State<HomePageWidget>
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
-                child: Container(
-                  width: double.infinity,
-                  height: 60.0,
-                  decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).secondaryBackground,
-                    boxShadow: [
-                      BoxShadow(
-                        blurRadius: 3.0,
-                        color: Color(0x33000000),
-                        offset: Offset(
-                          0.0,
-                          1.0,
-                        ),
-                      )
-                    ],
-                    borderRadius: BorderRadius.circular(8.0),
-                    shape: BoxShape.rectangle,
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.all(12.0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Icon(
-                          Icons.account_circle_outlined,
-                          color: Color(0xFF57636C),
-                          size: 24.0,
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              12.0, 0.0, 0.0, 0.0),
-                          child: Text(
-                            'Edit Profile',
-                            style: FlutterFlowTheme.of(context)
-                                .labelLarge
-                                .override(
-                                  fontFamily: 'Plus Jakarta Sans',
-                                  color: Color(0xFF57636C),
-                                  fontSize: 16.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                          ),
-                        ),
-                        Expanded(
-                          child: Align(
-                            alignment: AlignmentDirectional(0.9, 0.0),
-                            child: Icon(
-                              Icons.arrow_forward_ios,
-                              color: Color(0xFF57636C),
-                              size: 18.0,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                padding: EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 0.0, 0.0),
+                child: Text(
+                  FFAppState().ClienteNome,
+                  style: FlutterFlowTheme.of(context).labelMedium.override(
+                        fontFamily: 'Plus Jakarta Sans',
+                        color: FlutterFlowTheme.of(context).primaryText,
+                        fontSize: 12.0,
+                        letterSpacing: 0.0,
+                        fontWeight: FontWeight.w300,
+                      ),
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
-                child: Container(
-                  width: double.infinity,
-                  height: 60.0,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        blurRadius: 3.0,
-                        color: Color(0x33000000),
-                        offset: Offset(
-                          0.0,
-                          1.0,
-                        ),
-                      )
-                    ],
-                    borderRadius: BorderRadius.circular(8.0),
-                    shape: BoxShape.rectangle,
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.all(12.0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Icon(
-                          Icons.notifications_none,
-                          color: Color(0xFF57636C),
-                          size: 24.0,
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              12.0, 0.0, 0.0, 0.0),
-                          child: Text(
-                            'Notification Settings',
-                            style: FlutterFlowTheme.of(context)
-                                .labelLarge
-                                .override(
-                                  fontFamily: 'Plus Jakarta Sans',
-                                  color: Color(0xFF57636C),
-                                  fontSize: 16.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                          ),
-                        ),
-                        Expanded(
-                          child: Align(
-                            alignment: AlignmentDirectional(0.9, 0.0),
-                            child: Icon(
-                              Icons.arrow_forward_ios,
-                              color: Color(0xFF57636C),
-                              size: 18.0,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                padding: EdgeInsetsDirectional.fromSTEB(24.0, 6.0, 0.0, 0.0),
+                child: Text(
+                  'Cidade :',
+                  style: FlutterFlowTheme.of(context).labelMedium.override(
+                        fontFamily: 'Plus Jakarta Sans',
+                        color: FlutterFlowTheme.of(context).primaryText,
+                        fontSize: 14.0,
+                        letterSpacing: 0.0,
+                        fontWeight: FontWeight.w500,
+                      ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 0.0, 0.0),
+                child: Text(
+                  FFAppState().ClienteCidade,
+                  style: FlutterFlowTheme.of(context).labelMedium.override(
+                        fontFamily: 'Plus Jakarta Sans',
+                        color: FlutterFlowTheme.of(context).primaryText,
+                        fontSize: 12.0,
+                        letterSpacing: 0.0,
+                        fontWeight: FontWeight.w200,
+                      ),
                 ),
               ),
               Padding(
@@ -316,8 +246,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                   'Configurações',
                   style: FlutterFlowTheme.of(context).labelMedium.override(
                         fontFamily: 'Plus Jakarta Sans',
-                        color: FlutterFlowTheme.of(context).primaryText,
-                        fontSize: 14.0,
+                        color: FlutterFlowTheme.of(context).secondary,
+                        fontSize: 16.0,
                         letterSpacing: 0.0,
                         fontWeight: FontWeight.w500,
                       ),
