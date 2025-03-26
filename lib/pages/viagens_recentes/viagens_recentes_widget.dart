@@ -62,11 +62,23 @@ class _ViagensRecentesWidgetState extends State<ViagensRecentesWidget> {
             icon: Icon(
               Icons.arrow_back_rounded,
               color: FlutterFlowTheme.of(context).secondaryText,
-              size: 30.0,
+              size: 28.0,
             ),
             onPressed: () async {
               context.pop();
             },
+          ),
+          title: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 0.0, 0.0),
+            child: Text(
+              'Viagens recentes',
+              style: FlutterFlowTheme.of(context).headlineMedium.override(
+                    fontFamily: 'Roboto',
+                    fontSize: 18.0,
+                    letterSpacing: 0.0,
+                    fontWeight: FontWeight.w300,
+                  ),
+            ),
           ),
           actions: [],
           centerTitle: true,
@@ -80,76 +92,49 @@ class _ViagensRecentesWidgetState extends State<ViagensRecentesWidget> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 24.0),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              24.0, 0.0, 0.0, 0.0),
-                          child: Text(
-                            'Viagens recentes',
-                            style: FlutterFlowTheme.of(context)
-                                .headlineMedium
-                                .override(
-                                  fontFamily: 'Roboto',
-                                  letterSpacing: 0.0,
-                                ),
-                          ),
+                  padding:
+                      EdgeInsetsDirectional.fromSTEB(24.0, 10.0, 0.0, 10.0),
+                  child: Text(
+                    'Esta é iuma lista das viagens recentes',
+                    textAlign: TextAlign.start,
+                    style: FlutterFlowTheme.of(context).labelMedium.override(
+                          fontFamily: 'Inter',
+                          letterSpacing: 0.0,
                         ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              24.0, 4.0, 0.0, 0.0),
-                          child: Text(
-                            'Esta é iuma lista das viagens recentes',
-                            textAlign: TextAlign.start,
-                            style: FlutterFlowTheme.of(context)
-                                .labelMedium
-                                .override(
-                                  fontFamily: 'Inter',
-                                  letterSpacing: 0.0,
-                                ),
-                          ),
-                        ),
-                        Builder(
-                          builder: (context) {
-                            final viagens = FFAppState()
-                                .ViagemResponseAppState
-                                .viagemList
-                                .toList();
-
-                            return ListView.builder(
-                              padding: EdgeInsets.zero,
-                              shrinkWrap: true,
-                              scrollDirection: Axis.vertical,
-                              itemCount: viagens.length,
-                              itemBuilder: (context, viagensIndex) {
-                                final viagensItem = viagens[viagensIndex];
-                                return Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      10.0, 0.0, 10.0, 10.0),
-                                  child: Container(
-                                    width: double.infinity,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      borderRadius: BorderRadius.circular(10.0),
-                                    ),
-                                    child: ViagemDetalheSimplesWidget(
-                                      key: Key(
-                                          'Keylmo_${viagensIndex}_of_${viagens.length}'),
-                                      viagem: viagensItem,
-                                    ),
-                                  ),
-                                );
-                              },
-                            );
-                          },
-                        ),
-                      ].divide(SizedBox(height: 12.0)),
-                    ),
                   ),
+                ),
+                Builder(
+                  builder: (context) {
+                    final viagens =
+                        FFAppState().ViagemResponseAppState.viagemList.toList();
+
+                    return ListView.builder(
+                      padding: EdgeInsets.zero,
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                      itemCount: viagens.length,
+                      itemBuilder: (context, viagensIndex) {
+                        final viagensItem = viagens[viagensIndex];
+                        return Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              10.0, 0.0, 10.0, 10.0),
+                          child: Container(
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                            child: ViagemDetalheSimplesWidget(
+                              key: Key(
+                                  'Keylmo_${viagensIndex}_of_${viagens.length}'),
+                              viagem: viagensItem,
+                            ),
+                          ),
+                        );
+                      },
+                    );
+                  },
                 ),
               ],
             ),
