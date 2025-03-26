@@ -15,5 +15,5 @@ export '/pages/coleta_concluir/coleta_concluir_widget.dart'
     show ColetaConcluirWidget;
 export '/foto_adicionar/foto_adicionar_widget.dart' show FotoAdicionarWidget;
 export '/profile/profile_widget.dart' show ProfileWidget;
-export '/pages/lista_viagens_simples/lista_viagens_simples_widget.dart'
-    show ListaViagensSimplesWidget;
+export '/pages/viagens_recentes/viagens_recentes_widget.dart'
+    show ViagensRecentesWidget;

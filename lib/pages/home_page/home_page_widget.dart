@@ -121,8 +121,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     children: [
                       FFButtonWidget(
                         onPressed: () async {
-                          context
-                              .pushNamed(ListaViagensSimplesWidget.routeName);
+                          context.pushNamed(ViagensRecentesWidget.routeName);
                         },
                         text: 'Viagens recentes',
                         icon: Icon(

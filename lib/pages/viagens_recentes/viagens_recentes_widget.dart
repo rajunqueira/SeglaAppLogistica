@@ -8,29 +8,28 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'lista_viagens_simples_model.dart';
-export 'lista_viagens_simples_model.dart';
+import 'viagens_recentes_model.dart';
+export 'viagens_recentes_model.dart';
 
-class ListaViagensSimplesWidget extends StatefulWidget {
-  const ListaViagensSimplesWidget({super.key});
+class ViagensRecentesWidget extends StatefulWidget {
+  const ViagensRecentesWidget({super.key});
 
-  static String routeName = 'ListaViagensSimples';
-  static String routePath = '/listaViagensSimples';
+  static String routeName = 'ViagensRecentes';
+  static String routePath = '/viagensRecentes';
 
   @override
-  State<ListaViagensSimplesWidget> createState() =>
-      _ListaViagensSimplesWidgetState();
+  State<ViagensRecentesWidget> createState() => _ViagensRecentesWidgetState();
 }
 
-class _ListaViagensSimplesWidgetState extends State<ListaViagensSimplesWidget> {
-  late ListaViagensSimplesModel _model;
+class _ViagensRecentesWidgetState extends State<ViagensRecentesWidget> {
+  late ViagensRecentesModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => ListaViagensSimplesModel());
+    _model = createModel(context, () => ViagensRecentesModel());
   }
 
   @override

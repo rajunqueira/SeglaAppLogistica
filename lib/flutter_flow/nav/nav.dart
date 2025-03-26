@@ -199,9 +199,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               : ProfileWidget(),
         ),
         FFRoute(
-          name: ListaViagensSimplesWidget.routeName,
-          path: ListaViagensSimplesWidget.routePath,
-          builder: (context, params) => ListaViagensSimplesWidget(),
+          name: ViagensRecentesWidget.routeName,
+          path: ViagensRecentesWidget.routePath,
+          builder: (context, params) => ViagensRecentesWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
