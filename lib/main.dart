@@ -170,8 +170,8 @@ class _NavBarPageState extends State<NavBarPage> {
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         selectedItemColor: FlutterFlowTheme.of(context).primaryText,
         unselectedItemColor: FlutterFlowTheme.of(context).secondaryText,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
+        showSelectedLabels: true,
+        showUnselectedLabels: true,
         type: BottomNavigationBarType.fixed,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -179,7 +179,7 @@ class _NavBarPageState extends State<NavBarPage> {
               Icons.home_outlined,
               size: 24.0,
             ),
-            label: 'Home',
+            label: 'Inicio',
             tooltip: '',
           ),
           BottomNavigationBarItem(
@@ -187,7 +187,7 @@ class _NavBarPageState extends State<NavBarPage> {
               Icons.fire_truck_outlined,
               size: 24.0,
             ),
-            label: 'Home',
+            label: 'Viagens',
             tooltip: '',
           ),
           BottomNavigationBarItem(
@@ -195,7 +195,7 @@ class _NavBarPageState extends State<NavBarPage> {
               Icons.calendar_month,
               size: 24.0,
             ),
-            label: 'Home',
+            label: 'Calendário',
             tooltip: '',
           ),
           BottomNavigationBarItem(
@@ -203,7 +203,7 @@ class _NavBarPageState extends State<NavBarPage> {
               Icons.person,
               size: 24.0,
             ),
-            label: 'Home',
+            label: 'Perfil',
             tooltip: '',
           )
         ],
