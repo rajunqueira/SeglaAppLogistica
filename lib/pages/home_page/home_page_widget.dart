@@ -415,10 +415,25 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
-                                          ViagemDetalheSimplesWidget(
-                                            key: Key(
-                                                'Keyxs8_${viagensIndex}_of_${viagens.length}'),
-                                            viagem: viagensItem,
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 10.0),
+                                            child: Container(
+                                              width: double.infinity,
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryBackground,
+                                                borderRadius:
+                                                    BorderRadius.circular(12.0),
+                                              ),
+                                              child: ViagemDetalheSimplesWidget(
+                                                key: Key(
+                                                    'Keyxs8_${viagensIndex}_of_${viagens.length}'),
+                                                viagem: viagensItem,
+                                              ),
+                                            ),
                                           ),
                                         ],
                                       ),
