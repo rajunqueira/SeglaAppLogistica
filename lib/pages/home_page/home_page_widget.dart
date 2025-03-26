@@ -384,7 +384,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -404,6 +404,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 itemBuilder: (context, viagensIndex) {
                                   final viagensItem = viagens[viagensIndex];
                                   return SingleChildScrollView(
+                                    primary: false,
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
