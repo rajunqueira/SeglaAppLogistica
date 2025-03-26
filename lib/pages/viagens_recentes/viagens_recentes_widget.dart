@@ -84,7 +84,6 @@ class _ViagensRecentesWidgetState extends State<ViagensRecentesWidget> {
         body: SafeArea(
           top: true,
           child: SingleChildScrollView(
-            primary: false,
             child: Column(
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -105,6 +104,7 @@ class _ViagensRecentesWidgetState extends State<ViagensRecentesWidget> {
 
                             return ListView.builder(
                               padding: EdgeInsets.zero,
+                              primary: false,
                               shrinkWrap: true,
                               scrollDirection: Axis.vertical,
                               itemCount: viagens.length,
