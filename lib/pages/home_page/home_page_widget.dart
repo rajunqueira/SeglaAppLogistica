@@ -403,10 +403,17 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 itemCount: viagens.length,
                                 itemBuilder: (context, viagensIndex) {
                                   final viagensItem = viagens[viagensIndex];
-                                  return ViagemDetalheSimplesWidget(
-                                    key: Key(
-                                        'Keykev_${viagensIndex}_of_${viagens.length}'),
-                                    viagem: viagensItem,
+                                  return SingleChildScrollView(
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        ViagemDetalheSimplesWidget(
+                                          key: Key(
+                                              'Keyxs8_${viagensIndex}_of_${viagens.length}'),
+                                          viagem: viagensItem,
+                                        ),
+                                      ],
+                                    ),
                                   );
                                 },
                               );
