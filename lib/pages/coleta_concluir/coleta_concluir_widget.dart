@@ -241,6 +241,37 @@ class _ColetaConcluirWidgetState extends State<ColetaConcluirWidget> {
                                         ),
                                       ),
                                     ),
+                                    FFButtonWidget(
+                                      onPressed: () async {
+                                        safeSetState(() {
+                                          _model.odometroTextController?.text =
+                                              widget!.viagemRota!.odometroInicio
+                                                  .toString();
+                                        });
+                                      },
+                                      text: 'Manter KM de início',
+                                      options: FFButtonOptions(
+                                        height: 35.0,
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            16.0, 0.0, 16.0, 0.0),
+                                        iconPadding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                0.0, 0.0, 0.0, 0.0),
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondary,
+                                        textStyle: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .override(
+                                              fontFamily: 'Inter',
+                                              color: Colors.white,
+                                              fontSize: 14.0,
+                                              letterSpacing: 0.0,
+                                            ),
+                                        elevation: 0.0,
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                    ),
                                   ],
                                 ),
                               ),
