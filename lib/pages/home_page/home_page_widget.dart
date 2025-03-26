@@ -165,7 +165,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 0.0, 16.0),
                 child: Text(
-                  currentUserUid,
+                  FFAppState().ClienteCidade,
                   style: FlutterFlowTheme.of(context).labelMedium.override(
                         fontFamily: 'Plus Jakarta Sans',
                         color: FlutterFlowTheme.of(context).secondaryText,
