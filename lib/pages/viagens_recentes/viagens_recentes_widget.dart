@@ -80,32 +80,38 @@ class _ViagensRecentesWidgetState extends State<ViagensRecentesWidget> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 0.0, 0.0),
-                  child: Text(
-                    'Viagens recentes',
-                    style: FlutterFlowTheme.of(context).headlineMedium.override(
-                          fontFamily: 'Roboto',
-                          letterSpacing: 0.0,
-                        ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 0.0, 0.0),
-                  child: Text(
-                    'Esta é iuma lista das viagens recentes',
-                    textAlign: TextAlign.start,
-                    style: FlutterFlowTheme.of(context).labelMedium.override(
-                          fontFamily: 'Inter',
-                          letterSpacing: 0.0,
-                        ),
-                  ),
-                ),
-                Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 24.0),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              24.0, 0.0, 0.0, 0.0),
+                          child: Text(
+                            'Viagens recentes',
+                            style: FlutterFlowTheme.of(context)
+                                .headlineMedium
+                                .override(
+                                  fontFamily: 'Roboto',
+                                  letterSpacing: 0.0,
+                                ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              24.0, 4.0, 0.0, 0.0),
+                          child: Text(
+                            'Esta é iuma lista das viagens recentes',
+                            textAlign: TextAlign.start,
+                            style: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: 'Inter',
+                                  letterSpacing: 0.0,
+                                ),
+                          ),
+                        ),
                         Builder(
                           builder: (context) {
                             final viagens = FFAppState()
