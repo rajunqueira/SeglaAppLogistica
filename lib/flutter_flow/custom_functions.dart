@@ -162,3 +162,17 @@ int calculaVolumesViagem(
   }
   return volumeTotal;
 }
+
+int calculaVolumesPontoColeta(
+  List<PesagemListStruct> pesagens,
+  int id,
+) {
+  int volumeTotal = 0;
+  for (var pesagem in pesagens) {
+    if (pesagem.viagemRota.id == id) {
+      volumeTotal += pesagem.qntdColetada;
+      ;
+    }
+  }
+  return volumeTotal;
+}
