@@ -63,7 +63,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   image: DecorationImage(
-                    fit: BoxFit.fitWidth,
+                    fit: BoxFit.fill,
                     image: CachedNetworkImageProvider(
                       'https://www.safecorp.com.br/images/waste-management-1000x675-1.jpg',
                     ),
