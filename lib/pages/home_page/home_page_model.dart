@@ -1,4 +1,5 @@
 import '/components/cabecalho_pontos_coleta_widget.dart';
+import '/components/carrega_todos_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';

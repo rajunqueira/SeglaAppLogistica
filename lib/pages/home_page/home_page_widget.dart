@@ -1,4 +1,5 @@
 import '/components/cabecalho_pontos_coleta_widget.dart';
+import '/components/carrega_todos_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -82,9 +83,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     padding: EdgeInsets.zero,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
-                      crossAxisSpacing: 20.0,
-                      mainAxisSpacing: 20.0,
-                      childAspectRatio: 2.0,
+                      crossAxisSpacing: 15.0,
+                      mainAxisSpacing: 10.0,
+                      childAspectRatio: 2.5,
                     ),
                     scrollDirection: Axis.vertical,
                     children: [
@@ -104,7 +105,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           iconAlignment: IconAlignment.start,
                           iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).secondary,
+                          color: FlutterFlowTheme.of(context).warning,
                           textStyle:
                               FlutterFlowTheme.of(context).titleSmall.override(
                                     fontFamily: 'Inter',
@@ -132,7 +133,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               16.0, 0.0, 16.0, 0.0),
                           iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).secondary,
+                          color: FlutterFlowTheme.of(context).accent2,
                           textStyle:
                               FlutterFlowTheme.of(context).titleSmall.override(
                                     fontFamily: 'Inter',
@@ -224,6 +225,51 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               FlutterFlowTheme.of(context).secondaryBackground,
                           disabledTextColor:
                               FlutterFlowTheme.of(context).accent1,
+                        ),
+                      ),
+                      FFButtonWidget(
+                        onPressed: () async {
+                          await showModalBottomSheet(
+                            isScrollControlled: true,
+                            backgroundColor: Colors.transparent,
+                            enableDrag: false,
+                            context: context,
+                            builder: (context) {
+                              return GestureDetector(
+                                onTap: () {
+                                  FocusScope.of(context).unfocus();
+                                  FocusManager.instance.primaryFocus?.unfocus();
+                                },
+                                child: Padding(
+                                  padding: MediaQuery.viewInsetsOf(context),
+                                  child: CarregaTodosWidget(),
+                                ),
+                              );
+                            },
+                          ).then((value) => safeSetState(() {}));
+                        },
+                        text: 'Atualizar dados',
+                        icon: Icon(
+                          Icons.update,
+                          size: 30.0,
+                        ),
+                        options: FFButtonOptions(
+                          height: 40.0,
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              16.0, 0.0, 16.0, 0.0),
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          color: FlutterFlowTheme.of(context).tertiary,
+                          textStyle:
+                              FlutterFlowTheme.of(context).titleSmall.override(
+                                    fontFamily: 'Inter',
+                                    color: Colors.white,
+                                    fontSize: 14.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                          elevation: 0.0,
+                          borderRadius: BorderRadius.circular(8.0),
                         ),
                       ),
                     ],
