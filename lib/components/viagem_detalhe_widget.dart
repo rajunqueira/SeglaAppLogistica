@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
+import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -69,6 +70,7 @@ class _ViagemDetalheWidgetState extends State<ViagemDetalheWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
     final chartPieChartColorsList = [
       FlutterFlowTheme.of(context).info,
       FlutterFlowTheme.of(context).accent2,
@@ -543,7 +545,17 @@ class _ViagemDetalheWidgetState extends State<ViagemDetalheWidget> {
                             ),
                           ),
                           Text(
-                            '0',
+                            formatNumber(
+                              functions.calculaVolumesViagem(
+                                  FFAppState()
+                                      .PesagemResponseAppState
+                                      .pesagemList
+                                      .toList(),
+                                  widget!.viagem?.id),
+                              formatType: FormatType.custom,
+                              format: '#,##0',
+                              locale: 'pt-BR',
+                            ),
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
@@ -578,17 +590,50 @@ class _ViagemDetalheWidgetState extends State<ViagemDetalheWidget> {
                                   ),
                             ),
                           ),
-                          Text(
-                            '0,000',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Inter',
-                                  color: FlutterFlowTheme.of(context).success,
-                                  fontSize: 14.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.w500,
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Text(
+                                formatNumber(
+                                  functions.calculaPesoViagem(
+                                      FFAppState()
+                                          .PesagemResponseAppState
+                                          .pesagemList
+                                          .toList(),
+                                      widget!.viagem!.id),
+                                  formatType: FormatType.custom,
+                                  format: '#,##0.000',
+                                  locale: 'pt-BR',
                                 ),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Inter',
+                                      color:
+                                          FlutterFlowTheme.of(context).success,
+                                      fontSize: 14.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    8.0, 0.0, 0.0, 0.0),
+                                child: Text(
+                                  'KG',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Inter',
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondary,
+                                        fontSize: 14.0,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
