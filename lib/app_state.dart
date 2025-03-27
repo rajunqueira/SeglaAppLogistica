@@ -367,6 +367,12 @@ class FFAppState extends ChangeNotifier {
     _UserName = value;
     prefs.setString('ff_UserName', value);
   }
+
+  double _propPrice = 0.0;
+  double get propPrice => _propPrice;
+  set propPrice(double value) {
+    _propPrice = value;
+  }
 }
 
 void _safeInit(Function() initializeField) {
