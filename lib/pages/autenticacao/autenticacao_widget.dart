@@ -459,7 +459,7 @@ class _AutenticacaoWidgetState extends State<AutenticacaoWidget>
                   ),
                 ),
                 Text(
-                  ' V 1.0.1 R22',
+                  ' V 1.0.1 R23',
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Inter',
                         letterSpacing: 0.0,

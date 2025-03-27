@@ -71,21 +71,35 @@ class _ViagensWidgetState extends State<ViagensWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          title: Text(
-            'Viagens',
-            style: FlutterFlowTheme.of(context).headlineMedium.override(
-                  fontFamily: 'Roboto',
-                  color: FlutterFlowTheme.of(context).primaryText,
-                  fontSize: 18.0,
-                  letterSpacing: 0.0,
-                  fontWeight: FontWeight.normal,
-                ),
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(50.0),
+          child: AppBar(
+            automaticallyImplyLeading: false,
+            leading: InkWell(
+              splashColor: Colors.transparent,
+              focusColor: Colors.transparent,
+              hoverColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              onTap: () async {
+                context.safePop();
+              },
+              child: Icon(
+                Icons.arrow_back,
+                color: FlutterFlowTheme.of(context).primaryText,
+                size: 24.0,
+              ),
+            ),
+            title: Text(
+              'Viagens programadas',
+              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                    fontFamily: 'Inter',
+                    letterSpacing: 0.0,
+                  ),
+            ),
+            actions: [],
+            centerTitle: false,
+            elevation: 0.0,
           ),
-          actions: [],
-          centerTitle: false,
-          elevation: 2.0,
         ),
         body: SafeArea(
           top: true,

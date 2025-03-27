@@ -399,6 +399,19 @@ class _HomePageWidgetState extends State<HomePageWidget>
                   ),
                 ),
               ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(24.0, 6.0, 0.0, 0.0),
+                child: Text(
+                  'V1.0.1 R23',
+                  style: FlutterFlowTheme.of(context).labelMedium.override(
+                        fontFamily: 'Plus Jakarta Sans',
+                        color: FlutterFlowTheme.of(context).primaryText,
+                        fontSize: 14.0,
+                        letterSpacing: 0.0,
+                        fontWeight: FontWeight.w500,
+                      ),
+                ),
+              ),
               Align(
                 alignment: AlignmentDirectional(0.0, 0.0),
                 child: Padding(
