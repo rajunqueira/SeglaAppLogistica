@@ -9,6 +9,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:convert';
 import 'dart:ui';
+import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
 import 'package:flutter/material.dart';
@@ -280,6 +281,14 @@ class _ColetaConcluirWidgetState extends State<ColetaConcluirWidget> {
                         ),
                       ),
                     ],
+                  ),
+                ),
+                Container(
+                  width: double.infinity,
+                  height: 120.0,
+                  child: custom_widgets.SignatureWidget(
+                    width: double.infinity,
+                    height: 120.0,
                   ),
                 ),
                 Padding(
