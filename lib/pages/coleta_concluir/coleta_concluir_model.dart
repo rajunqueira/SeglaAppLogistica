@@ -35,6 +35,8 @@ class ColetaConcluirModel extends FlutterFlowModel<ColetaConcluirWidget> {
   FocusNode? odometroFocusNode;
   TextEditingController? odometroTextController;
   String? Function(BuildContext, String?)? odometroTextControllerValidator;
+  // Stores action output result for [Custom Action - convertToBase64] action in Button widget.
+  String? ass1;
   // Stores action output result for [Backend Call - API (ViagemRotaAtualizar)] action in Button widget.
   ApiCallResponse? apiResultatf;
   // Stores action output result for [Custom Action - convertToBase64] action in IconButton widget.

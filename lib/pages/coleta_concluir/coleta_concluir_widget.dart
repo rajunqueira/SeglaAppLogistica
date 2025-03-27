@@ -306,6 +306,7 @@ class _ColetaConcluirWidgetState extends State<ColetaConcluirWidget> {
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
                   child: FFButtonWidget(
                     onPressed: () async {
+                      _model.ass1 = await actions.convertToBase64();
                       _model.apiResultatf = await ViagemRotaAtualizarCall.call(
                         jWTToken: currentAuthenticationToken,
                         idCliente: FFAppState().clienteId,
@@ -325,6 +326,7 @@ class _ColetaConcluirWidgetState extends State<ColetaConcluirWidget> {
                             int.tryParse(_model.odometroTextController.text),
                         dataHoraFim:
                             functions.todayToDateTime(getCurrentTimestamp),
+                        assinaturaCliente: _model.ass1,
                       );
 
                       if ((_model.apiResultatf?.succeeded ?? true)) {
