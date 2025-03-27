@@ -9,13 +9,13 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:convert';
 import 'dart:ui';
+import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
 import 'coleta_concluir_widget.dart' show ColetaConcluirWidget;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:signature/signature.dart';
 
 class ColetaConcluirModel extends FlutterFlowModel<ColetaConcluirWidget> {
   ///  Local state fields for this page.
@@ -31,8 +31,6 @@ class ColetaConcluirModel extends FlutterFlowModel<ColetaConcluirWidget> {
   FocusNode? odometroFocusNode;
   TextEditingController? odometroTextController;
   String? Function(BuildContext, String?)? odometroTextControllerValidator;
-  // State field(s) for Signature widget.
-  SignatureController? signatureController;
   // Stores action output result for [Backend Call - API (ViagemRotaAtualizar)] action in Button widget.
   ApiCallResponse? apiResultatf;
 
@@ -43,7 +41,5 @@ class ColetaConcluirModel extends FlutterFlowModel<ColetaConcluirWidget> {
   void dispose() {
     odometroFocusNode?.dispose();
     odometroTextController?.dispose();
-
-    signatureController?.dispose();
   }
 }
