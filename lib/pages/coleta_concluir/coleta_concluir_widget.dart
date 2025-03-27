@@ -47,6 +47,7 @@ class _ColetaConcluirWidgetState extends State<ColetaConcluirWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await actions.initSignatureController();
       await actions.clearSignature();
     });
 
