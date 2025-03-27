@@ -13,6 +13,7 @@ import 'package:flutter/material.dart';
 
 import 'dart:convert';
 import 'package:signature/signature.dart';
+import '/custom_code/actions/init_signature_controller.dart';
 
 class SignatureWidget extends StatefulWidget {
   const SignatureWidget({
@@ -29,70 +30,29 @@ class SignatureWidget extends StatefulWidget {
 }
 
 class _SignatureWidgetState extends State<SignatureWidget> {
-  final SignatureController _signatureController = SignatureController(
-    penStrokeWidth: 5,
-    penColor: Colors.black,
-    exportBackgroundColor: Colors.white,
-  );
+  late SignatureController _signatureController;
 
-  Future<void> captureSignature() async {
-    final Uint8List? signatureBytes = await _signatureController.toPngBytes();
-    if (signatureBytes != null) {
-      String base64Signature = base64Encode(signatureBytes);
-      FFAppState().signBase64String = base64Signature; // Save to FFAppState
-      setState(() {});
-    }
+  @override
+  void initState() {
+    super.initState();
+
+    _signatureController = SignatureControllerSingleton().signatureController!;
+    _signatureController.addListener(() => print('Value changed'));
+  }
+
+  @override
+  void dispose() {
+    _signatureController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 400,
-      child: Column(
-        children: [
-          Container(
-            color: Colors.white,
-            height: 300,
-            width: widget.width ?? double.infinity,
-            child: Signature(controller: _signatureController),
-          ),
-          Container(
-            height: 100,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ElevatedButton(
-                  child: Container(
-                    width: 80,
-                    height: 40,
-                    alignment: Alignment.center,
-                    child: Text('Capture'),
-                  ),
-                  onPressed: captureSignature,
-                ),
-                ElevatedButton(
-                  child: Container(
-                    width: 80,
-                    height: 40,
-                    alignment: Alignment.center,
-                    child: Text('Clear'),
-                  ),
-                  onPressed: () {
-                    _signatureController.clear();
-                    FFAppState().signBase64String =
-                        null; // Clear the saved signature
-                    setState(() {});
-                  },
-                ),
-              ],
-            ),
-          ),
-          // Display the length of the capturedSignatureBase64 string
-          Text(
-            'Base64 Length: ${FFAppState().signBase64String?.length ?? 0}',
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-          ),
-        ],
+    return ClipRect(
+      child: Signature(
+        controller: _signatureController,
+        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+        height: 120,
       ),
     );
   }
