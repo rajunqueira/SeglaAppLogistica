@@ -73,11 +73,11 @@ class _ViagemRotaWidgetState extends State<ViagemRotaWidget> {
                 size: 24.0,
               ),
               onPressed: () async {
-                context.pushNamed(HomePageWidget.routeName);
+                context.pushNamed(ViagemWidget.routeName);
               },
             ),
             title: Text(
-              'Rotas da viagem',
+              'Registrar coleta',
               style: FlutterFlowTheme.of(context).headlineMedium.override(
                     fontFamily: 'Roboto',
                     color: FlutterFlowTheme.of(context).primaryText,

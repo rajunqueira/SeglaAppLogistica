@@ -81,7 +81,7 @@ class _ViagensWidgetState extends State<ViagensWidget> {
               hoverColor: Colors.transparent,
               highlightColor: Colors.transparent,
               onTap: () async {
-                context.safePop();
+                context.pushNamed(ViagemWidget.routeName);
               },
               child: Icon(
                 Icons.arrow_back,
