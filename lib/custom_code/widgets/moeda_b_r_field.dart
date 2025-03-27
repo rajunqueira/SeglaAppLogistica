@@ -11,8 +11,6 @@ import 'package:flutter/material.dart';
 // Begin custom widget code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-import '/custom_code/actions/index.dart'; // Imports custom actions
-
 import 'package:flutter/services.dart';
 
 class MoedaBRField extends StatefulWidget {
