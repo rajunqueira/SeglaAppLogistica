@@ -27,6 +27,8 @@ class ColetaConcluirModel extends FlutterFlowModel<ColetaConcluirWidget> {
     updateFn(pesagemNovo ??= PesagemListStruct());
   }
 
+  String? assinatura;
+
   ///  State fields for stateful widgets in this page.
 
   // State field(s) for Odometro widget.
@@ -35,6 +37,8 @@ class ColetaConcluirModel extends FlutterFlowModel<ColetaConcluirWidget> {
   String? Function(BuildContext, String?)? odometroTextControllerValidator;
   // Stores action output result for [Backend Call - API (ViagemRotaAtualizar)] action in Button widget.
   ApiCallResponse? apiResultatf;
+  // Stores action output result for [Custom Action - convertToBase64] action in IconButton widget.
+  String? assinaTuraBase64;
 
   @override
   void initState(BuildContext context) {}

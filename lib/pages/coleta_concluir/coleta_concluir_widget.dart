@@ -86,7 +86,10 @@ class _ColetaConcluirWidgetState extends State<ColetaConcluirWidget> {
               size: 24.0,
             ),
             onPressed: () async {
+              _model.assinaTuraBase64 = await actions.convertToBase64();
               context.pop();
+
+              safeSetState(() {});
             },
           ),
           title: Text(
