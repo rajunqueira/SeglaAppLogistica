@@ -239,8 +239,10 @@ class _FotoAdicionarWidgetState extends State<FotoAdicionarWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
                 child: FFButtonWidget(
-                  onPressed: () {
-                    print('Button pressed ...');
+                  onPressed: () async {
+                    FFAppState().tempImage =
+                        functions.imageToBase64(_model.uploadedLocalFile)!;
+                    safeSetState(() {});
                   },
                   text: 'Salvar imagem',
                   icon: Icon(

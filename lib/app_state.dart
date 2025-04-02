@@ -373,6 +373,12 @@ class FFAppState extends ChangeNotifier {
   set propPrice(double value) {
     _propPrice = value;
   }
+
+  String _tempImage = '';
+  String get tempImage => _tempImage;
+  set tempImage(String value) {
+    _tempImage = value;
+  }
 }
 
 void _safeInit(Function() initializeField) {

@@ -13,10 +13,11 @@ export '/pages/coleta_iniciar/coleta_iniciar_widget.dart'
     show ColetaIniciarWidget;
 export '/pages/coleta_concluir/coleta_concluir_widget.dart'
     show ColetaConcluirWidget;
-export '/foto_adicionar/foto_adicionar_widget.dart' show FotoAdicionarWidget;
-export '/profile/profile_widget.dart' show ProfileWidget;
+export '/pages/foto_adicionar/foto_adicionar_widget.dart'
+    show FotoAdicionarWidget;
+export '/pages/profile/profile_widget.dart' show ProfileWidget;
 export '/pages/viagens_recentes/viagens_recentes_widget.dart'
     show ViagensRecentesWidget;
-export '/viagem/viagem_widget.dart' show ViagemWidget;
-export '/assinatura_adicionar/assinatura_adicionar_widget.dart'
+export '/pages/viagem/viagem_widget.dart' show ViagemWidget;
+export '/pages/assinatura_adicionar/assinatura_adicionar_widget.dart'
     show AssinaturaAdicionarWidget;

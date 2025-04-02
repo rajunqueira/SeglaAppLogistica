@@ -183,3 +183,8 @@ String? imageToBase64(FFUploadedFile? file) {
 
   return "data:image/jpeg;base64," + base64Encode(bytes as List<int>);
 }
+
+FFUploadedFile base64DecodeToImage(String imageBase64) {
+  final bytesDec = base64Decode(imageBase64);
+  return FFUploadedFile(bytes: bytesDec);
+}

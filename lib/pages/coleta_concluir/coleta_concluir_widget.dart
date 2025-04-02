@@ -364,6 +364,18 @@ class _ColetaConcluirWidgetState extends State<ColetaConcluirWidget> {
                       ],
                     ),
                   ),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(8.0),
+                    child: Image.memory(
+                      functions
+                              .base64DecodeToImage(FFAppState().tempImage)
+                              .bytes ??
+                          Uint8List.fromList([]),
+                      width: 200.0,
+                      height: 200.0,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                   Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
