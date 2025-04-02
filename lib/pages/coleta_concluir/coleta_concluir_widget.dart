@@ -410,6 +410,7 @@ class _ColetaConcluirWidgetState extends State<ColetaConcluirWidget> {
                             int.tryParse(_model.odometroTextController.text),
                         dataHoraFim:
                             functions.todayToDateTime(getCurrentTimestamp),
+                        assinaturaCliente: _model.ass1,
                       );
 
                       if ((_model.apiResultatf?.succeeded ?? true)) {
