@@ -240,8 +240,8 @@ class _FotoAdicionarWidgetState extends State<FotoAdicionarWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
                 child: FFButtonWidget(
                   onPressed: () async {
-                    FFAppState().tempImage =
-                        functions.imageToBase64(_model.uploadedLocalFile)!;
+                    FFAppState().tempImage = functions
+                        .convertImageFileToBase64(_model.uploadedLocalFile);
                     safeSetState(() {});
                     context.safePop();
                   },

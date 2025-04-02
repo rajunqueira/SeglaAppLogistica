@@ -190,8 +190,8 @@ FFUploadedFile base64DecodeToImage(String imageBase64) {
 }
 
 String convertImageFileToBase64(FFUploadedFile? imageFile) {
-  String base64Image = null;
-  List<int>? imageBytes = imageFile.bytes;
+  String base64Image = "";
+  List<int>? imageBytes = imageFile?.bytes;
   if (imageBytes != null) {
     base64Image = base64Encode(imageBytes);
   }
