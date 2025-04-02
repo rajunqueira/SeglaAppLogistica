@@ -13,6 +13,11 @@ import 'package:provider/provider.dart';
 
 class AssinaturaAdicionarModel
     extends FlutterFlowModel<AssinaturaAdicionarWidget> {
+  ///  State fields for stateful widgets in this page.
+
+  // Stores action output result for [Custom Action - convertToBase64] action in Button widget.
+  String? assinaturaBase64;
+
   @override
   void initState(BuildContext context) {}
 

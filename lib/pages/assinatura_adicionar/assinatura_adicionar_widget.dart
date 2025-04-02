@@ -134,8 +134,13 @@ class _AssinaturaAdicionarWidgetState extends State<AssinaturaAdicionarWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
                 child: FFButtonWidget(
-                  onPressed: () {
-                    print('Button pressed ...');
+                  onPressed: () async {
+                    _model.assinaturaBase64 = await actions.convertToBase64();
+                    FFAppState().tempImage = _model.assinaturaBase64!;
+                    safeSetState(() {});
+                    context.safePop();
+
+                    safeSetState(() {});
                   },
                   text: 'Adicionar assinatura',
                   icon: Icon(
