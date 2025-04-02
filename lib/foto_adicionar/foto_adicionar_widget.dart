@@ -4,7 +4,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import 'dart:ui';
-import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -30,9 +29,6 @@ class _FotoAdicionarWidgetState extends State<FotoAdicionarWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => FotoAdicionarModel());
-
-    _model.textController ??= TextEditingController();
-    _model.textFieldFocusNode ??= FocusNode();
   }
 
   @override
@@ -88,70 +84,75 @@ class _FotoAdicionarWidgetState extends State<FotoAdicionarWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                child: FlutterFlowIconButton(
+                  borderRadius: 8.0,
+                  buttonSize: 40.0,
+                  fillColor: FlutterFlowTheme.of(context).secondary,
+                  icon: Icon(
+                    Icons.camera_alt_outlined,
+                    size: 24.0,
+                  ),
+                  onPressed: () async {
+                    final selectedMedia =
+                        await selectMediaWithSourceBottomSheet(
+                      context: context,
+                      allowPhoto: true,
+                    );
+                    if (selectedMedia != null &&
+                        selectedMedia.every((m) =>
+                            validateFileFormat(m.storagePath, context))) {
+                      safeSetState(() => _model.isDataUploading = true);
+                      var selectedUploadedFiles = <FFUploadedFile>[];
+
+                      try {
+                        selectedUploadedFiles = selectedMedia
+                            .map((m) => FFUploadedFile(
+                                  name: m.storagePath.split('/').last,
+                                  bytes: m.bytes,
+                                  height: m.dimensions?.height,
+                                  width: m.dimensions?.width,
+                                  blurHash: m.blurHash,
+                                ))
+                            .toList();
+                      } finally {
+                        _model.isDataUploading = false;
+                      }
+                      if (selectedUploadedFiles.length ==
+                          selectedMedia.length) {
+                        safeSetState(() {
+                          _model.uploadedLocalFile =
+                              selectedUploadedFiles.first;
+                        });
+                      } else {
+                        safeSetState(() {});
+                        return;
+                      }
+                    }
+                  },
+                ),
+              ),
               Align(
                 alignment: AlignmentDirectional(0.0, 0.0),
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                   child: Container(
                     width: MediaQuery.sizeOf(context).width * 0.9,
-                    height: 250.0,
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).secondaryBackground,
                     ),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            final selectedMedia =
-                                await selectMediaWithSourceBottomSheet(
-                              context: context,
-                              allowPhoto: true,
-                            );
-                            if (selectedMedia != null &&
-                                selectedMedia.every((m) => validateFileFormat(
-                                    m.storagePath, context))) {
-                              safeSetState(() => _model.isDataUploading = true);
-                              var selectedUploadedFiles = <FFUploadedFile>[];
-
-                              try {
-                                selectedUploadedFiles = selectedMedia
-                                    .map((m) => FFUploadedFile(
-                                          name: m.storagePath.split('/').last,
-                                          bytes: m.bytes,
-                                          height: m.dimensions?.height,
-                                          width: m.dimensions?.width,
-                                          blurHash: m.blurHash,
-                                        ))
-                                    .toList();
-                              } finally {
-                                _model.isDataUploading = false;
-                              }
-                              if (selectedUploadedFiles.length ==
-                                  selectedMedia.length) {
-                                safeSetState(() {
-                                  _model.uploadedLocalFile =
-                                      selectedUploadedFiles.first;
-                                });
-                              } else {
-                                safeSetState(() {});
-                                return;
-                              }
-                            }
-
-                            safeSetState(() {
-                              _model.textController?.text = functions
-                                  .imageToBase64(_model.uploadedLocalFile)!;
-                            });
-                          },
-                          child: Icon(
-                            Icons.camera_alt_outlined,
-                            color: FlutterFlowTheme.of(context).accent1,
-                            size: 40.0,
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(8.0),
+                          child: Image.memory(
+                            _model.uploadedLocalFile.bytes ??
+                                Uint8List.fromList([]),
+                            width: MediaQuery.sizeOf(context).width * 1.0,
+                            height: 180.0,
+                            fit: BoxFit.cover,
                           ),
                         ),
                       ],
@@ -159,65 +160,33 @@ class _FotoAdicionarWidgetState extends State<FotoAdicionarWidget> {
                   ),
                 ),
               ),
-              Container(
-                width: double.infinity,
-                child: TextFormField(
-                  controller: _model.textController,
-                  focusNode: _model.textFieldFocusNode,
-                  autofocus: false,
-                  obscureText: false,
-                  decoration: InputDecoration(
-                    isDense: true,
-                    labelStyle:
-                        FlutterFlowTheme.of(context).labelMedium.override(
-                              fontFamily: 'Inter',
-                              letterSpacing: 0.0,
-                            ),
-                    hintText: 'TextField',
-                    hintStyle:
-                        FlutterFlowTheme.of(context).labelMedium.override(
-                              fontFamily: 'Inter',
-                              letterSpacing: 0.0,
-                            ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Color(0x00000000),
-                        width: 1.0,
-                      ),
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Color(0x00000000),
-                        width: 1.0,
-                      ),
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                    errorBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: FlutterFlowTheme.of(context).error,
-                        width: 1.0,
-                      ),
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                    focusedErrorBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: FlutterFlowTheme.of(context).error,
-                        width: 1.0,
-                      ),
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                    filled: true,
-                    fillColor: FlutterFlowTheme.of(context).secondaryBackground,
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
+                child: FFButtonWidget(
+                  onPressed: () {
+                    print('Button pressed ...');
+                  },
+                  text: 'Salvar imagem',
+                  icon: Icon(
+                    Icons.save,
+                    size: 28.0,
                   ),
-                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Inter',
-                        letterSpacing: 0.0,
-                      ),
-                  maxLines: 20,
-                  cursorColor: FlutterFlowTheme.of(context).primaryText,
-                  validator:
-                      _model.textControllerValidator.asValidator(context),
+                  options: FFButtonOptions(
+                    width: MediaQuery.sizeOf(context).width * 0.9,
+                    height: 40.0,
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                    iconPadding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    color: FlutterFlowTheme.of(context).secondary,
+                    textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                          fontFamily: 'Inter',
+                          color: Colors.white,
+                          letterSpacing: 0.0,
+                        ),
+                    elevation: 0.0,
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
                 ),
               ),
             ],
