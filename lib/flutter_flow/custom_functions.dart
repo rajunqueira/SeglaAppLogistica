@@ -176,3 +176,10 @@ int calculaVolumesPontoColeta(
   }
   return volumeTotal;
 }
+
+String? imageToBase64(FFUploadedFile? file) {
+  if (file == null) return null;
+  final bytes = file.bytes;
+
+  return "data:image/jpeg;base64," + base64Encode(bytes as List<int>);
+}

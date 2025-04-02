@@ -35,12 +35,6 @@ class ColetaConcluirModel extends FlutterFlowModel<ColetaConcluirWidget> {
   TextEditingController? odometroTextController;
   String? Function(BuildContext, String?)? odometroTextControllerValidator;
   // Stores action output result for [Custom Action - convertToBase64] action in Button widget.
-  String? ass2;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode;
-  TextEditingController? textController2;
-  String? Function(BuildContext, String?)? textController2Validator;
-  // Stores action output result for [Custom Action - convertToBase64] action in Button widget.
   String? ass1;
   // Stores action output result for [Backend Call - API (ViagemRotaAtualizar)] action in Button widget.
   ApiCallResponse? apiResultatf;
@@ -54,8 +48,5 @@ class ColetaConcluirModel extends FlutterFlowModel<ColetaConcluirWidget> {
   void dispose() {
     odometroFocusNode?.dispose();
     odometroTextController?.dispose();
-
-    textFieldFocusNode?.dispose();
-    textController2?.dispose();
   }
 }

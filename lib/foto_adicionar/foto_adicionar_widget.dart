@@ -1,10 +1,10 @@
-import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import 'dart:ui';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -30,6 +30,9 @@ class _FotoAdicionarWidgetState extends State<FotoAdicionarWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => FotoAdicionarModel());
+
+    _model.textController ??= TextEditingController();
+    _model.textFieldFocusNode ??= FocusNode();
   }
 
   @override
@@ -107,7 +110,6 @@ class _FotoAdicionarWidgetState extends State<FotoAdicionarWidget> {
                             final selectedMedia =
                                 await selectMediaWithSourceBottomSheet(
                               context: context,
-                              storageFolderPath: '',
                               allowPhoto: true,
                             );
                             if (selectedMedia != null &&
@@ -116,7 +118,6 @@ class _FotoAdicionarWidgetState extends State<FotoAdicionarWidget> {
                               safeSetState(() => _model.isDataUploading = true);
                               var selectedUploadedFiles = <FFUploadedFile>[];
 
-                              var downloadUrls = <String>[];
                               try {
                                 selectedUploadedFiles = selectedMedia
                                     .map((m) => FFUploadedFile(
@@ -127,27 +128,25 @@ class _FotoAdicionarWidgetState extends State<FotoAdicionarWidget> {
                                           blurHash: m.blurHash,
                                         ))
                                     .toList();
-
-                                downloadUrls = await uploadSupabaseStorageFiles(
-                                  bucketName: 'photos',
-                                  selectedFiles: selectedMedia,
-                                );
                               } finally {
                                 _model.isDataUploading = false;
                               }
                               if (selectedUploadedFiles.length ==
-                                      selectedMedia.length &&
-                                  downloadUrls.length == selectedMedia.length) {
+                                  selectedMedia.length) {
                                 safeSetState(() {
                                   _model.uploadedLocalFile =
                                       selectedUploadedFiles.first;
-                                  _model.uploadedFileUrl = downloadUrls.first;
                                 });
                               } else {
                                 safeSetState(() {});
                                 return;
                               }
                             }
+
+                            safeSetState(() {
+                              _model.textController?.text = functions
+                                  .imageToBase64(_model.uploadedLocalFile)!;
+                            });
                           },
                           child: Icon(
                             Icons.camera_alt_outlined,
@@ -158,6 +157,67 @@ class _FotoAdicionarWidgetState extends State<FotoAdicionarWidget> {
                       ],
                     ),
                   ),
+                ),
+              ),
+              Container(
+                width: double.infinity,
+                child: TextFormField(
+                  controller: _model.textController,
+                  focusNode: _model.textFieldFocusNode,
+                  autofocus: false,
+                  obscureText: false,
+                  decoration: InputDecoration(
+                    isDense: true,
+                    labelStyle:
+                        FlutterFlowTheme.of(context).labelMedium.override(
+                              fontFamily: 'Inter',
+                              letterSpacing: 0.0,
+                            ),
+                    hintText: 'TextField',
+                    hintStyle:
+                        FlutterFlowTheme.of(context).labelMedium.override(
+                              fontFamily: 'Inter',
+                              letterSpacing: 0.0,
+                            ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0x00000000),
+                        width: 1.0,
+                      ),
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0x00000000),
+                        width: 1.0,
+                      ),
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    errorBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: FlutterFlowTheme.of(context).error,
+                        width: 1.0,
+                      ),
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    focusedErrorBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: FlutterFlowTheme.of(context).error,
+                        width: 1.0,
+                      ),
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    filled: true,
+                    fillColor: FlutterFlowTheme.of(context).secondaryBackground,
+                  ),
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        fontFamily: 'Inter',
+                        letterSpacing: 0.0,
+                      ),
+                  maxLines: 20,
+                  cursorColor: FlutterFlowTheme.of(context).primaryText,
+                  validator:
+                      _model.textControllerValidator.asValidator(context),
                 ),
               ),
             ],
