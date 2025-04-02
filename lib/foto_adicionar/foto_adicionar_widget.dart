@@ -145,16 +145,19 @@ class _FotoAdicionarWidgetState extends State<FotoAdicionarWidget> {
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(8.0),
-                          child: Image.memory(
-                            _model.uploadedLocalFile.bytes ??
-                                Uint8List.fromList([]),
-                            width: MediaQuery.sizeOf(context).width * 1.0,
-                            height: 180.0,
-                            fit: BoxFit.cover,
+                        if (_model.uploadedLocalFile != null &&
+                            (_model.uploadedLocalFile.bytes?.isNotEmpty ??
+                                false))
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(8.0),
+                            child: Image.memory(
+                              _model.uploadedLocalFile.bytes ??
+                                  Uint8List.fromList([]),
+                              width: MediaQuery.sizeOf(context).width * 1.0,
+                              height: 180.0,
+                              fit: BoxFit.cover,
+                            ),
                           ),
-                        ),
                       ],
                     ),
                   ),
