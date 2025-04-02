@@ -30,6 +30,9 @@ class _FotoAdicionarWidgetState extends State<FotoAdicionarWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => FotoAdicionarModel());
+
+    _model.textController ??= TextEditingController();
+    _model.textFieldFocusNode ??= FocusNode();
   }
 
   @override
@@ -146,6 +149,7 @@ class _FotoAdicionarWidgetState extends State<FotoAdicionarWidget> {
                     width: MediaQuery.sizeOf(context).width * 0.9,
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).secondaryBackground,
+                      borderRadius: BorderRadius.circular(12.0),
                     ),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
@@ -159,12 +163,76 @@ class _FotoAdicionarWidgetState extends State<FotoAdicionarWidget> {
                               _model.uploadedLocalFile.bytes ??
                                   Uint8List.fromList([]),
                               width: MediaQuery.sizeOf(context).width * 1.0,
-                              height: 180.0,
+                              height: 170.0,
                               fit: BoxFit.cover,
                             ),
                           ),
                       ],
                     ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(18.0),
+                child: Container(
+                  width: double.infinity,
+                  child: TextFormField(
+                    controller: _model.textController,
+                    focusNode: _model.textFieldFocusNode,
+                    autofocus: false,
+                    obscureText: false,
+                    decoration: InputDecoration(
+                      isDense: true,
+                      labelStyle:
+                          FlutterFlowTheme.of(context).labelMedium.override(
+                                fontFamily: 'Inter',
+                                letterSpacing: 0.0,
+                              ),
+                      hintText: 'Identificação da i',
+                      hintStyle:
+                          FlutterFlowTheme.of(context).labelMedium.override(
+                                fontFamily: 'Inter',
+                                letterSpacing: 0.0,
+                              ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Color(0x00000000),
+                          width: 1.0,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Color(0x00000000),
+                          width: 1.0,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      errorBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: FlutterFlowTheme.of(context).error,
+                          width: 1.0,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      focusedErrorBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: FlutterFlowTheme.of(context).error,
+                          width: 1.0,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      filled: true,
+                      fillColor:
+                          FlutterFlowTheme.of(context).secondaryBackground,
+                    ),
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Inter',
+                          letterSpacing: 0.0,
+                        ),
+                    cursorColor: FlutterFlowTheme.of(context).primaryText,
+                    validator:
+                        _model.textControllerValidator.asValidator(context),
                   ),
                 ),
               ),

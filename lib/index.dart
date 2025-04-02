@@ -18,3 +18,5 @@ export '/profile/profile_widget.dart' show ProfileWidget;
 export '/pages/viagens_recentes/viagens_recentes_widget.dart'
     show ViagensRecentesWidget;
 export '/viagem/viagem_widget.dart' show ViagemWidget;
+export '/assinatura_adicionar/assinatura_adicionar_widget.dart'
+    show AssinaturaAdicionarWidget;

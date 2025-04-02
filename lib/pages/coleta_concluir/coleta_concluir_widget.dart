@@ -10,7 +10,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:convert';
 import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
-import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
 import 'package:flutter/material.dart';
@@ -96,25 +95,7 @@ class _ColetaConcluirWidgetState extends State<ColetaConcluirWidget> {
                   fontWeight: FontWeight.normal,
                 ),
           ),
-          actions: [
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
-              child: InkWell(
-                splashColor: Colors.transparent,
-                focusColor: Colors.transparent,
-                hoverColor: Colors.transparent,
-                highlightColor: Colors.transparent,
-                onTap: () async {
-                  context.pushNamed(FotoAdicionarWidget.routeName);
-                },
-                child: Icon(
-                  Icons.camera_alt_outlined,
-                  color: FlutterFlowTheme.of(context).primaryText,
-                  size: 24.0,
-                ),
-              ),
-            ),
-          ],
+          actions: [],
           centerTitle: true,
           elevation: 0.0,
         ),
@@ -122,141 +103,234 @@ class _ColetaConcluirWidgetState extends State<ColetaConcluirWidget> {
           top: true,
           child: Padding(
             padding: EdgeInsets.all(8.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Expanded(
-                        flex: 6,
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 10.0, 0.0),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 2.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 0.0, 4.0),
-                                      child: Text(
-                                        'Odômetro atual',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Inter',
-                                              fontSize: 14.0,
-                                              letterSpacing: 0.0,
-                                              fontWeight: FontWeight.w300,
-                                            ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 8.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Expanded(
-                                      child: Container(
-                                        width: 200.0,
-                                        child: TextFormField(
-                                          controller:
-                                              _model.odometroTextController,
-                                          focusNode: _model.odometroFocusNode,
-                                          autofocus: false,
-                                          obscureText: false,
-                                          decoration: InputDecoration(
-                                            isDense: true,
-                                            hintText: 'Inclua o KM inicial',
-                                            enabledBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color: Color(0x00000000),
-                                                width: 0.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(6.0),
-                                            ),
-                                            focusedBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color: Color(0x00000000),
-                                                width: 0.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(6.0),
-                                            ),
-                                            errorBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .error,
-                                                width: 0.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(6.0),
-                                            ),
-                                            focusedErrorBorder:
-                                                OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .error,
-                                                width: 0.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(6.0),
-                                            ),
-                                            filled: true,
-                                            fillColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .secondaryBackground,
-                                            contentPadding:
-                                                EdgeInsets.all(12.0),
-                                          ),
+            child: InkWell(
+              splashColor: Colors.transparent,
+              focusColor: Colors.transparent,
+              hoverColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              onTap: () async {
+                context.pushNamed(
+                  FotoAdicionarWidget.routeName,
+                  extra: <String, dynamic>{
+                    kTransitionInfoKey: TransitionInfo(
+                      hasTransition: true,
+                      transitionType: PageTransitionType.rightToLeft,
+                    ),
+                  },
+                );
+              },
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 0.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Expanded(
+                          flex: 6,
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 10.0, 0.0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 2.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 4.0),
+                                        child: Text(
+                                          'Odômetro atual',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Inter',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
                                                 fontSize: 14.0,
                                                 letterSpacing: 0.0,
-                                                fontWeight: FontWeight.normal,
+                                                fontWeight: FontWeight.w300,
                                               ),
-                                          textAlign: TextAlign.end,
-                                          cursorColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .primaryText,
-                                          validator: _model
-                                              .odometroTextControllerValidator
-                                              .asValidator(context),
                                         ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 30.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Expanded(
+                                        child: Container(
+                                          width: 200.0,
+                                          child: TextFormField(
+                                            controller:
+                                                _model.odometroTextController,
+                                            focusNode: _model.odometroFocusNode,
+                                            autofocus: false,
+                                            obscureText: false,
+                                            decoration: InputDecoration(
+                                              isDense: true,
+                                              hintText: 'Inclua o KM final',
+                                              enabledBorder: OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                  color: Color(0x00000000),
+                                                  width: 0.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(6.0),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                  color: Color(0x00000000),
+                                                  width: 0.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(6.0),
+                                              ),
+                                              errorBorder: OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .error,
+                                                  width: 0.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(6.0),
+                                              ),
+                                              focusedErrorBorder:
+                                                  OutlineInputBorder(
+                                                borderSide: BorderSide(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .error,
+                                                  width: 0.0,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(6.0),
+                                              ),
+                                              filled: true,
+                                              fillColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              contentPadding:
+                                                  EdgeInsets.all(12.0),
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Inter',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                  fontSize: 14.0,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.normal,
+                                                ),
+                                            textAlign: TextAlign.end,
+                                            cursorColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .primaryText,
+                                            validator: _model
+                                                .odometroTextControllerValidator
+                                                .asValidator(context),
+                                          ),
+                                        ),
+                                      ),
+                                      FFButtonWidget(
+                                        onPressed: () async {
+                                          safeSetState(() {
+                                            _model.odometroTextController
+                                                    ?.text =
+                                                widget!
+                                                    .viagemRota!.odometroInicio
+                                                    .toString();
+                                          });
+                                        },
+                                        text: 'Manter KM de início',
+                                        options: FFButtonOptions(
+                                          height: 35.0,
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  16.0, 0.0, 16.0, 0.0),
+                                          iconPadding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondary,
+                                          textStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmall
+                                                  .override(
+                                                    fontFamily: 'Inter',
+                                                    color: Colors.white,
+                                                    fontSize: 14.0,
+                                                    letterSpacing: 0.0,
+                                                  ),
+                                          elevation: 0.0,
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    FFButtonWidget(
+                                      onPressed: () {
+                                        print('Button pressed ...');
+                                      },
+                                      text: 'Add. foto',
+                                      icon: Icon(
+                                        Icons.camera_alt_outlined,
+                                        size: 24.0,
+                                      ),
+                                      options: FFButtonOptions(
+                                        height: 40.0,
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            16.0, 0.0, 16.0, 0.0),
+                                        iconPadding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                0.0, 0.0, 0.0, 0.0),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        textStyle: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .override(
+                                              fontFamily: 'Inter',
+                                              color: Colors.white,
+                                              fontSize: 14.0,
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.normal,
+                                            ),
+                                        elevation: 0.0,
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
                                       ),
                                     ),
                                     FFButtonWidget(
                                       onPressed: () async {
-                                        safeSetState(() {
-                                          _model.odometroTextController?.text =
-                                              widget!.viagemRota!.odometroInicio
-                                                  .toString();
-                                        });
+                                        context.pushNamed(
+                                            AssinaturaAdicionarWidget
+                                                .routeName);
                                       },
-                                      text: 'Manter KM de início',
+                                      text: 'Add. assinatura',
+                                      icon: Icon(
+                                        Icons.draw_outlined,
+                                        size: 24.0,
+                                      ),
                                       options: FFButtonOptions(
-                                        height: 35.0,
+                                        height: 40.0,
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 0.0, 16.0, 0.0),
                                         iconPadding:
@@ -271,6 +345,7 @@ class _ColetaConcluirWidgetState extends State<ColetaConcluirWidget> {
                                               color: Colors.white,
                                               fontSize: 14.0,
                                               letterSpacing: 0.0,
+                                              fontWeight: FontWeight.normal,
                                             ),
                                         elevation: 0.0,
                                         borderRadius:
@@ -279,119 +354,114 @@ class _ColetaConcluirWidgetState extends State<ColetaConcluirWidget> {
                                     ),
                                   ],
                                 ),
-                              ),
-                              Container(
-                                width: MediaQuery.sizeOf(context).width * 1.0,
-                                height: 160.0,
-                                child: custom_widgets.SignatureWidget(
-                                  width: MediaQuery.sizeOf(context).width * 1.0,
-                                  height: 160.0,
-                                ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
-                  child: FFButtonWidget(
-                    onPressed: () async {
-                      _model.ass1 = await actions.convertToBase64();
-                      _model.apiResultatf = await ViagemRotaAtualizarCall.call(
-                        jWTToken: currentAuthenticationToken,
-                        idCliente: FFAppState().clienteId,
-                        idDominio: FFAppState().dominioId,
-                        idEstabelecimento: FFAppState().estabelecimentoId,
-                        idContratoRota: widget!.viagemRota?.idContratoRota,
-                        dataHoraInicio: widget!.viagemRota?.dataHoraInicio,
-                        odometroInicio: widget!.viagemRota?.odometroInicio,
-                        idViagem: widget!.viagemRota?.idViagem,
-                        idPontoColeta:
-                            widget!.viagemRota?.contratoRota?.idPontoColeta,
-                        idPontoEntrega:
-                            widget!.viagemRota?.contratoRota?.idPontoEntrega,
-                        idViagemRotaStatus: 13,
-                        id: widget!.viagemRota?.id,
-                        odometroFinal:
-                            int.tryParse(_model.odometroTextController.text),
-                        dataHoraFim:
-                            functions.todayToDateTime(getCurrentTimestamp),
-                        assinaturaCliente: _model.ass1,
-                      );
-
-                      if ((_model.apiResultatf?.succeeded ?? true)) {
-                        await showModalBottomSheet(
-                          isScrollControlled: true,
-                          backgroundColor: Colors.transparent,
-                          enableDrag: false,
-                          context: context,
-                          builder: (context) {
-                            return GestureDetector(
-                              onTap: () {
-                                FocusScope.of(context).unfocus();
-                                FocusManager.instance.primaryFocus?.unfocus();
-                              },
-                              child: Padding(
-                                padding: MediaQuery.viewInsetsOf(context),
-                                child: CarregaTodosWidget(),
-                              ),
-                            );
-                          },
-                        ).then((value) => safeSetState(() {}));
-                      } else {
-                        await showDialog(
-                          context: context,
-                          builder: (alertDialogContext) {
-                            return AlertDialog(
-                              title: Text('Ponto de coleta atualizar'),
-                              content: Text('Erro ao consumir a API.'),
-                              actions: [
-                                TextButton(
-                                  onPressed: () =>
-                                      Navigator.pop(alertDialogContext),
-                                  child: Text('Ok'),
-                                ),
-                              ],
-                            );
-                          },
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
+                    child: FFButtonWidget(
+                      onPressed: () async {
+                        _model.ass1 = await actions.convertToBase64();
+                        _model.apiResultatf =
+                            await ViagemRotaAtualizarCall.call(
+                          jWTToken: currentAuthenticationToken,
+                          idCliente: FFAppState().clienteId,
+                          idDominio: FFAppState().dominioId,
+                          idEstabelecimento: FFAppState().estabelecimentoId,
+                          idContratoRota: widget!.viagemRota?.idContratoRota,
+                          dataHoraInicio: widget!.viagemRota?.dataHoraInicio,
+                          odometroInicio: widget!.viagemRota?.odometroInicio,
+                          idViagem: widget!.viagemRota?.idViagem,
+                          idPontoColeta:
+                              widget!.viagemRota?.contratoRota?.idPontoColeta,
+                          idPontoEntrega:
+                              widget!.viagemRota?.contratoRota?.idPontoEntrega,
+                          idViagemRotaStatus: 13,
+                          id: widget!.viagemRota?.id,
+                          odometroFinal:
+                              int.tryParse(_model.odometroTextController.text),
+                          dataHoraFim:
+                              functions.todayToDateTime(getCurrentTimestamp),
+                          assinaturaCliente: _model.ass1,
                         );
-                      }
 
-                      context.pushNamed(ViagensWidget.routeName);
+                        if ((_model.apiResultatf?.succeeded ?? true)) {
+                          await showModalBottomSheet(
+                            isScrollControlled: true,
+                            backgroundColor: Colors.transparent,
+                            enableDrag: false,
+                            context: context,
+                            builder: (context) {
+                              return GestureDetector(
+                                onTap: () {
+                                  FocusScope.of(context).unfocus();
+                                  FocusManager.instance.primaryFocus?.unfocus();
+                                },
+                                child: Padding(
+                                  padding: MediaQuery.viewInsetsOf(context),
+                                  child: CarregaTodosWidget(),
+                                ),
+                              );
+                            },
+                          ).then((value) => safeSetState(() {}));
+                        } else {
+                          await showDialog(
+                            context: context,
+                            builder: (alertDialogContext) {
+                              return AlertDialog(
+                                title: Text('Ponto de coleta atualizar'),
+                                content: Text('Erro ao consumir a API.'),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () =>
+                                        Navigator.pop(alertDialogContext),
+                                    child: Text('Ok'),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        }
 
-                      safeSetState(() {});
-                    },
-                    text: 'Gravar',
-                    icon: Icon(
-                      Icons.save,
-                      color: FlutterFlowTheme.of(context).primaryText,
-                      size: 20.0,
-                    ),
-                    options: FFButtonOptions(
-                      width: MediaQuery.sizeOf(context).width * 0.9,
-                      height: 40.0,
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                      iconPadding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: FlutterFlowTheme.of(context).secondary,
-                      textStyle:
-                          FlutterFlowTheme.of(context).titleSmall.override(
-                                fontFamily: 'Inter',
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                fontSize: 16.0,
-                                letterSpacing: 0.0,
-                                fontWeight: FontWeight.w500,
-                              ),
-                      elevation: 0.0,
-                      borderRadius: BorderRadius.circular(8.0),
+                        context.pushNamed(ViagensWidget.routeName);
+
+                        safeSetState(() {});
+                      },
+                      text: 'Gravar',
+                      icon: Icon(
+                        Icons.save,
+                        color: FlutterFlowTheme.of(context).primaryText,
+                        size: 20.0,
+                      ),
+                      options: FFButtonOptions(
+                        width: MediaQuery.sizeOf(context).width * 0.9,
+                        height: 40.0,
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            16.0, 0.0, 16.0, 0.0),
+                        iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: FlutterFlowTheme.of(context).secondary,
+                        textStyle: FlutterFlowTheme.of(context)
+                            .titleSmall
+                            .override(
+                              fontFamily: 'Inter',
+                              color: FlutterFlowTheme.of(context).primaryText,
+                              fontSize: 16.0,
+                              letterSpacing: 0.0,
+                              fontWeight: FontWeight.w500,
+                            ),
+                        elevation: 0.0,
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

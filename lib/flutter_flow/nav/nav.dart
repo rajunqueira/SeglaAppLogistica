@@ -204,6 +204,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'Viagem')
               : ViagemWidget(),
+        ),
+        FFRoute(
+          name: AssinaturaAdicionarWidget.routeName,
+          path: AssinaturaAdicionarWidget.routePath,
+          builder: (context, params) => AssinaturaAdicionarWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
