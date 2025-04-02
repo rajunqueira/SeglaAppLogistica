@@ -3625,7 +3625,7 @@ class ViagemRotaAtualizarCall {
 {
   "idContratoRota": ${idContratoRota},
   "assinaturaCliente": "${escapeStringForJson(assinaturaCliente)}",
-  "assinaturaColetor": "${escapeStringForJson(assinaturaColetor)}""",
+  "assinaturaColetor": "${escapeStringForJson(assinaturaColetor)}",
   "documentoCliente": "",
   "documentoClienteIdentificacao": "",
   "dataHoraInicio": "${escapeStringForJson(dataHoraInicio)}",
