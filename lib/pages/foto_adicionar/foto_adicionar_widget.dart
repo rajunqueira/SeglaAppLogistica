@@ -243,6 +243,7 @@ class _FotoAdicionarWidgetState extends State<FotoAdicionarWidget> {
                     FFAppState().tempImage =
                         functions.imageToBase64(_model.uploadedLocalFile)!;
                     safeSetState(() {});
+                    context.safePop();
                   },
                   text: 'Salvar imagem',
                   icon: Icon(
