@@ -9,9 +9,11 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:convert';
 import 'dart:ui';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'viagem_concluir_model.dart';
@@ -36,6 +38,12 @@ class _ViagemConcluirWidgetState extends State<ViagemConcluirWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ViagemConcluirModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await actions.initSignatureController();
+      await actions.clearSignature();
+    });
 
     _model.odometroTextController ??= TextEditingController();
     _model.odometroFocusNode ??= FocusNode();

@@ -36,6 +36,10 @@ class ColetaConcluirModel extends FlutterFlowModel<ColetaConcluirWidget> {
   String? Function(BuildContext, String?)? odometroTextControllerValidator;
   // State field(s) for Signature widget.
   SignatureController? signatureController;
+  // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode;
+  TextEditingController? textController2;
+  String? Function(BuildContext, String?)? textController2Validator;
   // Stores action output result for [Custom Action - convertToBase64] action in Button widget.
   String? ass1;
   // Stores action output result for [Backend Call - API (ViagemRotaAtualizar)] action in Button widget.
@@ -52,5 +56,7 @@ class ColetaConcluirModel extends FlutterFlowModel<ColetaConcluirWidget> {
     odometroTextController?.dispose();
 
     signatureController?.dispose();
+    textFieldFocusNode?.dispose();
+    textController2?.dispose();
   }
 }
