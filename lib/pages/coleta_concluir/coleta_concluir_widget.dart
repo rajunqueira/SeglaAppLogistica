@@ -380,6 +380,17 @@ class _ColetaConcluirWidgetState extends State<ColetaConcluirWidget> {
                     ),
                   Padding(
                     padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                    child: Text(
+                      FFAppState().tempImage,
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Inter',
+                            letterSpacing: 0.0,
+                          ),
+                    ),
+                  ),
+                  Padding(
+                    padding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
                     child: FFButtonWidget(
                       onPressed: () async {
