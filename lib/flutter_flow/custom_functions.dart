@@ -188,3 +188,12 @@ FFUploadedFile base64DecodeToImage(String imageBase64) {
   final bytesDec = base64Decode(imageBase64);
   return FFUploadedFile(bytes: bytesDec);
 }
+
+String convertImageFileToBase64(FFUploadedFile? imageFile) {
+  String base64Image = null;
+  List<int>? imageBytes = imageFile.bytes;
+  if (imageBytes != null) {
+    base64Image = base64Encode(imageBytes);
+  }
+  return base64Image;
+}
