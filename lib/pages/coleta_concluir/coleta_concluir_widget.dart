@@ -305,9 +305,12 @@ class _ColetaConcluirWidgetState extends State<ColetaConcluirWidget> {
                 ),
                 FFButtonWidget(
                   onPressed: () async {
+                    _model.ass2 = await actions.convertToBase64();
                     safeSetState(() {
-                      _model.textController2?.text = _model.assinaturaBase64!;
+                      _model.textController2?.text = _model.ass2!;
                     });
+
+                    safeSetState(() {});
                   },
                   text: 'Button',
                   options: FFButtonOptions(
