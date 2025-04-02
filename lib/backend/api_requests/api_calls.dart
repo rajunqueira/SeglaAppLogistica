@@ -3624,8 +3624,8 @@ class ViagemRotaAtualizarCall {
     final ffApiRequestBody = '''
 {
   "idContratoRota": ${idContratoRota},
-  "assinaturaCliente": "",
-  "assinaturaColetor": "",
+  "assinaturaCliente": "${escapeStringForJson(assinaturaCliente)}",
+  "assinaturaColetor": "${escapeStringForJson(assinaturaColetor)}""",
   "documentoCliente": "",
   "documentoClienteIdentificacao": "",
   "dataHoraInicio": "${escapeStringForJson(dataHoraInicio)}",
