@@ -272,6 +272,8 @@ class _ColetaConcluirWidgetState extends State<ColetaConcluirWidget> {
                                                     color: Colors.white,
                                                     fontSize: 14.0,
                                                     letterSpacing: 0.0,
+                                                    fontWeight:
+                                                        FontWeight.normal,
                                                   ),
                                           elevation: 0.0,
                                           borderRadius:
@@ -293,7 +295,7 @@ class _ColetaConcluirWidgetState extends State<ColetaConcluirWidget> {
                                       text: 'Add. foto',
                                       icon: Icon(
                                         Icons.camera_alt_outlined,
-                                        size: 24.0,
+                                        size: 15.0,
                                       ),
                                       options: FFButtonOptions(
                                         height: 40.0,
@@ -303,7 +305,7 @@ class _ColetaConcluirWidgetState extends State<ColetaConcluirWidget> {
                                             EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 0.0, 0.0),
                                         color: FlutterFlowTheme.of(context)
-                                            .primary,
+                                            .secondary,
                                         textStyle: FlutterFlowTheme.of(context)
                                             .titleSmall
                                             .override(
@@ -327,7 +329,7 @@ class _ColetaConcluirWidgetState extends State<ColetaConcluirWidget> {
                                       text: 'Add. assinatura',
                                       icon: Icon(
                                         Icons.draw_outlined,
-                                        size: 24.0,
+                                        size: 15.0,
                                       ),
                                       options: FFButtonOptions(
                                         height: 40.0,
@@ -436,7 +438,7 @@ class _ColetaConcluirWidgetState extends State<ColetaConcluirWidget> {
                       icon: Icon(
                         Icons.save,
                         color: FlutterFlowTheme.of(context).primaryText,
-                        size: 20.0,
+                        size: 15.0,
                       ),
                       options: FFButtonOptions(
                         width: MediaQuery.sizeOf(context).width * 0.9,
