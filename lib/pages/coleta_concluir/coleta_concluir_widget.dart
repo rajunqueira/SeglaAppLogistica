@@ -289,8 +289,9 @@ class _ColetaConcluirWidgetState extends State<ColetaConcluirWidget> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     FFButtonWidget(
-                                      onPressed: () {
-                                        print('Button pressed ...');
+                                      onPressed: () async {
+                                        context.pushNamed(
+                                            FotoAdicionarWidget.routeName);
                                       },
                                       text: 'Add. foto',
                                       icon: Icon(
