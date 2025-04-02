@@ -366,29 +366,22 @@ class _ColetaConcluirWidgetState extends State<ColetaConcluirWidget> {
                   ),
                   if (FFAppState().tempImage != null &&
                       FFAppState().tempImage != '')
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(8.0),
-                      child: Image.memory(
-                        functions
-                                .base64DecodeToImage(FFAppState().tempImage)
-                                .bytes ??
-                            Uint8List.fromList([]),
-                        width: 200.0,
-                        height: 200.0,
-                        fit: BoxFit.cover,
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(8.0),
+                        child: Image.memory(
+                          functions
+                                  .base64DecodeToImage(FFAppState().tempImage)
+                                  .bytes ??
+                              Uint8List.fromList([]),
+                          width: MediaQuery.sizeOf(context).width * 0.9,
+                          height: 200.0,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-                    child: Text(
-                      FFAppState().tempImage,
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Inter',
-                            letterSpacing: 0.0,
-                          ),
-                    ),
-                  ),
                   Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),

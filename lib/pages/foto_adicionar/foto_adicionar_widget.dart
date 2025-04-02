@@ -163,7 +163,7 @@ class _FotoAdicionarWidgetState extends State<FotoAdicionarWidget> {
                               _model.uploadedLocalFile.bytes ??
                                   Uint8List.fromList([]),
                               width: MediaQuery.sizeOf(context).width * 1.0,
-                              height: 170.0,
+                              height: 200.0,
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -188,7 +188,7 @@ class _FotoAdicionarWidgetState extends State<FotoAdicionarWidget> {
                                 fontFamily: 'Inter',
                                 letterSpacing: 0.0,
                               ),
-                      hintText: 'Identificação da i',
+                      hintText: 'Identificação da imagem',
                       hintStyle:
                           FlutterFlowTheme.of(context).labelMedium.override(
                                 fontFamily: 'Inter',
