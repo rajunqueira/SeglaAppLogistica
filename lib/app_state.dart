@@ -21,6 +21,9 @@ class FFAppState extends ChangeNotifier {
   Future initializePersistedState() async {
     prefs = await SharedPreferences.getInstance();
     _safeInit(() {
+      _AppVersion = prefs.getString('ff_AppVersion') ?? _AppVersion;
+    });
+    _safeInit(() {
       _clienteId = prefs.getString('ff_clienteId') ?? _clienteId;
     });
     _safeInit(() {
@@ -172,6 +175,13 @@ class FFAppState extends ChangeNotifier {
   }
 
   late SharedPreferences prefs;
+
+  String _AppVersion = 'V1.0.1R25';
+  String get AppVersion => _AppVersion;
+  set AppVersion(String value) {
+    _AppVersion = value;
+    prefs.setString('ff_AppVersion', value);
+  }
 
   String _clienteId = '';
   String get clienteId => _clienteId;

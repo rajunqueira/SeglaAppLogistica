@@ -485,7 +485,7 @@ class _ColetaConcluirWidgetState extends State<ColetaConcluirWidget> {
                                                       MediaQuery.sizeOf(context)
                                                               .width *
                                                           0.9,
-                                                  height: 200.0,
+                                                  height: 250.0,
                                                   fit: BoxFit.fitHeight,
                                                 ),
                                               ),

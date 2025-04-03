@@ -177,8 +177,8 @@ class _FotoAdicionarWidgetState extends State<FotoAdicionarWidget> {
                               _model.uploadedLocalFile.bytes ??
                                   Uint8List.fromList([]),
                               width: MediaQuery.sizeOf(context).width * 1.0,
-                              height: 200.0,
-                              fit: BoxFit.cover,
+                              height: 250.0,
+                              fit: BoxFit.fitHeight,
                             ),
                           ),
                       ],

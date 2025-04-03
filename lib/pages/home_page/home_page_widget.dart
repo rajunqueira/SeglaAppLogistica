@@ -408,7 +408,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(24.0, 6.0, 0.0, 0.0),
                 child: Text(
-                  'V1.0.1 R24',
+                  FFAppState().AppVersion,
                   style: FlutterFlowTheme.of(context).labelMedium.override(
                         fontFamily: 'Plus Jakarta Sans',
                         color: FlutterFlowTheme.of(context).primaryText,

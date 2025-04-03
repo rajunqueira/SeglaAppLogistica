@@ -80,6 +80,8 @@ class _AutenticacaoWidgetState extends State<AutenticacaoWidget>
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -459,7 +461,7 @@ class _AutenticacaoWidgetState extends State<AutenticacaoWidget>
                   ),
                 ),
                 Text(
-                  ' V 1.0.1 R24',
+                  FFAppState().AppVersion,
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Inter',
                         letterSpacing: 0.0,
