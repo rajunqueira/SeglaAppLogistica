@@ -176,7 +176,7 @@ class FFAppState extends ChangeNotifier {
 
   late SharedPreferences prefs;
 
-  String _AppVersion = 'V1.0.1R25';
+  String _AppVersion = 'V1.0.1R26';
   String get AppVersion => _AppVersion;
   set AppVersion(String value) {
     _AppVersion = value;
