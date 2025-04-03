@@ -40,8 +40,6 @@ class ColetaConcluirModel extends FlutterFlowModel<ColetaConcluirWidget> {
   String? ass1;
   // Stores action output result for [Backend Call - API (ViagemRotaAtualizar)] action in Button widget.
   ApiCallResponse? apiResultatf;
-  // Stores action output result for [Custom Action - convertToBase64] action in IconButton widget.
-  String? assinaturaBase64;
 
   @override
   void initState(BuildContext context) {}

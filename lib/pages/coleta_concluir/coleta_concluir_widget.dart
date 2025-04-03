@@ -98,10 +98,19 @@ class _ColetaConcluirWidgetState extends State<ColetaConcluirWidget> {
               size: 24.0,
             ),
             onPressed: () async {
-              _model.assinaturaBase64 = await actions.convertToBase64();
-              context.pop();
-
-              safeSetState(() {});
+              context.pushNamed(
+                ViagemRotaWidget.routeName,
+                queryParameters: {
+                  'viagemStatus': serializeParam(
+                    FFAppState().VaigemAtual,
+                    ParamType.DataStruct,
+                  ),
+                  'viagemId': serializeParam(
+                    widget!.viagemRota?.idViagem,
+                    ParamType.int,
+                  ),
+                }.withoutNulls,
+              );
             },
           ),
           title: Text(
@@ -477,7 +486,7 @@ class _ColetaConcluirWidgetState extends State<ColetaConcluirWidget> {
                                                               .width *
                                                           0.9,
                                                   height: 200.0,
-                                                  fit: BoxFit.fill,
+                                                  fit: BoxFit.fitHeight,
                                                 ),
                                               ),
                                             ),
