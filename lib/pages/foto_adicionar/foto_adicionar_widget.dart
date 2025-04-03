@@ -115,7 +115,7 @@ class _FotoAdicionarWidgetState extends State<FotoAdicionarWidget> {
                     final selectedMedia =
                         await selectMediaWithSourceBottomSheet(
                       context: context,
-                      imageQuality: 55,
+                      imageQuality: 30,
                       allowPhoto: true,
                     );
                     if (selectedMedia != null &&
