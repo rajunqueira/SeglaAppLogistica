@@ -21,3 +21,4 @@ export '/pages/viagens_recentes/viagens_recentes_widget.dart'
 export '/pages/viagem/viagem_widget.dart' show ViagemWidget;
 export '/pages/assinatura_adicionar/assinatura_adicionar_widget.dart'
     show AssinaturaAdicionarWidget;
+export '/imagem_editar/imagem_editar_widget.dart' show ImagemEditarWidget;

@@ -223,6 +223,24 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               structBuilder: ViagemrotaListStruct.fromSerializableMap,
             ),
           ),
+        ),
+        FFRoute(
+          name: ImagemEditarWidget.routeName,
+          path: ImagemEditarWidget.routePath,
+          builder: (context, params) => ImagemEditarWidget(
+            viagemRota: params.getParam(
+              'viagemRota',
+              ParamType.DataStruct,
+              isList: false,
+              structBuilder: ViagemrotaListStruct.fromSerializableMap,
+            ),
+            viagemRotaImagem: params.getParam(
+              'viagemRotaImagem',
+              ParamType.DataStruct,
+              isList: false,
+              structBuilder: ViagemrotaimagemListStruct.fromSerializableMap,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
