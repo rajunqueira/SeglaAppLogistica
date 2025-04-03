@@ -52,7 +52,7 @@ class _SignatureWidgetState extends State<SignatureWidget> {
       child: Signature(
         controller: _signatureController,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-        height: 120,
+        height: 240,
       ),
     );
   }

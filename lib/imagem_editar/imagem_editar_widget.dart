@@ -116,7 +116,7 @@ class _ImagemEditarWidgetState extends State<ImagemEditarWidget> {
                           Uint8List.fromList([]),
                       width: MediaQuery.sizeOf(context).width * 1.0,
                       height: 250.0,
-                      fit: BoxFit.cover,
+                      fit: BoxFit.contain,
                     ),
                   ),
                 ],
