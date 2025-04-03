@@ -208,6 +208,8 @@ class _AssinaturaAdicionarWidgetState extends State<AssinaturaAdicionarWidget> {
                 child: FFButtonWidget(
                   onPressed: () async {
                     _model.assinaturaBase64 = await actions.convertToBase64();
+                    FFAppState().tempImage = _model.assinaturaBase64!;
+                    safeSetState(() {});
                     _model.apiResultaf0 =
                         await ViagemRotaImagemIncluirCall.call(
                       jWTToken: currentAuthenticationToken,
