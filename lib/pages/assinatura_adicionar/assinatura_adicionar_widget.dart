@@ -6,7 +6,6 @@ import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'assinatura_adicionar_model.dart';
@@ -32,12 +31,6 @@ class _AssinaturaAdicionarWidgetState extends State<AssinaturaAdicionarWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => AssinaturaAdicionarModel());
-
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      await actions.initSignatureController();
-      await actions.clearSignature();
-    });
   }
 
   @override
