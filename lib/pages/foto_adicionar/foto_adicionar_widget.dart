@@ -268,7 +268,7 @@ class _FotoAdicionarWidgetState extends State<FotoAdicionarWidget> {
                         builder: (alertDialogContext) {
                           return AlertDialog(
                             title: Text('Inserir imagem'),
-                            content: Text('Erro ao consumir a API'),
+                            content: Text('Erro ao consumir '),
                             actions: [
                               TextButton(
                                 onPressed: () =>

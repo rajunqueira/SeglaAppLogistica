@@ -445,20 +445,6 @@ class _ColetaConcluirWidgetState extends State<ColetaConcluirWidget> {
                                       ),
                                     ],
                                   ),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Text(
-                                        pesagensItem.imagem,
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Inter',
-                                              letterSpacing: 0.0,
-                                            ),
-                                      ),
-                                    ],
-                                  ),
                                 ],
                               ),
                             ],
