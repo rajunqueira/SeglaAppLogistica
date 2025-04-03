@@ -1,10 +1,15 @@
+import '/auth/custom_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
+import '/backend/api_requests/api_streaming.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:convert';
 import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -52,6 +57,8 @@ class _ImagemEditarWidgetState extends State<ImagemEditarWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -181,8 +188,50 @@ class _ImagemEditarWidgetState extends State<ImagemEditarWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
                 child: FFButtonWidget(
-                  onPressed: () {
-                    print('Button pressed ...');
+                  onPressed: () async {
+                    _model.apiResultbmz =
+                        await ViagemRotaImagemAtualizarCall.call(
+                      jWTToken: currentAuthenticationToken,
+                      idCliente: FFAppState().clienteId,
+                      idDominio: FFAppState().dominioId,
+                      idEstabelecimento: FFAppState().estabelecimentoId,
+                      id: widget!.viagemRotaImagem?.id,
+                      idViagemRota: widget!.viagemRota?.id,
+                      descricao: _model.textController.text,
+                      imagem: widget!.viagemRotaImagem?.imagem,
+                      tipo: widget!.viagemRotaImagem?.tipo,
+                    );
+
+                    if ((_model.apiResultbmz?.succeeded ?? true)) {
+                      context.pushNamed(
+                        ColetaConcluirWidget.routeName,
+                        queryParameters: {
+                          'viagemRota': serializeParam(
+                            widget!.viagemRota,
+                            ParamType.DataStruct,
+                          ),
+                        }.withoutNulls,
+                      );
+                    } else {
+                      await showDialog(
+                        context: context,
+                        builder: (alertDialogContext) {
+                          return AlertDialog(
+                            title: Text('Atualizar imagem'),
+                            content: Text('Erro ao consumir a API'),
+                            actions: [
+                              TextButton(
+                                onPressed: () =>
+                                    Navigator.pop(alertDialogContext),
+                                child: Text('Ok'),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    }
+
+                    safeSetState(() {});
                   },
                   text: 'Atualizar',
                   icon: Icon(

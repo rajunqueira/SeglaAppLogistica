@@ -3729,6 +3729,46 @@ class ViagemRotaImagemIncluirCall {
   }
 }
 
+class ViagemRotaImagemAtualizarCall {
+  static Future<ApiCallResponse> call({
+    String? jWTToken = '',
+    String? idCliente = '',
+    String? idDominio = '',
+    String? idEstabelecimento = '',
+    int? id,
+    int? idViagemRota,
+    String? descricao = '',
+    String? imagem = '',
+    bool? tipo,
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "imagem": "${escapeStringForJson(imagem)}",
+  "descricao": "${escapeStringForJson(descricao)}",
+  "idViagemRota": ${idViagemRota},
+  "tipo": ${tipo}
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'ViagemRotaImagemAtualizar',
+      apiUrl:
+          'http://webapi-segla-minimal.us-east-1.elasticbeanstalk.com/v1/viagemrotaimagem/${id}/${idCliente}/${idDominio}/${idEstabelecimento}',
+      callType: ApiCallType.PUT,
+      headers: {
+        'Authorization': 'Bearer ${jWTToken}',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;
