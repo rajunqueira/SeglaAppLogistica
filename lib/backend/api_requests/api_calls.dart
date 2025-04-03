@@ -3769,6 +3769,33 @@ class ViagemRotaImagemAtualizarCall {
   }
 }
 
+class ViagemRotaImagemExcluirCall {
+  static Future<ApiCallResponse> call({
+    String? jWTToken = '',
+    String? idCliente = '',
+    String? idDominio = '',
+    String? idEstabelecimento = '',
+    int? id,
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'ViagemRotaImagemExcluir',
+      apiUrl:
+          'http://webapi-segla-minimal.us-east-1.elasticbeanstalk.com/v1/viagemrotaimagem/${id}/${idCliente}/${idDominio}/${idEstabelecimento}',
+      callType: ApiCallType.DELETE,
+      headers: {
+        'Authorization': 'Bearer ${jWTToken}',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;

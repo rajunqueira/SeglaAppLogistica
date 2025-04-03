@@ -261,8 +261,46 @@ class _ImagemEditarWidgetState extends State<ImagemEditarWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
                 child: FFButtonWidget(
-                  onPressed: () {
-                    print('Button pressed ...');
+                  onPressed: () async {
+                    _model.apiResultfav =
+                        await ViagemRotaImagemExcluirCall.call(
+                      jWTToken: currentAuthenticationToken,
+                      idCliente: FFAppState().clienteId,
+                      idDominio: FFAppState().dominioId,
+                      idEstabelecimento: FFAppState().estabelecimentoId,
+                      id: widget!.viagemRotaImagem?.id,
+                    );
+
+                    if ((_model.apiResultfav?.succeeded ?? true)) {
+                      context.pushNamed(
+                        ColetaConcluirWidget.routeName,
+                        queryParameters: {
+                          'viagemRota': serializeParam(
+                            widget!.viagemRota,
+                            ParamType.DataStruct,
+                          ),
+                        }.withoutNulls,
+                      );
+                    } else {
+                      await showDialog(
+                        context: context,
+                        builder: (alertDialogContext) {
+                          return AlertDialog(
+                            title: Text('Excluir imagem'),
+                            content: Text('Erro ao consumir a API'),
+                            actions: [
+                              TextButton(
+                                onPressed: () =>
+                                    Navigator.pop(alertDialogContext),
+                                child: Text('Ok'),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    }
+
+                    safeSetState(() {});
                   },
                   text: 'Excluir imagem',
                   icon: Icon(

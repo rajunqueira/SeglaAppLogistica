@@ -24,6 +24,8 @@ class ImagemEditarModel extends FlutterFlowModel<ImagemEditarWidget> {
   String? Function(BuildContext, String?)? textControllerValidator;
   // Stores action output result for [Backend Call - API (ViagemRotaImagemAtualizar)] action in Button widget.
   ApiCallResponse? apiResultbmz;
+  // Stores action output result for [Backend Call - API (ViagemRotaImagemExcluir)] action in Button widget.
+  ApiCallResponse? apiResultfav;
 
   @override
   void initState(BuildContext context) {}
