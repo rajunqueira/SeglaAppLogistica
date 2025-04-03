@@ -59,7 +59,7 @@ class _ViagensRecentesWidgetState extends State<ViagensRecentesWidget> {
                   fontFamily: 'Roboto',
                   fontSize: 18.0,
                   letterSpacing: 0.0,
-                  fontWeight: FontWeight.w300,
+                  fontWeight: FontWeight.normal,
                 ),
           ),
           actions: [],

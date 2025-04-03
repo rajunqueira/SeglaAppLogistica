@@ -89,7 +89,7 @@ class _FotoAdicionarWidgetState extends State<FotoAdicionarWidget> {
                   color: FlutterFlowTheme.of(context).primaryText,
                   fontSize: 18.0,
                   letterSpacing: 0.0,
-                  fontWeight: FontWeight.w300,
+                  fontWeight: FontWeight.normal,
                 ),
           ),
           actions: [],

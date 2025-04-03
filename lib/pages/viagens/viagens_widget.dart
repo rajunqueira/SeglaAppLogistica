@@ -74,6 +74,7 @@ class _ViagensWidgetState extends State<ViagensWidget> {
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(50.0),
           child: AppBar(
+            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
             automaticallyImplyLeading: false,
             leading: InkWell(
               splashColor: Colors.transparent,
@@ -89,12 +90,17 @@ class _ViagensWidgetState extends State<ViagensWidget> {
                 size: 24.0,
               ),
             ),
-            title: Text(
-              'Viagens programadas',
-              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                    fontFamily: 'Inter',
-                    letterSpacing: 0.0,
-                  ),
+            title: Align(
+              alignment: AlignmentDirectional(0.0, 0.0),
+              child: Text(
+                'Viagens programadas',
+                textAlign: TextAlign.start,
+                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                      fontFamily: 'Inter',
+                      fontSize: 18.0,
+                      letterSpacing: 0.0,
+                    ),
+              ),
             ),
             actions: [],
             centerTitle: false,

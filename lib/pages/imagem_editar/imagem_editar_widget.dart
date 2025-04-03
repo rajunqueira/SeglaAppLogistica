@@ -77,7 +77,7 @@ class _ImagemEditarWidgetState extends State<ImagemEditarWidget> {
             buttonSize: 60.0,
             icon: Icon(
               Icons.arrow_back_rounded,
-              color: Colors.white,
+              color: FlutterFlowTheme.of(context).primaryText,
               size: 30.0,
             ),
             onPressed: () async {
@@ -88,7 +88,7 @@ class _ImagemEditarWidgetState extends State<ImagemEditarWidget> {
             'Editar imagem',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Roboto',
-                  color: Colors.white,
+                  color: FlutterFlowTheme.of(context).primaryText,
                   fontSize: 18.0,
                   letterSpacing: 0.0,
                 ),
