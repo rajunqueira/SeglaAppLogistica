@@ -1,7 +1,11 @@
+import '/auth/custom_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
+import '/backend/api_requests/api_streaming.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:convert';
 import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/widgets/index.dart' as custom_widgets;
@@ -48,6 +52,8 @@ class _AssinaturaAdicionarWidgetState extends State<AssinaturaAdicionarWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -135,9 +141,37 @@ class _AssinaturaAdicionarWidgetState extends State<AssinaturaAdicionarWidget> {
                 child: FFButtonWidget(
                   onPressed: () async {
                     _model.assinaturaBase64 = await actions.convertToBase64();
-                    FFAppState().tempImage = _model.assinaturaBase64!;
-                    safeSetState(() {});
-                    context.safePop();
+                    _model.apiResultaf0 =
+                        await ViagemRotaImagemIncluirCall.call(
+                      jWTToken: currentAuthenticationToken,
+                      imagem: _model.assinaturaBase64,
+                      idCliente: FFAppState().clienteId,
+                      idDominio: FFAppState().dominioId,
+                      idEstabelecimento: FFAppState().estabelecimentoId,
+                      tipo: false,
+                      idViagemRota: 30,
+                    );
+
+                    if ((_model.apiResultaf0?.succeeded ?? true)) {
+                      context.safePop();
+                    } else {
+                      await showDialog(
+                        context: context,
+                        builder: (alertDialogContext) {
+                          return AlertDialog(
+                            title: Text('Adicionar imagem'),
+                            content: Text('Erro ao consumir a API'),
+                            actions: [
+                              TextButton(
+                                onPressed: () =>
+                                    Navigator.pop(alertDialogContext),
+                                child: Text('Ok'),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    }
 
                     safeSetState(() {});
                   },

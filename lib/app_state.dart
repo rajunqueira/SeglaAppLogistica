@@ -151,6 +151,19 @@ class FFAppState extends ChangeNotifier {
     _safeInit(() {
       _UserName = prefs.getString('ff_UserName') ?? _UserName;
     });
+    _safeInit(() {
+      if (prefs.containsKey('ff_ViagemRotaImagemResponseAppState')) {
+        try {
+          final serializedData =
+              prefs.getString('ff_ViagemRotaImagemResponseAppState') ?? '{}';
+          _ViagemRotaImagemResponseAppState =
+              ViagemRotaImagemResponseStruct.fromSerializableMap(
+                  jsonDecode(serializedData));
+        } catch (e) {
+          print("Can't decode persisted data type. Error: $e.");
+        }
+      }
+    });
   }
 
   void update(VoidCallback callback) {
@@ -378,6 +391,22 @@ class FFAppState extends ChangeNotifier {
   String get tempImage => _tempImage;
   set tempImage(String value) {
     _tempImage = value;
+  }
+
+  ViagemRotaImagemResponseStruct _ViagemRotaImagemResponseAppState =
+      ViagemRotaImagemResponseStruct();
+  ViagemRotaImagemResponseStruct get ViagemRotaImagemResponseAppState =>
+      _ViagemRotaImagemResponseAppState;
+  set ViagemRotaImagemResponseAppState(ViagemRotaImagemResponseStruct value) {
+    _ViagemRotaImagemResponseAppState = value;
+    prefs.setString('ff_ViagemRotaImagemResponseAppState', value.serialize());
+  }
+
+  void updateViagemRotaImagemResponseAppStateStruct(
+      Function(ViagemRotaImagemResponseStruct) updateFn) {
+    updateFn(_ViagemRotaImagemResponseAppState);
+    prefs.setString('ff_ViagemRotaImagemResponseAppState',
+        _ViagemRotaImagemResponseAppState.serialize());
   }
 }
 

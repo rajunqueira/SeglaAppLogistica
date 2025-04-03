@@ -13,6 +13,7 @@ import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'coleta_concluir_model.dart';
@@ -42,6 +43,24 @@ class _ColetaConcluirWidgetState extends State<ColetaConcluirWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ColetaConcluirModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.apiResultu6q = await ViagemRotaImagemByViagemRotaCall.call(
+        jWTToken: currentAuthenticationToken,
+        idCliente: FFAppState().clienteId,
+        idDominio: FFAppState().dominioId,
+        idEstabelecimento: FFAppState().estabelecimentoId,
+        idViagemRota: widget!.viagemRota?.id,
+      );
+
+      if ((_model.apiResultu6q?.succeeded ?? true)) {
+        FFAppState().ViagemRotaImagemResponseAppState =
+            ViagemRotaImagemResponseStruct.maybeFromMap(
+                (_model.apiResultu6q?.jsonBody ?? ''))!;
+        safeSetState(() {});
+      }
+    });
 
     _model.odometroTextController ??= TextEditingController();
     _model.odometroFocusNode ??= FocusNode();
@@ -364,24 +383,49 @@ class _ColetaConcluirWidgetState extends State<ColetaConcluirWidget> {
                       ],
                     ),
                   ),
-                  if (FFAppState().tempImage != null &&
-                      FFAppState().tempImage != '')
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(8.0),
-                        child: Image.memory(
-                          functions
-                                  .base64DecodeToImage(FFAppState().tempImage)
-                                  .bytes ??
-                              Uint8List.fromList([]),
-                          width: MediaQuery.sizeOf(context).width * 0.9,
-                          height: 200.0,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
+                  Builder(
+                    builder: (context) {
+                      final imagens = FFAppState()
+                          .ViagemRotaImagemResponseAppState
+                          .viagemrotaimagemList
+                          .toList();
+
+                      return ListView.builder(
+                        padding: EdgeInsets.zero,
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        itemCount: imagens.length,
+                        itemBuilder: (context, imagensIndex) {
+                          final imagensItem = imagens[imagensIndex];
+                          return Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              if (FFAppState().tempImage != null &&
+                                  FFAppState().tempImage != '')
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 15.0, 0.0, 0.0),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                    child: Image.memory(
+                                      functions
+                                              .base64DecodeToImage(
+                                                  imagensItem.imagem)
+                                              .bytes ??
+                                          Uint8List.fromList([]),
+                                      width: MediaQuery.sizeOf(context).width *
+                                          0.9,
+                                      height: 200.0,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                            ],
+                          );
+                        },
+                      );
+                    },
+                  ),
                   Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),

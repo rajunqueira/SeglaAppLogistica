@@ -14,6 +14,7 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
 import 'coleta_concluir_widget.dart' show ColetaConcluirWidget;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -29,6 +30,8 @@ class ColetaConcluirModel extends FlutterFlowModel<ColetaConcluirWidget> {
 
   ///  State fields for stateful widgets in this page.
 
+  // Stores action output result for [Backend Call - API (ViagemRotaImagemByViagemRota)] action in ColetaConcluir widget.
+  ApiCallResponse? apiResultu6q;
   // State field(s) for Odometro widget.
   FocusNode? odometroFocusNode;
   TextEditingController? odometroTextController;

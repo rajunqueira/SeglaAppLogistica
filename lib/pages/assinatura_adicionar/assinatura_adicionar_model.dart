@@ -1,7 +1,11 @@
+import '/auth/custom_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
+import '/backend/api_requests/api_streaming.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:convert';
 import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/widgets/index.dart' as custom_widgets;
@@ -17,6 +21,8 @@ class AssinaturaAdicionarModel
 
   // Stores action output result for [Custom Action - convertToBase64] action in Button widget.
   String? assinaturaBase64;
+  // Stores action output result for [Backend Call - API (ViagemRotaImagemIncluir)] action in Button widget.
+  ApiCallResponse? apiResultaf0;
 
   @override
   void initState(BuildContext context) {}

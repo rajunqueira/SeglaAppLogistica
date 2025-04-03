@@ -3658,6 +3658,77 @@ class ViagemRotaAtualizarCall {
   }
 }
 
+class ViagemRotaImagemByViagemRotaCall {
+  static Future<ApiCallResponse> call({
+    String? jWTToken = '',
+    int? pageSize = 3000,
+    int? pageNumber = 1,
+    String? idCliente = '',
+    String? idDominio = '',
+    String? idEstabelecimento = '',
+    int? idViagemRota,
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'ViagemRotaImagemByViagemRota',
+      apiUrl:
+          'http://webapi-segla-minimal.us-east-1.elasticbeanstalk.com/v1/viagemrotaimagem/${pageSize}/${pageNumber}/${idCliente}/${idDominio}/${idEstabelecimento}?idViagemRota=${idViagemRota}',
+      callType: ApiCallType.GET,
+      headers: {
+        'Authorization': 'Bearer ${jWTToken}',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class ViagemRotaImagemIncluirCall {
+  static Future<ApiCallResponse> call({
+    String? jWTToken = '',
+    String? imagem = '',
+    String? descricao = '',
+    String? idCliente = '',
+    String? idDominio = '',
+    String? idEstabelecimento = '',
+    bool? tipo,
+    int? idViagemRota,
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "imagem": "${escapeStringForJson(imagem)}",
+  "descricao": "${escapeStringForJson(descricao)}",
+  "idCliente": "${escapeStringForJson(idCliente)}",
+  "idDominio": "${escapeStringForJson(idDominio)}",
+  "idEstabelecimento": "${escapeStringForJson(idEstabelecimento)}",
+  "tipo": ${tipo},
+  "idViagemRota": ${idViagemRota}
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'ViagemRotaImagemIncluir',
+      apiUrl:
+          'http://webapi-segla-minimal.us-east-1.elasticbeanstalk.com/v1/viagemrotaimagem',
+      callType: ApiCallType.POST,
+      headers: {
+        'Authorization': 'Bearer ${jWTToken}',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;
