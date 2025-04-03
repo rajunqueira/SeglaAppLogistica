@@ -1,8 +1,12 @@
+import '/auth/custom_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
+import '/backend/api_requests/api_streaming.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
+import 'dart:convert';
 import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
@@ -44,6 +48,8 @@ class _FotoAdicionarWidgetState extends State<FotoAdicionarWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -237,13 +243,46 @@ class _FotoAdicionarWidgetState extends State<FotoAdicionarWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                 child: FFButtonWidget(
                   onPressed: () async {
                     FFAppState().tempImage = functions
                         .convertImageFileToBase64(_model.uploadedLocalFile);
                     safeSetState(() {});
+                    _model.apiResultcw0 =
+                        await ViagemRotaImagemIncluirCall.call(
+                      jWTToken: currentAuthenticationToken,
+                      idCliente: FFAppState().clienteId,
+                      idDominio: FFAppState().dominioId,
+                      idEstabelecimento: FFAppState().estabelecimentoId,
+                      imagem: functions
+                          .convertImageFileToBase64(_model.uploadedLocalFile),
+                      descricao: _model.textController.text,
+                      idViagemRota: 30,
+                      tipo: true,
+                    );
+
+                    if (!(_model.apiResultcw0?.succeeded ?? true)) {
+                      await showDialog(
+                        context: context,
+                        builder: (alertDialogContext) {
+                          return AlertDialog(
+                            title: Text('Inserir imagem'),
+                            content: Text('Erro ao consumir a API'),
+                            actions: [
+                              TextButton(
+                                onPressed: () =>
+                                    Navigator.pop(alertDialogContext),
+                                child: Text('Ok'),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    }
                     context.safePop();
+
+                    safeSetState(() {});
                   },
                   text: 'Salvar imagem',
                   icon: Icon(
