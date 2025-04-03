@@ -385,7 +385,7 @@ class _ColetaConcluirWidgetState extends State<ColetaConcluirWidget> {
                   ),
                   Builder(
                     builder: (context) {
-                      final imagens = FFAppState()
+                      final pesagens = FFAppState()
                           .ViagemRotaImagemResponseAppState
                           .viagemrotaimagemList
                           .toList();
@@ -394,32 +394,59 @@ class _ColetaConcluirWidgetState extends State<ColetaConcluirWidget> {
                         padding: EdgeInsets.zero,
                         shrinkWrap: true,
                         scrollDirection: Axis.vertical,
-                        itemCount: imagens.length,
-                        itemBuilder: (context, imagensIndex) {
-                          final imagensItem = imagens[imagensIndex];
+                        itemCount: pesagens.length,
+                        itemBuilder: (context, pesagensIndex) {
+                          final pesagensItem = pesagens[pesagensIndex];
                           return Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                              if (FFAppState().tempImage != null &&
-                                  FFAppState().tempImage != '')
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 15.0, 0.0, 0.0),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                    child: Image.memory(
-                                      functions
-                                              .base64DecodeToImage(
-                                                  imagensItem.imagem)
-                                              .bytes ??
-                                          Uint8List.fromList([]),
-                                      width: MediaQuery.sizeOf(context).width *
-                                          0.9,
-                                      height: 200.0,
-                                      fit: BoxFit.cover,
-                                    ),
+                              Column(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      if (FFAppState().tempImage != null &&
+                                          FFAppState().tempImage != '')
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 15.0, 0.0, 0.0),
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                            child: Image.memory(
+                                              functions
+                                                      .base64DecodeToImage(
+                                                          pesagensItem.imagem)
+                                                      .bytes ??
+                                                  Uint8List.fromList([]),
+                                              width: MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.9,
+                                              height: 200.0,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                        ),
+                                    ],
                                   ),
-                                ),
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Text(
+                                        pesagensItem.descricao,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Inter',
+                                              letterSpacing: 0.0,
+                                            ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ],
                           );
                         },
