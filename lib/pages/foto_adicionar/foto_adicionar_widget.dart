@@ -265,7 +265,7 @@ class _FotoAdicionarWidgetState extends State<FotoAdicionarWidget> {
                       imagem: functions
                           .convertImageFileToBase64(_model.uploadedLocalFile),
                       descricao: _model.textController.text,
-                      idViagemRota: 30,
+                      idViagemRota: widget!.viagemRota?.id,
                       tipo: true,
                     );
 
@@ -303,7 +303,7 @@ class _FotoAdicionarWidgetState extends State<FotoAdicionarWidget> {
                   text: 'Salvar imagem',
                   icon: Icon(
                     Icons.save,
-                    size: 28.0,
+                    size: 15.0,
                   ),
                   options: FFButtonOptions(
                     width: MediaQuery.sizeOf(context).width * 0.9,
@@ -316,7 +316,9 @@ class _FotoAdicionarWidgetState extends State<FotoAdicionarWidget> {
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily: 'Inter',
                           color: Colors.white,
+                          fontSize: 14.0,
                           letterSpacing: 0.0,
+                          fontWeight: FontWeight.normal,
                         ),
                     elevation: 0.0,
                     borderRadius: BorderRadius.circular(8.0),

@@ -225,7 +225,7 @@ class _AssinaturaAdicionarWidgetState extends State<AssinaturaAdicionarWidget> {
                       idDominio: FFAppState().dominioId,
                       idEstabelecimento: FFAppState().estabelecimentoId,
                       tipo: false,
-                      idViagemRota: 30,
+                      idViagemRota: widget!.viagemRota?.id,
                       descricao: _model.textController.text,
                     );
 

@@ -458,52 +458,29 @@ class _ColetaConcluirWidgetState extends State<ColetaConcluirWidget> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
-                                          Padding(
-                                            padding: EdgeInsets.all(10.0),
-                                            child: Container(
-                                              width: MediaQuery.sizeOf(context)
-                                                      .width *
-                                                  0.9,
-                                              height: 200.0,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
+                                          if (FFAppState().tempImage != null &&
+                                              FFAppState().tempImage != '')
+                                            Padding(
+                                              padding: EdgeInsets.all(4.0),
+                                              child: ClipRRect(
                                                 borderRadius:
-                                                    BorderRadius.circular(12.0),
-                                              ),
-                                              child: Visibility(
-                                                visible: FFAppState()
-                                                            .tempImage !=
-                                                        null &&
-                                                    FFAppState().tempImage !=
-                                                        '',
-                                                child: Padding(
-                                                  padding: EdgeInsets.all(4.0),
-                                                  child: ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                    child: Image.memory(
-                                                      functions
-                                                              .base64DecodeToImage(
-                                                                  pesagensItem
-                                                                      .imagem)
-                                                              .bytes ??
-                                                          Uint8List.fromList(
-                                                              []),
-                                                      width: MediaQuery.sizeOf(
-                                                                  context)
+                                                    BorderRadius.circular(8.0),
+                                                child: Image.memory(
+                                                  functions
+                                                          .base64DecodeToImage(
+                                                              pesagensItem
+                                                                  .imagem)
+                                                          .bytes ??
+                                                      Uint8List.fromList([]),
+                                                  width:
+                                                      MediaQuery.sizeOf(context)
                                                               .width *
                                                           0.9,
-                                                      height: 200.0,
-                                                      fit: BoxFit.none,
-                                                    ),
-                                                  ),
+                                                  height: 200.0,
+                                                  fit: BoxFit.fill,
                                                 ),
                                               ),
                                             ),
-                                          ),
                                         ],
                                       ),
                                     ),
