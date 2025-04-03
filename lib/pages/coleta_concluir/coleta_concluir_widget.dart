@@ -425,40 +425,49 @@ class _ColetaConcluirWidgetState extends State<ColetaConcluirWidget> {
                             final pesagensItem = pesagens[pesagensIndex];
                             return Row(
                               mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 SingleChildScrollView(
+                                  primary: false,
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          if (FFAppState().tempImage != null &&
-                                              FFAppState().tempImage != '')
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 15.0, 0.0, 0.0),
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                                child: Image.memory(
-                                                  functions
-                                                          .base64DecodeToImage(
-                                                              pesagensItem
-                                                                  .imagem)
-                                                          .bytes ??
-                                                      Uint8List.fromList([]),
-                                                  width:
-                                                      MediaQuery.sizeOf(context)
-                                                              .width *
-                                                          0.9,
-                                                  height: 200.0,
-                                                  fit: BoxFit.cover,
+                                      Padding(
+                                        padding: EdgeInsets.all(6.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            if (FFAppState().tempImage !=
+                                                    null &&
+                                                FFAppState().tempImage != '')
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 15.0, 0.0, 0.0),
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                  child: Image.memory(
+                                                    functions
+                                                            .base64DecodeToImage(
+                                                                pesagensItem
+                                                                    .imagem)
+                                                            .bytes ??
+                                                        Uint8List.fromList([]),
+                                                    width: MediaQuery.sizeOf(
+                                                                context)
+                                                            .width *
+                                                        0.9,
+                                                    height: 200.0,
+                                                    fit: BoxFit.none,
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                        ],
+                                          ],
+                                        ),
                                       ),
                                       Row(
                                         mainAxisSize: MainAxisSize.max,
