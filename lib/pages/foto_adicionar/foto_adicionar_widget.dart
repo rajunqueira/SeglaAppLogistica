@@ -1,6 +1,7 @@
 import '/auth/custom_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/api_requests/api_streaming.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -9,6 +10,7 @@ import '/flutter_flow/upload_data.dart';
 import 'dart:convert';
 import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -16,7 +18,12 @@ import 'foto_adicionar_model.dart';
 export 'foto_adicionar_model.dart';
 
 class FotoAdicionarWidget extends StatefulWidget {
-  const FotoAdicionarWidget({super.key});
+  const FotoAdicionarWidget({
+    super.key,
+    required this.viagemRota,
+  });
+
+  final ViagemrotaListStruct? viagemRota;
 
   static String routeName = 'FotoAdicionar';
   static String routePath = '/fotoAdicionar';
@@ -280,7 +287,16 @@ class _FotoAdicionarWidgetState extends State<FotoAdicionarWidget> {
                         },
                       );
                     }
-                    context.safePop();
+
+                    context.pushNamed(
+                      ColetaConcluirWidget.routeName,
+                      queryParameters: {
+                        'viagemRota': serializeParam(
+                          widget!.viagemRota,
+                          ParamType.DataStruct,
+                        ),
+                      }.withoutNulls,
+                    );
 
                     safeSetState(() {});
                   },

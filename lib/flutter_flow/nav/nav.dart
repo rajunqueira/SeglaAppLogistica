@@ -184,7 +184,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: FotoAdicionarWidget.routeName,
           path: FotoAdicionarWidget.routePath,
-          builder: (context, params) => FotoAdicionarWidget(),
+          builder: (context, params) => FotoAdicionarWidget(
+            viagemRota: params.getParam(
+              'viagemRota',
+              ParamType.DataStruct,
+              isList: false,
+              structBuilder: ViagemrotaListStruct.fromSerializableMap,
+            ),
+          ),
         ),
         FFRoute(
           name: ProfileWidget.routeName,
@@ -208,7 +215,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: AssinaturaAdicionarWidget.routeName,
           path: AssinaturaAdicionarWidget.routePath,
-          builder: (context, params) => AssinaturaAdicionarWidget(),
+          builder: (context, params) => AssinaturaAdicionarWidget(
+            viagemRota: params.getParam(
+              'viagemRota',
+              ParamType.DataStruct,
+              isList: false,
+              structBuilder: ViagemrotaListStruct.fromSerializableMap,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

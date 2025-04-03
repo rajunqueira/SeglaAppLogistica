@@ -130,6 +130,12 @@ class _ColetaConcluirWidgetState extends State<ColetaConcluirWidget> {
               onTap: () async {
                 context.pushNamed(
                   FotoAdicionarWidget.routeName,
+                  queryParameters: {
+                    'viagemRota': serializeParam(
+                      widget!.viagemRota,
+                      ParamType.DataStruct,
+                    ),
+                  }.withoutNulls,
                   extra: <String, dynamic>{
                     kTransitionInfoKey: TransitionInfo(
                       hasTransition: true,
@@ -329,7 +335,14 @@ class _ColetaConcluirWidgetState extends State<ColetaConcluirWidget> {
                                         FFButtonWidget(
                                           onPressed: () async {
                                             context.pushNamed(
-                                                FotoAdicionarWidget.routeName);
+                                              FotoAdicionarWidget.routeName,
+                                              queryParameters: {
+                                                'viagemRota': serializeParam(
+                                                  widget!.viagemRota,
+                                                  ParamType.DataStruct,
+                                                ),
+                                              }.withoutNulls,
+                                            );
                                           },
                                           text: 'Add. foto',
                                           icon: Icon(
@@ -365,8 +378,15 @@ class _ColetaConcluirWidgetState extends State<ColetaConcluirWidget> {
                                         FFButtonWidget(
                                           onPressed: () async {
                                             context.pushNamed(
-                                                AssinaturaAdicionarWidget
-                                                    .routeName);
+                                              AssinaturaAdicionarWidget
+                                                  .routeName,
+                                              queryParameters: {
+                                                'viagemRota': serializeParam(
+                                                  widget!.viagemRota,
+                                                  ParamType.DataStruct,
+                                                ),
+                                              }.withoutNulls,
+                                            );
                                           },
                                           text: 'Add. assinatura',
                                           icon: Icon(
