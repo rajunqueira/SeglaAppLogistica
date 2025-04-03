@@ -75,7 +75,7 @@ class _FotoAdicionarWidgetState extends State<FotoAdicionarWidget> {
             buttonSize: 60.0,
             icon: Icon(
               Icons.arrow_back_rounded,
-              color: Colors.white,
+              color: FlutterFlowTheme.of(context).primaryText,
               size: 30.0,
             ),
             onPressed: () async {
@@ -86,7 +86,7 @@ class _FotoAdicionarWidgetState extends State<FotoAdicionarWidget> {
             'Adicionar foto',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Roboto',
-                  color: Colors.white,
+                  color: FlutterFlowTheme.of(context).primaryText,
                   fontSize: 18.0,
                   letterSpacing: 0.0,
                   fontWeight: FontWeight.w300,
@@ -178,7 +178,7 @@ class _FotoAdicionarWidgetState extends State<FotoAdicionarWidget> {
                                   Uint8List.fromList([]),
                               width: MediaQuery.sizeOf(context).width * 1.0,
                               height: 250.0,
-                              fit: BoxFit.fill,
+                              fit: BoxFit.contain,
                               alignment: Alignment(0.0, 0.0),
                             ),
                           ),
