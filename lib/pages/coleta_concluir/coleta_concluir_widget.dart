@@ -139,6 +139,7 @@ class _ColetaConcluirWidgetState extends State<ColetaConcluirWidget> {
                 );
               },
               child: SingleChildScrollView(
+                primary: false,
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -428,7 +429,6 @@ class _ColetaConcluirWidgetState extends State<ColetaConcluirWidget> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 SingleChildScrollView(
-                                  primary: false,
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
@@ -439,33 +439,56 @@ class _ColetaConcluirWidgetState extends State<ColetaConcluirWidget> {
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
                                           children: [
-                                            if (FFAppState().tempImage !=
-                                                    null &&
-                                                FFAppState().tempImage != '')
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 15.0, 0.0, 0.0),
-                                                child: ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                  child: Image.memory(
-                                                    functions
-                                                            .base64DecodeToImage(
-                                                                pesagensItem
-                                                                    .imagem)
-                                                            .bytes ??
-                                                        Uint8List.fromList([]),
-                                                    width: MediaQuery.sizeOf(
-                                                                context)
+                                            Padding(
+                                              padding: EdgeInsets.all(10.0),
+                                              child: Container(
+                                                width:
+                                                    MediaQuery.sizeOf(context)
                                                             .width *
                                                         0.9,
-                                                    height: 200.0,
-                                                    fit: BoxFit.none,
+                                                height: 200.0,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          12.0),
+                                                ),
+                                                child: Visibility(
+                                                  visible: FFAppState()
+                                                              .tempImage !=
+                                                          null &&
+                                                      FFAppState().tempImage !=
+                                                          '',
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsets.all(4.0),
+                                                    child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                      child: Image.memory(
+                                                        functions
+                                                                .base64DecodeToImage(
+                                                                    pesagensItem
+                                                                        .imagem)
+                                                                .bytes ??
+                                                            Uint8List.fromList(
+                                                                []),
+                                                        width:
+                                                            MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .width *
+                                                                0.9,
+                                                        height: 200.0,
+                                                        fit: BoxFit.none,
+                                                      ),
+                                                    ),
                                                   ),
                                                 ),
                                               ),
+                                            ),
                                           ],
                                         ),
                                       ),
