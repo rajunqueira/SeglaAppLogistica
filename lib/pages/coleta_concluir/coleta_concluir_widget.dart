@@ -486,7 +486,7 @@ class _ColetaConcluirWidgetState extends State<ColetaConcluirWidget> {
                                                               .width *
                                                           0.9,
                                                   height: 250.0,
-                                                  fit: BoxFit.fitHeight,
+                                                  fit: BoxFit.none,
                                                 ),
                                               ),
                                             ),
