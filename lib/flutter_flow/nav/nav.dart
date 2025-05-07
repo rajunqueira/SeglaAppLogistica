@@ -33,8 +33,8 @@ class AppStateNotifier extends ChangeNotifier {
   static AppStateNotifier? _instance;
   static AppStateNotifier get instance => _instance ??= AppStateNotifier._();
 
-  AppLogisticaAuthUser? initialUser;
-  AppLogisticaAuthUser? user;
+  SeglaResiduosAuthUser? initialUser;
+  SeglaResiduosAuthUser? user;
   bool showSplashImage = true;
   String? _redirectLocation;
 
@@ -59,7 +59,7 @@ class AppStateNotifier extends ChangeNotifier {
   /// to perform subsequent actions (such as navigation) afterwards.
   void updateNotifyOnAuthChange(bool notify) => notifyOnAuthChange = notify;
 
-  void update(AppLogisticaAuthUser newUser) {
+  void update(SeglaResiduosAuthUser newUser) {
     final shouldUpdate =
         user?.uid == null || newUser.uid == null || user?.uid != newUser.uid;
     initialUser ??= newUser;

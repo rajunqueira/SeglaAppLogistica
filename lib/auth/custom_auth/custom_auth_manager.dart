@@ -28,13 +28,13 @@ class CustomAuthManager {
     uid = null;
 
     // Update the current user.
-    appLogisticaAuthUserSubject.add(
-      AppLogisticaAuthUser(loggedIn: false),
+    seglaResiduosAuthUserSubject.add(
+      SeglaResiduosAuthUser(loggedIn: false),
     );
     persistAuthData();
   }
 
-  Future<AppLogisticaAuthUser?> signIn({
+  Future<SeglaResiduosAuthUser?> signIn({
     String? authenticationToken,
     String? refreshToken,
     DateTime? tokenExpiration,
@@ -66,7 +66,7 @@ class CustomAuthManager {
     );
   }
 
-  AppLogisticaAuthUser? _updateCurrentUser({
+  SeglaResiduosAuthUser? _updateCurrentUser({
     String? authenticationToken,
     String? refreshToken,
     DateTime? tokenExpiration,
@@ -78,11 +78,11 @@ class CustomAuthManager {
     this.uid = authUid;
 
     // Update the current user stream.
-    final updatedUser = AppLogisticaAuthUser(
+    final updatedUser = SeglaResiduosAuthUser(
       loggedIn: true,
       uid: authUid,
     );
-    appLogisticaAuthUserSubject.add(updatedUser);
+    seglaResiduosAuthUserSubject.add(updatedUser);
     persistAuthData();
     return updatedUser;
   }
@@ -109,11 +109,11 @@ class CustomAuthManager {
     final authTokenExists = authenticationToken != null;
     final tokenExpired =
         tokenExpiration != null && tokenExpiration!.isBefore(DateTime.now());
-    final updatedUser = AppLogisticaAuthUser(
+    final updatedUser = SeglaResiduosAuthUser(
       loggedIn: authTokenExists && !tokenExpired,
       uid: uid,
     );
-    appLogisticaAuthUserSubject.add(updatedUser);
+    seglaResiduosAuthUserSubject.add(updatedUser);
   }
 
   void persistAuthData() {
@@ -131,5 +131,5 @@ class CustomAuthManager {
   }
 }
 
-AppLogisticaAuthUser? currentUser;
+SeglaResiduosAuthUser? currentUser;
 bool get loggedIn => currentUser?.loggedIn ?? false;

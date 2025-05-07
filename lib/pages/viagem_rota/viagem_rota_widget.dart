@@ -80,11 +80,17 @@ class _ViagemRotaWidgetState extends State<ViagemRotaWidget> {
             title: Text(
               'Registrar coleta',
               style: FlutterFlowTheme.of(context).headlineMedium.override(
-                    fontFamily: 'Roboto',
+                    font: GoogleFonts.roboto(
+                      fontWeight: FontWeight.normal,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).headlineMedium.fontStyle,
+                    ),
                     color: FlutterFlowTheme.of(context).primaryText,
                     fontSize: 18.0,
                     letterSpacing: 0.0,
                     fontWeight: FontWeight.normal,
+                    fontStyle:
+                        FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                   ),
             ),
             actions: [],

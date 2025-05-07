@@ -1,4 +1,4 @@
-# App Logistica
+# Segla Residuos
 
 A new Flutter project.
 
