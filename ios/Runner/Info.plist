@@ -45,7 +45,7 @@
     <string>In order to upload data, this app requires permission to access the photo library.</string>
     <!-- Start of NSUserTrackingUsageDescription -->
     <key>NSUserTrackingUsageDescription</key>
-    <string>Este identificador será utilizado para coletar suas informações que sejam relevantes para o processo dentro do aplicativo, com base no seu perfil e informações logadas. A privacidade dos seus dados é respeitada e você pode optar por não coletar as informações e a localização do seu dispositivo.</string>
+    <string>Este identificador será utilizado para coletar suas informações que sejam relevantes para o processamento dentro do aplicativo e a comunicação entre o nosso Hub Segla. Isso vai ocorrer com base no seu perfil, localização e informações logadas. A privacidade dos seus dados é respeitada e você pode optar por não coletar as informações e a localização do seu dispositivo, porém a funcionalidade do aplicativo ficará comprometida.</string>
     <!-- End of NSUserTrackingUsageDescription -->
     <key>UILaunchStoryboardName</key>
     <string>LaunchScreen</string>
