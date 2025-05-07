@@ -45,7 +45,7 @@
     <string>In order to upload data, this app requires permission to access the photo library.</string>
     <!-- Start of NSUserTrackingUsageDescription -->
     <key>NSUserTrackingUsageDescription</key>
-    <string>Este identificador será utilizado para exibir anúncios que sejam mais relevantes para você, com base no seu perfil e interesses. A privacidade dos seus dados é respeitada e você pode optar por não receber anúncios personalizados nas configurações do seu dispositivo.</string>
+    <string>Este identificador será utilizado para coletar suas informações que sejam relevantes para o processo dentro do aplicativo, com base no seu perfil e informações logadas. A privacidade dos seus dados é respeitada e você pode optar por não coletar as informações e a localização do seu dispositivo.</string>
     <!-- End of NSUserTrackingUsageDescription -->
     <key>UILaunchStoryboardName</key>
     <string>LaunchScreen</string>
