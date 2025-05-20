@@ -299,6 +299,7 @@ class _FotoAdicionarWidgetState extends State<FotoAdicionarWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                 child: FFButtonWidget(
                   onPressed: () async {
+                    var _shouldSetState = false;
                     FFAppState().tempImage = functions
                         .convertImageFileToBase64(_model.uploadedLocalFile);
                     safeSetState(() {});
@@ -321,6 +322,8 @@ class _FotoAdicionarWidgetState extends State<FotoAdicionarWidget> {
                           );
                         },
                       );
+                      if (_shouldSetState) safeSetState(() {});
+                      return;
                     }
                     _model.apiResultcw0 =
                         await ViagemRotaImagemIncluirCall.call(
@@ -335,6 +338,7 @@ class _FotoAdicionarWidgetState extends State<FotoAdicionarWidget> {
                       tipo: true,
                     );
 
+                    _shouldSetState = true;
                     if (!(_model.apiResultcw0?.succeeded ?? true)) {
                       await showDialog(
                         context: context,
@@ -364,7 +368,7 @@ class _FotoAdicionarWidgetState extends State<FotoAdicionarWidget> {
                       }.withoutNulls,
                     );
 
-                    safeSetState(() {});
+                    if (_shouldSetState) safeSetState(() {});
                   },
                   text: 'Salvar imagem',
                   icon: Icon(

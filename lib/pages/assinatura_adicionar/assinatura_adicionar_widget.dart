@@ -264,7 +264,9 @@ class _AssinaturaAdicionarWidgetState extends State<AssinaturaAdicionarWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
                 child: FFButtonWidget(
                   onPressed: () async {
+                    var _shouldSetState = false;
                     _model.assinaturaBase64 = await actions.convertToBase64();
+                    _shouldSetState = true;
                     if (!(_model.textController.text != null &&
                         _model.textController.text != '')) {
                       await showDialog(
@@ -284,6 +286,8 @@ class _AssinaturaAdicionarWidgetState extends State<AssinaturaAdicionarWidget> {
                           );
                         },
                       );
+                      if (_shouldSetState) safeSetState(() {});
+                      return;
                     }
                     FFAppState().tempImage = _model.assinaturaBase64!;
                     safeSetState(() {});
@@ -299,6 +303,7 @@ class _AssinaturaAdicionarWidgetState extends State<AssinaturaAdicionarWidget> {
                       descricao: _model.textController.text,
                     );
 
+                    _shouldSetState = true;
                     if ((_model.apiResultaf0?.succeeded ?? true)) {
                       context.pushNamed(
                         ColetaConcluirWidget.routeName,
@@ -328,7 +333,7 @@ class _AssinaturaAdicionarWidgetState extends State<AssinaturaAdicionarWidget> {
                       );
                     }
 
-                    safeSetState(() {});
+                    if (_shouldSetState) safeSetState(() {});
                   },
                   text: 'Adicionar assinatura',
                   icon: Icon(

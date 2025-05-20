@@ -236,6 +236,7 @@ class _ImagemEditarWidgetState extends State<ImagemEditarWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
                 child: FFButtonWidget(
                   onPressed: () async {
+                    var _shouldSetState = false;
                     if (!(_model.textController.text != null &&
                         _model.textController.text != '')) {
                       await showDialog(
@@ -255,6 +256,8 @@ class _ImagemEditarWidgetState extends State<ImagemEditarWidget> {
                           );
                         },
                       );
+                      if (_shouldSetState) safeSetState(() {});
+                      return;
                     }
                     _model.apiResultbmz =
                         await ViagemRotaImagemAtualizarCall.call(
@@ -269,6 +272,7 @@ class _ImagemEditarWidgetState extends State<ImagemEditarWidget> {
                       tipo: widget!.viagemRotaImagem?.tipo,
                     );
 
+                    _shouldSetState = true;
                     if ((_model.apiResultbmz?.succeeded ?? true)) {
                       context.pushNamed(
                         ColetaConcluirWidget.routeName,
@@ -298,7 +302,7 @@ class _ImagemEditarWidgetState extends State<ImagemEditarWidget> {
                       );
                     }
 
-                    safeSetState(() {});
+                    if (_shouldSetState) safeSetState(() {});
                   },
                   text: 'Atualizar',
                   icon: Icon(
