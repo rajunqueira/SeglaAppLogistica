@@ -222,7 +222,7 @@ class _FotoAdicionarWidgetState extends State<FotoAdicionarWidget> {
                                     .labelMedium
                                     .fontStyle,
                               ),
-                      hintText: 'Identificação da imagem',
+                      hintText: 'Nome da imagem com mínimo 20  caracteres ',
                       hintStyle:
                           FlutterFlowTheme.of(context).labelMedium.override(
                                 font: GoogleFonts.inter(
@@ -302,6 +302,26 @@ class _FotoAdicionarWidgetState extends State<FotoAdicionarWidget> {
                     FFAppState().tempImage = functions
                         .convertImageFileToBase64(_model.uploadedLocalFile);
                     safeSetState(() {});
+                    if (!(_model.textController.text != null &&
+                        _model.textController.text != '')) {
+                      await showDialog(
+                        context: context,
+                        builder: (alertDialogContext) {
+                          return AlertDialog(
+                            title: Text('Campo obrigatório'),
+                            content: Text(
+                                'Campo descrição é obrigatório, informe uma descrição de no mínimo (20 - Caracteres).'),
+                            actions: [
+                              TextButton(
+                                onPressed: () =>
+                                    Navigator.pop(alertDialogContext),
+                                child: Text('Ok'),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    }
                     _model.apiResultcw0 =
                         await ViagemRotaImagemIncluirCall.call(
                       jWTToken: currentAuthenticationToken,

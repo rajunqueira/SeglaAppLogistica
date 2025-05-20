@@ -159,7 +159,7 @@ class _ImagemEditarWidgetState extends State<ImagemEditarWidget> {
                                     .labelMedium
                                     .fontStyle,
                               ),
-                      hintText: 'TextField',
+                      hintText: 'Nome da imagem com mínimo 20  caracteres ',
                       hintStyle:
                           FlutterFlowTheme.of(context).labelMedium.override(
                                 font: GoogleFonts.inter(
@@ -236,6 +236,26 @@ class _ImagemEditarWidgetState extends State<ImagemEditarWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
                 child: FFButtonWidget(
                   onPressed: () async {
+                    if (!(_model.textController.text != null &&
+                        _model.textController.text != '')) {
+                      await showDialog(
+                        context: context,
+                        builder: (alertDialogContext) {
+                          return AlertDialog(
+                            title: Text('Campo obrigatório'),
+                            content: Text(
+                                'Por favor preencha o campo descrição da imagem com no mínimo de 20 cacteres.'),
+                            actions: [
+                              TextButton(
+                                onPressed: () =>
+                                    Navigator.pop(alertDialogContext),
+                                child: Text('Ok'),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    }
                     _model.apiResultbmz =
                         await ViagemRotaImagemAtualizarCall.call(
                       jWTToken: currentAuthenticationToken,

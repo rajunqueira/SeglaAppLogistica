@@ -265,6 +265,26 @@ class _AssinaturaAdicionarWidgetState extends State<AssinaturaAdicionarWidget> {
                 child: FFButtonWidget(
                   onPressed: () async {
                     _model.assinaturaBase64 = await actions.convertToBase64();
+                    if (!(_model.textController.text != null &&
+                        _model.textController.text != '')) {
+                      await showDialog(
+                        context: context,
+                        builder: (alertDialogContext) {
+                          return AlertDialog(
+                            title: Text('Campo obrigatório'),
+                            content: Text(
+                                'Campo obrigatório, por favor informe o nome completo da pessoa ao qual realizou a assinatura.'),
+                            actions: [
+                              TextButton(
+                                onPressed: () =>
+                                    Navigator.pop(alertDialogContext),
+                                child: Text('Ok'),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    }
                     FFAppState().tempImage = _model.assinaturaBase64!;
                     safeSetState(() {});
                     _model.apiResultaf0 =
