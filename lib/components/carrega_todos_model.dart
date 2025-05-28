@@ -2,12 +2,11 @@ import '/auth/custom_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/api_requests/api_streaming.dart';
 import '/backend/schema/structs/index.dart';
-import '/components/carrega_todos_widget.dart';
+import '/components/login_redo_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:convert';
 import '/custom_code/actions/index.dart' as actions;
-import '/index.dart';
 import 'carrega_todos_widget.dart' show CarregaTodosWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -29,8 +28,6 @@ class CarregaTodosModel extends FlutterFlowModel<CarregaTodosWidget> {
   ApiCallResponse? tipoResiduoResult;
   // Stores action output result for [Backend Call - API (PesagemStatusListaTodos)] action in CarregaTodos widget.
   ApiCallResponse? statusPesagemResult;
-  // Stores action output result for [Backend Call - API (Login)] action in CarregaTodos widget.
-  ApiCallResponse? cleinsResult;
 
   @override
   void initState(BuildContext context) {}

@@ -2,11 +2,11 @@ import '/auth/custom_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/api_requests/api_streaming.dart';
 import '/backend/schema/structs/index.dart';
+import '/components/login_redo_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:convert';
 import '/custom_code/actions/index.dart' as actions;
-import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -37,7 +37,19 @@ class _CarregaTodosWidgetState extends State<CarregaTodosWidget> {
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      Function() _navigate = () {};
+      await showModalBottomSheet(
+        isScrollControlled: true,
+        backgroundColor: Colors.transparent,
+        enableDrag: false,
+        context: context,
+        builder: (context) {
+          return Padding(
+            padding: MediaQuery.viewInsetsOf(context),
+            child: LoginRedoWidget(),
+          );
+        },
+      ).then((value) => safeSetState(() {}));
+
       FFAppState().ViagemResponseAppState = ViagemResponseStruct();
       FFAppState().PesagemResponseAppState = PesagemResponseStruct();
       FFAppState().ViagemRotaResponseAppState = ViagemRotaResponseStruct();
@@ -212,38 +224,24 @@ class _CarregaTodosWidgetState extends State<CarregaTodosWidget> {
           );
         }
       } else {
-        _model.cleinsResult = await LoginCall.call(
-          email: FFAppState().LoginUsuario,
-          password: FFAppState().LoginSenha,
+        await showDialog(
+          context: context,
+          builder: (alertDialogContext) {
+            return AlertDialog(
+              title: Text('Chamada de API'),
+              content: Text('Erro ao consumir a API na atualização dos dados.'),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(alertDialogContext),
+                  child: Text('Ok'),
+                ),
+              ],
+            );
+          },
         );
-
-        if ((_model.cleinsResult?.succeeded ?? true)) {
-          GoRouter.of(context).prepareAuthEvent();
-          await authManager.signIn(
-            authenticationToken: LoginCall.jwt(
-              (_model.cleinsResult?.jsonBody ?? ''),
-            ),
-          );
-          _navigate = () =>
-              context.goNamedAuth(HomePageWidget.routeName, context.mounted);
-          await showModalBottomSheet(
-            isScrollControlled: true,
-            backgroundColor: Colors.transparent,
-            enableDrag: false,
-            context: context,
-            builder: (context) {
-              return Padding(
-                padding: MediaQuery.viewInsetsOf(context),
-                child: CarregaTodosWidget(),
-              );
-            },
-          ).then((value) => safeSetState(() {}));
-        }
       }
 
       Navigator.pop(context);
-
-      _navigate();
     });
   }
 

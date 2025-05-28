@@ -2,6 +2,7 @@ import '/auth/custom_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/api_requests/api_streaming.dart';
 import '/backend/schema/structs/index.dart';
+import '/components/login_redo_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -300,6 +301,25 @@ class _FotoAdicionarWidgetState extends State<FotoAdicionarWidget> {
                 child: FFButtonWidget(
                   onPressed: () async {
                     var _shouldSetState = false;
+                    await showModalBottomSheet(
+                      isScrollControlled: true,
+                      backgroundColor: Colors.transparent,
+                      enableDrag: false,
+                      context: context,
+                      builder: (context) {
+                        return GestureDetector(
+                          onTap: () {
+                            FocusScope.of(context).unfocus();
+                            FocusManager.instance.primaryFocus?.unfocus();
+                          },
+                          child: Padding(
+                            padding: MediaQuery.viewInsetsOf(context),
+                            child: LoginRedoWidget(),
+                          ),
+                        );
+                      },
+                    ).then((value) => safeSetState(() {}));
+
                     FFAppState().tempImage = functions
                         .convertImageFileToBase64(_model.uploadedLocalFile);
                     safeSetState(() {});
