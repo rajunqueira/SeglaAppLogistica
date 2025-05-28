@@ -70,6 +70,7 @@ class _LoginRedoWidgetState extends State<LoginRedoWidget> {
           },
         ).then((value) => safeSetState(() {}));
       }
+      Navigator.pop(context);
 
       _navigate();
     });
